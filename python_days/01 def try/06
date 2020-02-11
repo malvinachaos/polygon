@@ -1,0 +1,31 @@
+#! /usr/bin/python3
+from os import system as S
+S("clear")
+print("\nА сейчас мы посмотрим, как работают методы map и фильтр.\n\
+        map() -- берёт функцию и ИТЕРИРУЕМЫЙ ОБЪЕКТ, возвращая новый И.О.,\n\
+        то есть обрабатывает все заданные ей объекты через функция, возвращая новые")
+
+def sentence(x):
+    return"LONG: " + str(len(x))
+
+sent = list()
+
+with open("story.txt", "r") as BSD:
+    for line in BSD:
+        sent.append(line)
+
+wry = map(sentence, sent)
+
+print("\nWITH list()\n", list(wry), "\n\nWITHOUT ANYTHING\n", wry, "\nWITH str()\n",\
+        str(wry) + " и это реально строка", "\nTYPE OBJECT:", type(wry))
+
+from math import fabs as fabs
+
+print("\nfilter()\n")
+pp = list(range(-50, 56, 5))
+print(list(filter(lambda x: x%2 ==0, [11, 12, 13, 14, 5.5])))
+print(list(filter(lambda l: l == "YES", ["si", "YES", "NO", "YES"*5, "NO"*5])))
+print(list(filter(lambda v: v > 2106210621062106210621062106, map(lambda x: int(str(int(fabs(x**2+2*x-9)))*7), pp))))
+
+c = input("\nENTER...")
+S("clear")
