@@ -1,0 +1,21 @@
+#! /usr/bin/python3
+from os import system as S
+s = "clear"
+S(s)
+
+# ---------------------------[Главный исполнемый блок]-------------------------
+
+# Цвета
+R , B, C, reset= '\033[41m', '\033[44m', '\033[46m', '\033[0m'
+numbers = [str(x+1) for x in range(0, 9)]
+numbers =  " "*5 + "    ".join(numbers)
+
+print(R + numbers, reset) # стобцы таблицы
+
+for i in range(1, 10):
+    print(B + "{:<2,d}".format(i) + reset, end='')
+    for j in range(1, 10):
+        print(C + "{:>4d}".format((j+i*10)**2), reset, end='')
+    print()
+
+input("Чтобы завершить программу, нажмите Enter...")
