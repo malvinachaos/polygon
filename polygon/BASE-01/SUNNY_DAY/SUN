@@ -1,0 +1,104 @@
+#! /usr/bin/python3
+# This program draws sky, sun and some clouds in console. This version for UNIX-like systems.
+# To display characters correctly, set the terminal window size to 136 at 32 characters
+
+from os import system as S
+S("clear")
+
+# Drawing speed
+sl = "sleep 0.03s" # Best 0.03s
+
+# Set draw point
+R = '\033[41m' + '  ' + '\033[0m'
+Y = '\033[43m' + '  ' + '\033[0m'
+W = '\033[7m' + '  ' + '\033[0m'
+B = '\033[44m' + '  ' + '\033[0m'
+
+# This is sun. 50x25 symbols
+c1214 = R + 4*Y + R + 2*Y + W*9 + 2*Y + R + 4*Y + R
+sun = [B*10 + 4*R + B*11,\
+    3*B + 3*R + 2*B + 2*R + Y*4 + R + 3*B + 4*R + + 3*B ,\
+    2*B + R + 3*Y + R + 2*B + R + 5*Y + R + B + R + 4*Y + R + 2*B ,\
+    B + R+ 5*Y + R+ 2*B + R+ 4*Y + R+ 2*B+ R+ 4*Y + R + B ,\
+    B + R + 5*Y + R + B + R + 5*Y + R  +2*B + R + 4*Y + R + B ,\
+    B + R + 5*Y + R + 2*B + 5*R + 2*B + R + 5*Y + R + B ,\
+    B + R + Y + 2*R + 3*Y + 2*R + Y*5 + 2*R + 5*Y + R + 2*B ,\
+    2*B +R+ 2*B + R + Y + R + 9*Y + R + Y + 3*R + 3*B ,\
+    6*B + R + 4*Y + 3*W + 4*Y + R + 4*B + R + B ,\
+    2*B + 3*R + B + R + 3*Y + 5*W + 3*Y + R + B + R + B + 2*R + B ,\
+    B + R + 3*Y + R + 3*Y + 7*W + 3*Y + R + Y + R + 2*Y + R ,\
+    c1214, c1214, c1214,\
+    R + 2*Y + R + Y + R + 3*Y + 7*W + 3*Y + R + 3*Y + R + B ,\
+    B + 2*R + B + R + B + R + 3*Y + 5*W + Y*3 + R + B + 3*R + 2*B ,\
+    B + R + 4*B + R + 4*Y + 3*W + 4*Y + R + 6*B ,\
+    B*3 + R*3 + Y + R + 9*Y + R + Y + R + B*2 + R + 2*B ,\
+    B*2 + R + 5*Y + 2*R + 5*Y + 2*R + Y*3 + 2*R + Y + R + B ,\
+    B + R + 5*Y + R + 2*B + 5*R + 2*B + R + 5*Y + R + B ,\
+    B + R + 4*Y + R + 2*B + R + 5*Y + R + B + R + 5*Y + R + B ,\
+    B + R + Y*4 + R + 2*B + R + 4*Y + R + 2*B + R + 5*Y + R + B ,\
+    2*B + R + 4*Y + R + B + R + 5*Y + R + 2*B + R + 3*Y + R + 2*B ,\
+    3*B + 4*R + 3*B + R + 4*Y + 2*R + 2*B + 3*R + 3*B ,\
+    11*B + 4*R + 10*B]
+
+# This is sky and clouds.
+sky = [B*68, B*21, B*21 + B]
+
+cloud1 = [B*3 + W*5 + B*3,\
+          B*2 + W*7 + B*2,\
+          B*4 + W*4 + B*3,\
+          B*5 + W*2 + B*4]
+
+cloud2 = [B*5 + W*3 + B*3,\
+          B*4 + W*5 + B*2,\
+          B*5 + W*4 + B*2,]
+
+cloud3 = [B*4 + W*3 + B*4,\
+          B*3 + W*5 + B*3,\
+          B*3 + W*4 + B*4,]
+
+cloud4 = [B*3 + W*4 +B*4,\
+          W*9 + B*2,\
+          B + 7*W + B*3,\
+          B*2 + W*6 + 3*B,\
+          B*4 + 2*W + 5*B,]
+
+cloud5 = [B*11,\
+          4*B + 2*W + 5*B,\
+          3*B + 5*W + 3*B,\
+          2*B + 7*W + 2*B]
+
+
+
+# Algorythm, which is drawing this scene
+print(sky[0] + '\n' + sky[0])
+S(sl)
+print(sky[0] + '\n' + sky[0])
+S(sl)
+for k in range(0, 3):
+    print(cloud1[k] + cloud2[k] + sun[k] + B*4 + cloud4[k] + B*6)
+    S(sl)
+print(cloud1[3] + B*11 + sun[3] + B*4 + cloud4[3] + B*6)
+S(sl)
+print(B*22 + sun[4] + B*4 + cloud4[4] +  B*6)
+S(sl)
+
+for i in range(5, 9):
+    print(B*22 + sun[i] + B*5 + cloud4[i-5] + B*5)
+    S(sl)
+print(B*22 + sun[9] + B*21)
+S(sl)
+print(B*22 + sun[10] + B*21)
+S(sl)
+
+for j in range(11, 14):
+    print(B*5 + cloud1[j-11] + B*6 + sun[j] + B*21)
+    S(sl)
+
+for y in range(14, 25):
+    print(B*22 + sun[y] + B*21)
+    S(sl)
+print(sky[0] + '\n' + sky[0])
+S(sl)
+print(sky[0] + '\n' + sky[0])
+S(sl)
+input()
