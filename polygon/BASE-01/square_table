@@ -1,4 +1,6 @@
 #! /usr/bin/python3
+
+# SQUARE TABLE. All rights are left. Made by SPACE UNICORNS!!!
 from os import system as S
 s = "clear"
 S(s)
@@ -6,12 +8,14 @@ S(s)
 # ---------------------------[Главный исполнемый блок]-------------------------
 
 # Цвета
-R , B, C, reset= '\033[41m', '\033[44m', '\033[46m', '\033[0m'
+G , B, C, reset= '\033[42m', '\033[44m', '\033[46m', '\033[0m'
+
+# Вывод шапки таблицы
 numbers = [str(x+1) for x in range(0, 9)]
 numbers =  " "*5 + "    ".join(numbers)
+print(G + numbers, reset)
 
-print(R + numbers, reset) # стобцы таблицы
-
+# Вывод содержимое таблицы
 for i in range(1, 10):
     print(B + "{:<2,d}".format(i) + reset, end='')
     for j in range(1, 10):
