@@ -1,0 +1,30 @@
+#! /usr/bin/python3
+from os import system as S
+s = 'clear'
+S(s)
+
+while True:
+    c = input("end -- завершить программу\nА чтобы продолжить, нажмите ENTER:")
+    if c == 'end':
+        break
+    S(s)
+
+    a = int(input("Введите a: "))
+    if a == 0:
+        print("это уже не квадратное уравнение, лмао\n\n")
+        continue
+    
+    b, c = int(input("Введите b: ")), int(input("Введите c:"))
+
+    D = b**2 - 4*a*c
+    if D < 0:
+        print("Нам ничего не известно о комплексных числах")
+        continue
+    elif D == 0:
+        print("Корень этого уравнения:", (-b)/(2*a))
+    else:
+        x1, x2 = ((-b) - D**(1/2))/2, ((-b) + D**(1/2))/2
+        print(f"Корни этого уравнения: {x1} и {x2}")
+    
+    input("Чтобы продолжить, нажмиите ENTER...")
+    S(s)

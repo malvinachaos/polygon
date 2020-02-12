@@ -3,7 +3,6 @@
 from os import system as S
 s = 'clear'
 S(s)
-
 print("""
         Dramatic v0.02. All rights are left.
         Made by SPACE UNICORNS!!!
@@ -15,14 +14,14 @@ S(s)
 
 def load():
     S(s)
-    n = input("\nВведите имя файла(желательно прописать полный путь до него, л\
-            ибо положите файл там же, где и программа): ")
+    n = input("\nВведите имя файла (желательно прописать полный путь до него, л\
+ибо положите файл там же, где и программа): ")
     with open(n, "r") as f:
         a = f.read()
         a = a.lower()
         a = a.split()
         a = "... ".join(a) + '...'
-        print(a)
+        print('\n\n'  + a)
     
     input("\n\n\nЧтобы продолжить, нажмите ENTER...")
 
@@ -33,7 +32,7 @@ def key():
     n = n.lower()
     n = n.split()
     n = "... ".join(n) + '...'
-    print(n)
+    print('\n\n'  + n)
 
     input("\n\n\nЧтобы продолжить, нажмите ENTER...")
 
