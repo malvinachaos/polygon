@@ -10,7 +10,7 @@ for k in range(320 , 49, -1):
 input("Press ENTER to continue...")
 S("clear")
 
-for k in range(1, 51):
+for k in range(1, 101):
     print(k)
 
 print("That\'s it")
