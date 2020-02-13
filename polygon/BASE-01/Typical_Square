@@ -4,7 +4,7 @@ s = 'clear'
 S(s)
 
 while True:
-    c = input("end -- завершить программу\nА чтобы продолжить, нажмите ENTER:")
+    c = input("Введите 'end', завершить программу, а чтобы продолжить, нажмите ENTER: ")
     if c == 'end':
         break
     S(s)
@@ -14,7 +14,7 @@ while True:
         print("это уже не квадратное уравнение, лмао\n\n")
         continue
     
-    b, c = int(input("Введите b: ")), int(input("Введите c:"))
+    b, c = int(input("Введите b: ")), int(input("Введите c: "))
 
     D = b**2 - 4*a*c
     if D < 0:
