@@ -18,13 +18,18 @@ S("sleep 2s")
 
 # ---------------------------[Блок функций и глобальных переменных]------------
 NUM = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', \
-        'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', \
-        'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z')
+        'E', 'F')
 
 
 # M - число, N - основание. Эта функция переводит из любой сс в десятичную
 def n_to_dec(M, N):
-    pass
+    global NUM
+    l, S = len(M)-1, 0
+
+    for i, item in enumerate(M):
+        S += NUM.index(item)*N**l
+        l -= 1
+    return S
 
 def dec_to_ns(M, N):
     pass
@@ -38,8 +43,8 @@ while True:
     m = m.upper()
     new_ns = int(input("Введите систему счисление, в котороу хотите перевести \
 число: "))
-
-    print(dec_to_ns(n_to_dec(m, n), new_ns))
+    print(n_to_dec(m, n))
+    # print(dec_to_ns(n_to_dec(m, n), new_ns))
     c = input("Введите 'end', чтобы закончить программу, или нажмите 'ENTER', \
 чтобы продолжить: ")
     if c.lower() == 'end':
