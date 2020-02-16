@@ -13,26 +13,54 @@ print("""
             NUMBER SYSTEM v0.2. All rights are left.
                 
                 Made by SPACE UNICORNS!!!
-        """)
+""")
+S("sleep 1.0s")
+print("""
+    Данная версия программы может переводить числа с положительным основанием,""")
+S("sleep 1.0s")
+print("""
+    меньшим или равным 16. Также числа должны быть целыми и положительными.
+""")
 S("sleep 2s")
+
 
 # ---------------------------[Блок функций и глобальных переменных]------------
 NUM = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', \
         'E', 'F')
 
-
 # M - число, N - основание. Эта функция переводит из любой сс в десятичную
 def n_to_dec(M, N):
+    # Защита
+    if M == '0':
+        return 0
+    if N == 1:
+        print("Информации с таким основанием не будет существовать.")
+        return 0
+    elif N == 0:
+        print("Неопределённость")
+        return 0
+    elif N < 0:
+        print("Данная программа НЕ переводит нега-позитивные числа")
+        return 0
+    elif N > 16:
+        print("Данная программа НЕ переводит числа, с основанием, большим 16")
+
+    # Сам алгоритм перевода
     global NUM
     l, S = len(M)-1, 0
-
     for i, item in enumerate(M):
         S += NUM.index(item)*N**l
         l -= 1
     return S
 
+
 def dec_to_ns(M, N):
-    pass
+    global NUM
+    result = ''
+    while M > 0:
+        result += NUM[M%N]
+        M //= N
+    return ''.join(reversed(list(result)))
 
 # ---------------------------[Основной исполнительный блок]--------------------
 
@@ -43,8 +71,7 @@ while True:
     m = m.upper()
     new_ns = int(input("Введите систему счисление, в котороу хотите перевести \
 число: "))
-    print(n_to_dec(m, n))
-    # print(dec_to_ns(n_to_dec(m, n), new_ns))
+    print(dec_to_ns(n_to_dec(m, n), new_ns))
     c = input("Введите 'end', чтобы закончить программу, или нажмите 'ENTER', \
 чтобы продолжить: ")
     if c.lower() == 'end':
