@@ -10,14 +10,37 @@
 # ---------------------------[Главный исполняемый блок]------------------------
 
 stroka, word = input("Введите строку: "), ''
-ALPHABET = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 
 # избавляемся от лишних символов
 for item in stroka:
     if item.isalpha():
         word += item.upper()
 
-world, i = [[word[0], 1]], 0
+world, i, k = list(), 0, True
+
 for item in word:
+    for d in range(len(world)):
+        if world[d][0] == item:
+            k = False
+            break
+        else: k = True
+    if not k:
+        continue
+    world.append([item, 0])
     for j in word:
-        if word[[word[0pass]]
+        if world[i][0] == j:
+            world[i][1] += 1
+    i+= 1
+    
+world = sorted(world)
+
+stroka, i = '', 0
+for d in range(len(world)):
+    for i in range(1, len(world)):
+        if world[i-1][1] < world[i][1]:
+            world[i-1], world[i] = world[i], world[i-1]
+
+for d in range(len(world)):
+    stroka += world[d][0]
+
+print(stroka)
