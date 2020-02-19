@@ -17,5 +17,7 @@ for item in stroka:
     if item.isalpha():
         word += item.upper()
 
-world = list()
-for 
+world, i = [[word[0], 1]], 0
+for item in word:
+    for j in word:
+        if word[[word[0pass]]
