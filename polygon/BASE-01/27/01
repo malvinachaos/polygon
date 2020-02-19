@@ -36,7 +36,6 @@ for item in word:
 
 world = sorted(world)
 
-stroka = ''
 for d in range(len(world)):
     for i in range(1, len(world)):
         if world[i-1][1] > world[i][1]:
