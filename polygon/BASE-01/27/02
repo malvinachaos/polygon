@@ -1,5 +1,17 @@
 #! /usr/bin/python3
 from os import system as S
 S("clear")
+'''
+    Нужно исключить случаи, когда один из максимальных множителей кратен 5, а другой 3,
+    один -- 15, другой может быть любым.
 
-N = int(input("Введите количество: "))
+'''
+# ----- Ввод основных данных
+N, world, ma, mi= int(input("Введите количество чисел в последовательности: ")), list(), 0, 10**9
+for i in range(N): 
+    world.append(int(input("Введите число: ")))
+    if ma < world[i] and world[i] % 15 != 0: ma = world[i]
+    if mi > world[i] and world[i] % 15 != 0: mi = world[i]
+    print("ma =", ma, "mi =", mi)
+
+
