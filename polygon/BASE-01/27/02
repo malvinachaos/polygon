@@ -1,17 +1,22 @@
 #! /usr/bin/python3
 from os import system as S
 S("clear")
-'''
-    Нужно исключить случаи, когда один из максимальных множителей кратен 5, а другой 3,
-    один -- 15, другой может быть любым.
 
-'''
 # ----- Ввод основных данных
-N, world, ma, mi= int(input("Введите количество чисел в последовательности: ")), list(), 0, 10**9
+N, world, ma, mi= int(input("Введите количество чисел: ")), 0, 0, 1000000000
+
+# ----- Мы вводим и сразу определяем, какое это число, самое главное, чтобы
+#       это число не было кратно 15 и произведение двух максимальных чисел не
+#       было кратно 15
+
 for i in range(N): 
-    world.append(int(input("Введите число: ")))
-    if ma < world[i] and world[i] % 15 != 0: ma = world[i]
-    if mi > world[i] and world[i] % 15 != 0: mi = world[i]
-    print("ma =", ma, "mi =", mi)
+    world = int(input("Введите число: "))
+    
+    if world > ma and world % 15 != 0 and mi != 0 and ma != 0:
+        if world * ma % 15 != 0:
+            mi, ma = ma, world
+    elif (mi == 0 or ma == 0) and (world % 15 != 0):
+        mi, ma = ma, world
 
-
+# ----- Ответ
+print(ma*mi)

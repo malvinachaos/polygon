@@ -1,0 +1,12 @@
+#! /usr/bin/python3
+from os import system as S
+s = 'clear'
+S(s)
+# num - список школ, count - их количество
+N, num, count, a = int(input("Введите кол-во записей: ")), list(), 0, list()
+
+for i in range(N):
+    a.append(list(input().split()))
+    a[2], a[3] = int(a[2]), int(a[3])
+    count += 1
+    
