@@ -2,11 +2,24 @@
 from os import system as S
 s = 'clear'
 S(s)
+
+# ---------------------------[Главный исполняемый блок]------------------------
 # num - список школ, count - их количество
-N, num, count, a = int(input("Введите кол-во записей: ")), list(), 0, list()
+# фамилия имя номер колво_баллов
+N, num, count, a, middle = int(input("Введите кол-во записей: ")), list(), 0, list(), 0
 
 for i in range(N):
-    a.append(list(input().split()))
-    a[2], a[3] = int(a[2]), int(a[3])
+    a = (list(input().split()))
+    print(a)
     count += 1
-    
+    middle += int(a[3])
+    num.append(a[2], int(a[3]))
+
+# вычисляем среднее по больнице
+middle //= count
+
+# сколько школ выше среднего балла
+
+# вывод, если школа только одна
+if len(num) == 1:
+    print("Средний балл =", Middle)
