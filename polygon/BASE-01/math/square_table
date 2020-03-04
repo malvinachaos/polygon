@@ -1,5 +1,5 @@
 #! /usr/bin/python3
-# SQUARE TABLE. All rights are left. Made by SPACE UNICORNS!!!
+# SQUARE TABLE. All rights are left. Made by SPACE UNICORN!!!
 
 from os import system as S
 S("clear")

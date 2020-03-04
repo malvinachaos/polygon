@@ -7,7 +7,7 @@ S(s)
 print("""
             NUMBER SYSTEM v0.2. All rights are left.
                 
-                Made by SPACE UNICORNS!!!
+                Made by SPACE UNICORN!!!
 """)
 S("sleep 1.0s")
 print("""

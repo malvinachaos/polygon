@@ -5,7 +5,7 @@ s = 'clear'
 S(s)
 print("""
         Dramatic v0.02. All rights are left.
-        Made by SPACE UNICORNS!!!
+        Made by SPACE UNICORN!!!
       """)
 S('sleep 2s')
 S(s)
