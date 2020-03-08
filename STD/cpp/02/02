@@ -1,0 +1,3 @@
+#! /bin/bash
+vim 02.arrinfunc.cpp
+g++ 02.arrinfunc.cpp -o h2 && ./h2

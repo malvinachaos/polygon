@@ -1,0 +1,3 @@
+#! /bin/bash
+vim 05.while.py
+python 05.while.py
