@@ -1,0 +1,13 @@
+--[КОММАНДЫ И ИХ ОПИСАНИЕ]--
+PY  -- перейти в каталог training.py
+PYU -- сохранить изменение локального репозитория
+PYS -- обновить глобальный репозиторий
+PYG -- обновить локальный репозиторий
+PYC -- вывести на экран содержимое этого файла
+
+--[НАСТРОЙКИ]--
+alias PY="cd ~/Documents/training.py"
+alias PYC="cat ~/Documents/training.py/bashcommands.txt"
+alias PYU="cd ~/Documents/training.py/ && git add * && git status && git commit -m"
+alias PYS="cd ~/Documents/training.py/ && git push training.py master"
+alias PYG="cd ~/Documents/training.py/ && git pull training.py master"
