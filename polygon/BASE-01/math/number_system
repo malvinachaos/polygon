@@ -4,18 +4,13 @@ s = "clear"
 S(s)
 
 # ---------------------------[Стартовый экран]---------------------------------
-print("""
-            NUMBER SYSTEM v0.2. All rights are left.
-                
-                Made by SPACE UNICORN!!!
-""")
-S("sleep 1.0s")
-print("""
+import startscreen
+t = """
     Данная версия программы может переводить числа с положительным основанием,
     меньшим или равным 16. Также числа должны быть целыми и положительными.
-""")
-S("sleep 3s")
-
+"""
+startscreen.load("NUMBER SYSTEM v0.3. All rights are left.", t, "3")
+del t
 # ---------------------------[Блок функций и глобальных переменных]------------
 NUM = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', \
         'E', 'F')
@@ -47,6 +42,9 @@ def n_to_dec(M, N):
 
 
 def dec_to_ns(M, N):
+    if N in (0, 1):
+        print("Невозможно перевести число")
+        return 0
     global NUM
     result = ''
     while M > 0:
@@ -68,3 +66,5 @@ while True:
 чтобы продолжить: ")
     if c.lower() == 'end':
         break
+
+S("rm -rf __pycache__")
