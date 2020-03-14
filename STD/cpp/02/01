@@ -1,3 +1,0 @@
-# /bin/bash
-vim 01.rand.cpp
-g++ 01.rand.cpp -o h1 && ./h1

@@ -1,9 +1,9 @@
--- eto odnostrochnyi commentariy
--- i eto tozhe
+-- это однострочный комментарий
+-- и это тоже
 
---[[ eto
-mnogo strochnyi
+--[[ это
+многострочныйi
 
-commentaryi]]
-print("HELLO") --[[Kommentaryi]] print(" ne kommentaryi")
+комментарий]]
+print("HELLO") --[[Комментарий]] print(" ne kommentaryi")
 

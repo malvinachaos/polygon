@@ -1,4 +1,0 @@
-#!/bin/bash
-
-vim 04.sizeof.cpp
-g++ 04.sizeof.cpp -o h4 && ./h4
