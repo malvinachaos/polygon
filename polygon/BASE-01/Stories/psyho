@@ -3,7 +3,7 @@ from os import system as S
 S("clear")
 
 # ---------------------------[Титульный экран]---------------------------------
-import startscren
+import startscreen
 startscreen.load("ДУРКА v0.1", "Делает текст нечитабельным", 2)
 S("rm -rf __pycache__")
 
@@ -37,6 +37,23 @@ def save(txt, tnt):
     with open(tnt + ".txt", 'w') as F:
         F.write(txt)
 
+def main(txt):
+    choose = input("""Введите алгоритм редактирования:
+    * 0 -- Делает буквы прописными через одну
+    * 1 -- Убирает знаки препинания
+: """)
+    
+    txt = jump(txt) if choose == '0' else remove_punctuation_signs(txt)
+    choose = input("Сохранить в файл?[Y/N]: ")
+    
+    if choose == 'Y':
+        name = input("Введите имя файла: ")
+        save(txt, name)
+
+    print(txt)
+    input("...")
+    S("clear")
+
 # редактирование из файла
 def FILE():
     S("ls --color=auto *.txt")
@@ -47,19 +64,22 @@ def FILE():
     with open(name, 'r') as F:
         txt = F.read()
     
-    choose = input("Введите алгоритм редактирования:\n
-        * 0 -- Делает буквы прописными через одну\n
-        * 1 -- Убирает знаки препинания")
-    
-    txt = jump(txt) if choose == '0' else remove_punctuation_signs(txt)
-    choose = input("Сохранить в файл?[Y/N]: ")
-    
-    if choose == 'Y':
-        name = input("Введите имя файла: ")
-        save(txt, name)
+    main(txt)
 
 # редактирование из клавиатуры
-
+def KEYBOARD():
+    stroka = input("Введите строку: ")
+    main(stroka)
 
 # ---------------------------[Основной блок программы]-------------------------
+while True:
+    print("""
+ * 0 -- Редактирование из файла
+ * 1 -- Редактирование с клавиатуры
+ * 2 -- Выход
+    """)
+    choose = input(": ")
 
+    if choose == '0': FILE()
+    elif choose == '1': KEYBOARD()
+    elif choose == '2': break
