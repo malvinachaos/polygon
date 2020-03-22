@@ -1,0 +1,65 @@
+#! /usr/bin/python3
+from os import system as S
+S("clear")
+
+# ---------------------------[Титульный экран]---------------------------------
+import startscren
+startscreen.load("ДУРКА v0.1", "Делает текст нечитабельным", 2)
+S("rm -rf __pycache__")
+
+# ---------------------------[Блок функций]------------------------------------
+
+# ПрЫгАюЩиЙ ТеКсТ
+def jump(txt):
+    tnt, flg = '', True
+    for i, item in enumerate(txt):
+        if flg:
+            tnt += item.upper()
+            flg = False
+            continue
+        else:
+            tnt += item.lower()
+            flg = True
+    return tnt
+
+# убирает знаки препинания
+def remove_punctuation_signs(txt):
+    tnt = ''
+    for i, item in enumerate(txt):
+        if (not item.isalnum()) and (not item.isspace()):
+            tnt += item
+    return tnt
+
+# функция сохранения файла
+def save(txt, tnt):
+    # txt - сам текст
+    # tnt - имя файла
+    with open(tnt + ".txt", 'w') as F:
+        F.write(txt)
+
+# редактирование из файла
+def FILE():
+    S("ls --color=auto *.txt")
+    name = input("Введите имя файла: ")
+    if ".txt" not in name:
+        name += ".txt"
+    txt = ''
+    with open(name, 'r') as F:
+        txt = F.read()
+    
+    choose = input("Введите алгоритм редактирования:\n
+        * 0 -- Делает буквы прописными через одну\n
+        * 1 -- Убирает знаки препинания")
+    
+    txt = jump(txt) if choose == '0' else remove_punctuation_signs(txt)
+    choose = input("Сохранить в файл?[Y/N]: ")
+    
+    if choose == 'Y':
+        name = input("Введите имя файла: ")
+        save(txt, name)
+
+# редактирование из клавиатуры
+
+
+# ---------------------------[Основной блок программы]-------------------------
+

@@ -20,7 +20,7 @@ def conv(a):
     b = "... ".join(b) + "..."
     return b
 
-# transfrom text from file
+# редактирует текст из файла
 def load():
     print("Список текстовых файлов в этой папке:")
     S("ls --color=auto *.txt")
@@ -34,7 +34,7 @@ def load():
         a = conv(a)
         print('\n\n'  + a)
 
-# transform text from kryboard
+# редактирует текст, вводимый с клавиатуры
 def key():
     S("clear")
     n = input("\nВведите предложение с клавиатуры: ")

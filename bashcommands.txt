@@ -8,7 +8,7 @@ MATH -- переклюает на каталог math
 STAT -- git status   
 
 --[НАСТРОЙКИ]--
-alias PY="cd ~/Documents/training.py"
+alias PY="cd ~/Documents/training.py;ls"
 alias PYC="cat ~/Documents/training.py/bashcommands.txt"
 alias PYU="cd ~/Documents/training.py/ && git add * && git status && git commit -m"
 alias PYS="cd ~/Documents/training.py/ && git push training.py master"
