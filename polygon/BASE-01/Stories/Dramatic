@@ -1,49 +1,50 @@
 #! /usr/bin/python3
+
 # ---------------------------[титульный экран]---------------------------------
 from os import system as S
-s = 'clear'
-S(s)
-print("""
-        Dramatic v0.02. All rights are left.
-        Made by SPACE UNICORN!!!
-      """)
-S('sleep 2s')
-S(s)
+S("clear")
+
+import startscreen
+startscreen.load("DRAMATIC v0.2", "Делает текст драматичным за счёт многоточий\
+\n\tИдеальный способ бесить собеседника", 5)
 
 # ---------------------------[Блок функций]------------------------------------
 
+# сам алгоритм преобразования
+def conv(a):
+    a, b = a.lower(), ""
+    for i, item in enumerate(a):
+        if item.isalnum() or (item in "\n\t "):
+            b += item
+    b = b.split()
+    b = "... ".join(b) + "..."
+    return b
+
+# transfrom text from file
 def load():
-    S(s)
-    n = input("\nВведите имя файла (желательно прописать полный путь до него, л\
-ибо положите файл там же, где и программа): ")
+    n = input("\nВведите имя файла (желательно прописать полный путь до него,\
+ либо положите файл там же, где и программа): ")
     with open(n, "r") as f:
         a = f.read()
-        a = a.lower()
-        a = a.split()
-        a = "... ".join(a) + '...'
+        a = conv(a)
         print('\n\n'  + a)
-    
-    input("\n\n\nЧтобы продолжить, нажмите ENTER...")
 
-
+# transform text from kryboard
 def key():
-    S(s)
+    S("clear")
     n = input("\nВведите предложение с клавиатуры: ")
-    n = n.lower()
-    n = n.split()
-    n = "... ".join(n) + '...'
+    n = conv(n)
     print('\n\n'  + n)
-
-    input("\n\n\nЧтобы продолжить, нажмите ENTER...")
 
 
 # ---------------------------[Главный исполняемый блок]------------------------
 
 while(True):
-    c = input(\
-" * LOAD -- Ввести и преобразовать текст из файла\n\
+    c = input("\
+ * LOAD -- Ввести и преобразовать текст из файла\n\
  * KEY -- Ввести и преобразовать текст, введённый с клавиатуры\n\
  * END -- Завершить программу\n")
+    S("clear")
     c = c.lower()
     
     if c == 'load':
@@ -55,4 +56,7 @@ while(True):
     else:
         print("Упс, вы случайно ввели что-то не то...")
         S('sleep 1s')
-    S(s)
+    input("\n\n\nНажмите ENTER, чтобы продолжить...")
+    S("clear")
+
+S("rm -rf __pycache__")
