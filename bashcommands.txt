@@ -1,9 +1,11 @@
 --[КОММАНДЫ И ИХ ОПИСАНИЕ]--
-PY  -- перейти в каталог training.py
-PYU -- сохранить изменение локального репозитория(обязательно в кавычках указать сообщение)
-PYS -- обновить глобальный репозиторий
-PYG -- обновить локальный репозиторий
-PYC -- вывести на экран содержимое этого файла
+PY   -- перейти в каталог training.py
+PYU  -- сохранить изменение локального репозитория(обязательно в кавычках указать сообщение)
+PYS  -- обновить глобальный репозиторий
+PYG  -- обновить локальный репозиторий
+PYC  -- вывести на экран содержимое этого файла
+MATH -- переклюает на каталог math
+STAT -- git status   
 
 --[НАСТРОЙКИ]--
 alias PY="cd ~/Documents/training.py"
@@ -11,3 +13,5 @@ alias PYC="cat ~/Documents/training.py/bashcommands.txt"
 alias PYU="cd ~/Documents/training.py/ && git add * && git status && git commit -m"
 alias PYS="cd ~/Documents/training.py/ && git push training.py master"
 alias PYG="cd ~/Documents/training.py/ && git pull training.py master"
+alias MATH="cd ~/Documents/training.py/polygon/BASE-01/math"
+alias STAT="git status"
