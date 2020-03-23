@@ -24,7 +24,7 @@ def jump(txt):
             flg = True
     return tnt
 
-# убирает знаки препинания
+# Убирает знаки препинания
 def remove_punctuation_signs(txt):
     tnt = ''
     for i, item in enumerate(txt):
@@ -34,27 +34,27 @@ def remove_punctuation_signs(txt):
 
 # Между слов ставит многоточия
 def Dramatic(a):
-	a, b = a.lower(), ""
-	for i, item in enumerate(a):
-		if item.isalnum() or (item in "\n\t "):
-			b += item
-	b = b.split()
-	b = "... ".join(b) + "..."
-	return b
+    a, b = a.lower(), ""
+    for i, item in enumerate(a):
+        if item.isalnum() or (item in "\n\t "):
+            b += item
+    b = b.split()
+    b = "... ".join(b) + "..."
+    return b
 
 # Делает текст капсом и разделяет пробелами буквы
 def epic(txt):
-	txt = txt.upper()
-	txt = txt.split()
-	tnt = ['']
+    txt = txt.upper()
+    txt = txt.split()
+    tnt = ['']
 
-	for i, item in enumerate(txt):
-		for j, item in enumerate(txt[i]):
-			tnt[i] += item + ' '
-		tnt[i] += ' '
-		tnt.append('')
-	
-	return ''.join(tnt)
+    for i, item in enumerate(txt):
+        for j, item in enumerate(txt[i]):
+            tnt[i] += item + ' '
+        tnt[i] += ' '
+        tnt.append('')
+
+    return ''.join(tnt)
 
 #### --------------[Ввод/сохранение/загрузка текста]---------------------------
 # Главная функция
@@ -90,8 +90,10 @@ def main(txt):
 def save(txt, tnt):
     # txt - сам текст
     # tnt - имя файла
-    with open(tnt + ".txt", 'w') as F:
-        F.write(txt)
+	if '.txt' not in tnt:
+		tnt += '.txt'
+	with open(tnt, 'w') as F:
+		F.write(txt)
 
 
 # редактирование из файла
