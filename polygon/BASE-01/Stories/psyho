@@ -4,10 +4,12 @@ S("clear")
 
 # ---------------------------[Титульный экран]---------------------------------
 import startscreen
-startscreen.load("ДУРКА v0.1", "Делает текст нечитабельным", 2)
+startscreen.load("ДУРКА v0.2", "Делает текст нечитабельным", 2)
 S("rm -rf __pycache__")
 
 # ---------------------------[Блок функций]------------------------------------
+
+#### --------------[Алгоритмы редактирования]----------------------------------
 
 # ПрЫгАюЩиЙ ТеКсТ
 def jump(txt):
@@ -26,9 +28,63 @@ def jump(txt):
 def remove_punctuation_signs(txt):
     tnt = ''
     for i, item in enumerate(txt):
-        if (not item.isalnum()) and (not item.isspace()):
+        if item.isalnum() or item.isspace():
             tnt += item
     return tnt
+
+# Между слов ставит многоточия
+def Dramatic(a):
+	a, b = a.lower(), ""
+	for i, item in enumerate(a):
+		if item.isalnum() or (item in "\n\t "):
+			b += item
+	b = b.split()
+	b = "... ".join(b) + "..."
+	return b
+
+# Делает текст капсом и разделяет пробелами буквы
+def epic(txt):
+	txt = txt.upper()
+	txt = txt.split()
+	tnt = ['']
+
+	for i, item in enumerate(txt):
+		for j, item in enumerate(txt[i]):
+			tnt[i] += item + ' '
+		tnt[i] += ' '
+		tnt.append('')
+	
+	return ''.join(tnt)
+
+#### --------------[Ввод/сохранение/загрузка текста]---------------------------
+# Главная функция
+def main(txt):
+    choose = input("""Введите алгоритм редактирования:
+	* 0 -- Делает буквы прописными через одну
+	* 1 -- Убирает знаки препинания
+	* 2 -- Между слов ставит многоточия
+	* 3 -- Делает текст капсом и разделяет пробелами буквы
+: """)
+
+    if choose == '0':
+        txt = jump(txt)
+    elif choose == '1':
+        txt = remove_punctuation_signs(txt)
+    elif choose == '2':
+        txt = Dramatic(txt)
+    elif choose == '3':
+        txt = epic(txt)
+   
+    # Сохранить в файл?
+    ch = input("Сохранить в файл?[Y/N]: ")
+
+    if ch == 'Y':
+        name = input("Введите имя файла: ")
+        save(txt, name)
+
+    print(txt)
+    input("...")
+    S("clear")
 
 # функция сохранения файла
 def save(txt, tnt):
@@ -37,22 +93,6 @@ def save(txt, tnt):
     with open(tnt + ".txt", 'w') as F:
         F.write(txt)
 
-def main(txt):
-    choose = input("""Введите алгоритм редактирования:
-    * 0 -- Делает буквы прописными через одну
-    * 1 -- Убирает знаки препинания
-: """)
-    
-    txt = jump(txt) if choose == '0' else remove_punctuation_signs(txt)
-    choose = input("Сохранить в файл?[Y/N]: ")
-    
-    if choose == 'Y':
-        name = input("Введите имя файла: ")
-        save(txt, name)
-
-    print(txt)
-    input("...")
-    S("clear")
 
 # редактирование из файла
 def FILE():
@@ -83,3 +123,4 @@ while True:
     if choose == '0': FILE()
     elif choose == '1': KEYBOARD()
     elif choose == '2': break
+input("Нажмите ENTER, чтобы завершить программу")
