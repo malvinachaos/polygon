@@ -1,33 +1,58 @@
 #! /usr/bin/python3
-"""
-  Запуск и мануалы моих программ
-"""
+'''
+    OS.PATH!!!
+'''
 from os import system as S
-# ---------------------------[Титульный экран]---------------------------------
-print("\n\tBASE-01 v0.1\n\n\t\tMADE BY SPACE UNICORN")
+S("clear")
+
+# ---------------------------[Запуск программы]--------------------------------
+# Титульный экран
+print("\n\tBASE-01 v0.1\n\n\tMADE BY SPACE UNICORN")
 S("sleep 2s")
 S("clear")
 
-# ---------------------------[Блок функций]------------------------------------
 # Генерация списка пограмм
 PROGRAMS = []
-def load():
-    global PROGRAMS
+S("ls manuals/ > list")
+with open('list', 'r') as F:
+    l = ''
+    while True:
+        l = F.readline()
+        if l == '': break
+        else: PROGRAMS.append(l[:-5])
 
+# ---------------------------[Блок функций]------------------------------------
 
-# Загрузка мануала
-def manual():
-    print("О какой программе хотите узнать?")
-    # 
+# Функция выбора программы
+def choose_program():
+    for i in PROGRAMS:
+        print(i)
     while True:
         choose = input(": ")
-        if choose not in man:
+        if choose not in PROGRAMS:
             print("Вы неверно ввели данные")
         else: break
-    choose = choose + ".txt" if (".txt" not in choose) else choose
-    with open("manuals/" + choose, 'r') as F:
-        print(F.read())
+    return choose
 
+# Вызов справки
+def manual():
+    global PROGRAMS
+    print("О какой программе хотите узнать?")
+    choose = choose_program()
+    choose = 'manuals/' + choose + ".txt" if (".txt" not in choose) else choose
+    with open(choose, 'r') as F:
+        print(F.read())
+    S("clear")
+
+# Запуск программы
 def program():
+    global PROGRAMS
     print("Какую программу хотите запустить?")
-    
+    choose = choose_program()
+    pass
+
+
+# ---------------------------[Главный исполнительный блок]---------------------
+# Проверка работоспособности функций
+# manual()
+# program()
