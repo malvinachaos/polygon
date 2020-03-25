@@ -1,13 +1,12 @@
 #! /usr/bin/python3
 from os import system as S
-s = 'clear'
-S(s)
+S('clear')
 
 while True:
-    c = input("Введите 'end', завершить программу, а чтобы продолжить, нажмите ENTER: ")
-    if c == 'end':
+    c = input("Введите 'q', завершить программу, а чтобы продолжить, нажмите ENTER: ")
+    if c == 'q':
         break
-    S(s)
+    S('clear')
 
     a = int(input("Введите a: "))
     if a == 0:
@@ -18,7 +17,7 @@ while True:
 
     D = b**2 - 4*a*c
     if D < 0:
-        print("Нам ничего не известно о комплексных числах")
+        print("Дискриминант отрицателен")
         continue
     elif D == 0:
         print("Корень этого уравнения:", (-b)/(2*a))
@@ -27,4 +26,4 @@ while True:
         print(f"Корни этого уравнения: {x1} и {x2}\nДискриминант: {D}")
     
     input("Чтобы продолжить, нажмиите ENTER...")
-    S(s)
+    S('clear')
