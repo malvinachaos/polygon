@@ -1,7 +1,4 @@
 #! /usr/bin/python3
-'''
-    OS.PATH!!!
-'''
 from os import system as S
 S("clear")
 
@@ -14,24 +11,33 @@ S("clear")
 # Генерация списка пограмм
 PROGRAMS = []
 S("ls manuals/ > list")
-with open('list', 'r') as F:
-    l = ''
-    while True:
-        l = F.readline()
-        if l == '': break
-        else: PROGRAMS.append(l[:-5])
-
+F = open('list', 'r')
+l = ''
+while True:
+    l = F.readline()
+    if l == '': break
+    else: PROGRAMS.append(l[:-5])
+F.close()
+S("rm list")
 # ---------------------------[Блок функций]------------------------------------
 
 # Функция выбора программы
 def choose_program():
     for i in PROGRAMS:
         print(i)
+    choose = []
+    choose.append('')
     while True:
-        choose = input(": ")
-        if choose not in PROGRAMS:
+        choose[0] = input(": ")
+        if choose[0] not in PROGRAMS:
             print("Вы неверно ввели данные")
         else: break
+    choose.append('')
+    road = 'manuals/' + choose[0] + '.txt'
+    print(road)
+    F = open(road, 'r')
+    choose[1] = F.readline()
+    F.close()
     return choose
 
 # Вызов справки
@@ -39,9 +45,12 @@ def manual():
     global PROGRAMS
     print("О какой программе хотите узнать?")
     choose = choose_program()
-    choose = 'manuals/' + choose + ".txt" if (".txt" not in choose) else choose
-    with open(choose, 'r') as F:
+    choose[0] = 'manuals/' + choose[0] + ".txt" \
+            if (".txt" not in choose[0]) else choose[0]
+    with open(choose[0], 'r') as F:
+        F.readline()
         print(F.read())
+    input("...")
     S("clear")
 
 # Запуск программы
@@ -49,10 +58,16 @@ def program():
     global PROGRAMS
     print("Какую программу хотите запустить?")
     choose = choose_program()
-    pass
-
+    S(choose[1])
+    input("...")
+    
 
 # ---------------------------[Главный исполнительный блок]---------------------
-# Проверка работоспособности функций
-# manual()
-# program()
+while True:
+    print("0 -- вызов справки\n1 -- вызов программы\n2 -- выход из BASE-01")
+    c = input(": ")
+    if c == '0': manual()
+    elif c == '1': program()
+    elif c == '2': break
+    else: print("'{}' нет такой опции".format(c))
+    S("clear")
