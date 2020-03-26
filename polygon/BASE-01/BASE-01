@@ -24,7 +24,7 @@ S("rm list")
 # Функция выбора программы
 def choose_program():
     for i in PROGRAMS:
-        print(i)
+        print("  *", i)
     choose = []
     choose.append('')
     while True:
@@ -34,7 +34,6 @@ def choose_program():
         else: break
     choose.append('')
     road = 'manuals/' + choose[0] + '.txt'
-    print(road)
     F = open(road, 'r')
     choose[1] = F.readline()
     F.close()
