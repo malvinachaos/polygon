@@ -90,22 +90,23 @@ def main(txt):
 def save(txt, tnt):
     # txt - сам текст
     # tnt - имя файла
-	if '.txt' not in tnt:
-		tnt += '.txt'
-	with open(tnt, 'w') as F:
-		F.write(txt)
+    if '.txt' not in tnt:
+        tnt += '.txt'
+    tnt = 'fantastic/' + tnt
+    with open(tnt, 'w') as F:
+        F.write(txt)
 
 
 # редактирование из файла
 def FILE():
-    S("ls --color=auto *.txt")
+    S("cd tales; ls --color=auto *.txt")
     name = input("Введите имя файла: ")
     if ".txt" not in name:
         name += ".txt"
     txt = ''
+    name = 'tales/' + name
     with open(name, 'r') as F:
         txt = F.read()
-    
     main(txt)
 
 # редактирование из клавиатуры
@@ -116,13 +117,12 @@ def KEYBOARD():
 # ---------------------------[Основной блок программы]-------------------------
 while True:
     print("""
- * 0 -- Редактирование из файла
- * 1 -- Редактирование с клавиатуры
- * 2 -- Выход
+ * FILE -- Редактирование из файла
+ * KEYB -- Редактирование с клавиатуры
+ * q    -- Выход
     """)
     choose = input(": ")
 
-    if choose == '0': FILE()
-    elif choose == '1': KEYBOARD()
-    elif choose == '2': break
-input("Нажмите ENTER, чтобы завершить программу")
+    if choose == 'FILE': FILE()
+    elif choose == 'KEYB': KEYBOARD()
+    elif choose == 'q': break

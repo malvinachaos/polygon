@@ -57,16 +57,18 @@ def program():
     global PROGRAMS
     print("Какую программу хотите запустить?")
     choose = choose_program()
-    S(choose[1])
+    command = "cd {} ; ./{}".format(choose[1][:-1], choose[0])
+    S(command)
     input("...")
     
 
 # ---------------------------[Главный исполнительный блок]---------------------
 while True:
-    print("0 -- вызов справки\n1 -- вызов программы\n2 -- выход из BASE-01")
+    print("Ввести MAN     -- вызов справки\nНажать 'ENTER' -- вызов \
+программы\nВвести q       -- выход из BASE-01")
     c = input(": ")
-    if c == '0': manual()
-    elif c == '1': program()
-    elif c == '2': break
+    if c == 'MAN': manual()
+    elif c == '': program()
+    elif c == 'q': break
     else: print("'{}' нет такой опции".format(c))
     S("clear")
