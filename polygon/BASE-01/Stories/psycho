@@ -123,6 +123,6 @@ while True:
     """)
     choose = input(": ")
 
-    if choose == 'FILE': FILE()
-    elif choose == 'KEYB': KEYBOARD()
-    elif choose == 'q': break
+    if choose.upper() == 'FILE': FILE()
+    elif choose.upper() == 'KEYB': KEYBOARD()
+    elif choose.lower() == 'q': break

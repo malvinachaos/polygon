@@ -1,0 +1,69 @@
+#! /usr/bin/python3
+import kivy
+from kivy.app import App
+from kivy.uix.label import Label
+# Модули макетов(слоёв?)
+from kivy.uix.gridlayout import GridLayout
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.pagelayout import PageLayout
+# Кнопка
+from kivy.uix.button import Button
+# Модуль ввода текста
+from kivy.uix.textinput import TextInput
+
+# ---------------------------[ОСНОВНОЙ ВИДЖЕТ]---------------------------------
+# ----------------- Виджет с GridLayout 
+class FstLayout(GridLayout):
+    # эти две строки ОБЯЗАТЕЛЬНЫ
+    def __init__(self, **kwargs):
+        super(FstLayout, self).__init__(**kwargs)
+        self.cols = 1 # Количество колонок
+        
+        # Внутри GridLayout создаём ещё один GridLayout
+        self.inside = GridLayout()
+        self.inside.cols = 2
+
+        self.inside.add_widget(Label(text="Name: "))
+        self.name = TextInput(multiline = False)
+        self.inside.add_widget(self.name)
+
+        self.inside.add_widget(Label(text="Surname: "))
+        self.surname = TextInput(multiline = False)
+        self.inside.add_widget(self.surname)
+
+        # ВАЖНО
+        self.add_widget(self.inside)
+
+        # Создание и бинд кнопки
+        self.button = Button(text = "Submit", font_size = 20)
+        self.add_widget(self.button)
+
+        self.button.bind(on_press=self.press)
+
+    # функция, вызывающаяся, когда кнопка нажата
+    def press(self, instance):
+        name = self.name.text
+        surname = self.surname.text
+        print(name, surname)
+        self.name.text, self.surname.text = '', ''
+
+# ----------------- Виджет с PageLayout
+
+class Pages(PageLayout):
+    def __init__(self, **kwargs):
+        super(Pages, self).__init__(**kwargs)
+        self.add_widget(Button(text="some"))
+        self.add_widget(Label(text="body"))
+        self.add_widget(Button(text="once"))
+
+# ---------------------------[ГЛАВНЫЙ ИСПОЛНИТЕЛЬНЫЙ БЛОК]---------------------
+# Главный класс, в котором собирается приложение
+class MyApp(App):
+    # основная функция
+    def build(self):
+        #return FstLayout()
+        return Pages()
+
+# эти две строки нужны для запуска приложения
+if __name__ == "__main__":
+    MyApp().run()

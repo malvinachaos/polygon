@@ -1,0 +1,28 @@
+#! /usr/bin/python3
+'''
+    Про kv файлы. Имя кв-файла создаётся по следующим правилам:
+    1) Название в нижнем регистре
+    2) Оно содержит только название основного класса, где приложение собирается
+    3) Если название оканчивается на 'app', то пишем без него
+    
+    Пример:
+    class MyApp() --> my.lv
+    class TELEPHONE() --> telephone.kv
+'''
+import kivy
+from kivy.app import App
+from kivy.uix.label import Label
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.textinput import TextInput
+from kivy.uix.button import Button
+from kivy.uix.widget import Widget
+
+class MyWidget(Widget):
+    pass
+
+class MyApp(App):
+    def build(self):
+        return MyWidget()
+
+if __name__ == "__main__":
+    MyApp().run()

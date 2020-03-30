@@ -4,7 +4,6 @@ PYU  -- сохранить изменение локального репози�
 PYS  -- обновить глобальный репозиторий
 PYG  -- обновить локальный репозиторий
 PYC  -- вывести на экран содержимое этого файла
-MATH -- переклюает на каталог math
 STAT -- git status
 BASE-01 -- запускает программу в BASE-01
 
@@ -14,6 +13,6 @@ alias PYC="cat ~/Documents/training.py/bashcommands.txt"
 alias PYU="cd ~/Documents/training.py/ && git add * && git status && git commit -m"
 alias PYS="cd ~/Documents/training.py/ && git push training.py master"
 alias PYG="cd ~/Documents/training.py/ && git pull training.py master"
-alias MATH="cd ~/Documents/training.py/polygon/BASE-01/math"
 alias STAT="git status"
 alias BASE-01="cd ~/Documents/training.py/polygon/BASE-01; ./BASE-01"
+alias KIVY="cd ~/Documents/training.py/STD/python/Kivy"

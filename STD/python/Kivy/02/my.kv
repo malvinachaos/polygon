@@ -1,0 +1,17 @@
+# В кв файлах также важны отступы и регистр букв
+<MyWidget>:
+	BoxLayout:
+		orientation: "vertical"
+		# ОЧ ВАЖНО, УСТАНАВЛИВАЕТ НОМРАЛЬНЫЕ РАЗМЕРЫ
+		size: root.width, root.height
+		Label:
+			text: "This is who I am"
+			size_hint: .5, .25
+			color: 1, 0, 0, 1
+		TextInput:
+			size_hint: .5, .5
+			multiline: False
+		Button:
+			size_hint: .5, .25
+			text: "Submit"
+			
