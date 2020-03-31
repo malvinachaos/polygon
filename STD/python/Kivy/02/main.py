@@ -16,9 +16,27 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.widget import Widget
+# Этот модуль позволить использовать функции/переменный из нашего python скрипта
+# в kv файле
+from kivy.properties import ObjectProperty
 
 class MyWidget(Widget):
-    pass
+    # Задаём переменные
+    text1 = ObjectProperty(None)
+    text2 = ObjectProperty(None)
+    
+    def ded(self, instance):
+        self.remove_widget(self.btn)
+    def press(self):
+        print("Heh, {}.\nI guess, that is your\'s: {}".format(self.text1.text,\
+                self.text2.text))
+        self.text1.text, self.text2.text = '', ''
+        self.btn = Button(text = "PRESS 'OK', IF YOU ARE NOT EATING COOKIES!")
+        self.btn.size = self.width * .75, self.height
+        self.btn.background_normal = "icon.png"
+        self.btn.bind(on_press = self.ded) 
+        self.add_widget(self.btn)
+
 
 class MyApp(App):
     def build(self):

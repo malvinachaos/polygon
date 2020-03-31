@@ -1,0 +1,14 @@
+<Button>
+	size_hint: 0.5, 0.5
+	background_color: 1, .35, 1, .4
+<FloatLayout>:
+	Button:
+		id: btn
+		text: "PRESS ME!!!" if btn.state == "normal" else "OHH YEEESSSS!!!!!!"
+		color: 1, 0, 0, 1
+		background_color: 1, .5, 0, 1
+		pos_hint: {"x": .25, "y": .25}
+
+	Button:
+		size_hint: .25, .25
+		text: "PRESS THAT, PLEASE!!"
