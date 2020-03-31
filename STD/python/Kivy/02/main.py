@@ -33,7 +33,7 @@ class MyWidget(Widget):
         self.text1.text, self.text2.text = '', ''
         self.btn = Button(text = "PRESS 'OK', IF YOU ARE NOT EATING COOKIES!")
         self.btn.size = self.width * .75, self.height
-        self.btn.background_normal = "icon.png"
+        self.btn.background_color = 1, 1, 1, .5
         self.btn.bind(on_press = self.ded) 
         self.add_widget(self.btn)
 
