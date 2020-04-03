@@ -1,0 +1,34 @@
+#! /usr/bin/python3
+from kivy.app import App
+from kivy.uix.widget import Widget
+from kivy.properties import ObjectProperty
+from kivy.uix.button import Button
+from kivy.uix.label import Label
+
+class Touch(Widget):
+	btn = ObjectProperty(None)
+	# Когда кнопка нажата
+	def on_touch_down(self, touch):
+		print("MOuse down", touch)
+		self.btn.opacity = .5
+		self.readthis = Label(text="SPACE UNICORN WAS HERE!!")
+		self.add_widget(self.readthis)
+	
+	# Когда конпку отпустили
+	def on_touch_up(self, touch):
+		print("MOuse up", touch)
+		self.btn.opacity = 1
+		self.btn.background_color = 1,1,1,1
+		self.remove_widget(self.readthis)
+	
+	# Когда кнопку передвигают по экрану
+	def on_touch_move(self, touch):
+		self.btn.background_color = 1,.8,.5,1
+		print("MOuse moooove", touch)
+
+class SecondApp(App):
+	def build(self):
+		return Touch()
+
+if __name__ == "__main__":
+		SecondApp().run()
