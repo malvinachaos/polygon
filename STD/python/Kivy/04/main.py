@@ -1,4 +1,4 @@
-#! /bin/python3
+#! /usr/bin/python3
 from kivy.app import App
 from kivy.graphics import Rectangle
 from kivy.graphics import Color
