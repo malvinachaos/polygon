@@ -1,0 +1,42 @@
+# Чтобы добавить экраны в ScreenManager, надо их объявить там
+WindowManager:
+	Menu:
+	Second:
+
+<Menu>:
+	# Нужно давать аттрибут имени каджому экрану/окну, с помощью имени
+	# мы будем перемещаться по экранам
+	name: "main"
+
+	GridLayout:
+		cols:1
+
+		GridLayout:
+			cols:2
+
+			Label:
+				text: "Password(root): "
+			
+			TextInput:
+				id: passwd
+				multiline: False
+
+			Button:
+				text: "Submit"
+				# Когда мы нажимаем на кнопку, то мы переключаемся на экран "second"
+				on_release:
+					print(app.root.current)
+					# Ещё один прикол: тут вместо ":" используем "="
+					app.root.current = "second" if passwd.text == "root" else "main"
+					# Также мы можем настроить местоположение экрана, куда мы хотим "подвинуться"
+					root.manager.transition.direction = "left"
+
+
+<Second>:
+	name: "second"
+
+	Button:
+		text: "LOCK"
+		on_release:
+			app.root.current = "main"
+			root.manager.transition.direction = "right"

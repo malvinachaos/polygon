@@ -1,0 +1,49 @@
+# adding some widgets here
+<WindowManager>:
+	MainMenu:
+		name: "main"
+		BoxLayout:
+			orientation: "vertical"
+			Image:
+				source: "data/menu/LOGO.gif"
+				size: self.texture_size
+
+			Button:
+				background_normal: "data/menu/MenuButton.png"
+				background_active: "data/menu/MenuButtonActive.png"
+				size_hint: .25, .5
+				pos_hint: {"x": .375, "y": 1}
+				text: "Start"
+				on_release:
+					print("Click is working\t", app.root.current)
+					app.root.current = "party"
+					root.manager.transition.direction = "right"
+	
+			Button:
+				size_hint: .25, .5
+				pos_hint: {"x": .375, "y": 1}
+				size: 1, .5
+				background_normal: "data/menu/MenuButton.png"
+				background_active: "data/menu/MenuButtonActive.png"
+				text: "Players"
+
+			Button:
+				size_hint: .25, .5
+				pos_hint: {"x": .375, "y": 1}
+				background_normal: "data/menu/MenuButton.png"
+				background_active: "data/menu/MenuButtonActive.png"
+				text: "Exit"
+				on_release:
+					EventLoop: exit()
+
+	PartyMenu:
+		name: "party"
+		FloatLayout:
+			Button:
+				size_hint: .25, .25
+				background_normal: "data/menu/MenuButton.png"
+				background_active: "data/menu/MenuButtonActive.png"
+				text: "Back"
+				on_release:
+					app.root.current = "main"
+					root.manager.transition.direction = "left"

@@ -14,3 +14,6 @@
                             чтобы удобнее управлять проектом
 
 ### ToDo:
+  * **Table Role Assistant**  
+  	* Не переключаются экраны
+  * **Pixel art drawing**  
