@@ -11,9 +11,9 @@ from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 from kivy.uix.image import Image
 
-kv = Builder.load_file("TRA.kv")
 
-# ---------------------------[Окна]----------------------------------------
+#kv = Builder.load_file("TRA.kv")
+# ---------------------------[Окна]--------------------------------------------
 class MainMenu(Screen):
 	pass
 
@@ -24,12 +24,13 @@ class PartyMenu(Screen):
 # 	pass
 
 class WindowManager(ScreenManager):
-	MainMenu()
-	PartyMenu()
-# ---------------------------[Главный исполнительный блок]-----------------
+	pass
+# ---------------------------[Главный исполнительный блок]---------------------
+kv = Builder.load_file("BACK.kv")
+
 class DragonApp(App):
 	def build(self):
-		return WindowManager()
+		return kv
 
 if __name__ == "__main__":
 		DragonApp().run()
