@@ -24,7 +24,7 @@ def show_popup():
 	# Создание popup окна
 	show = Pi()
 	popupWindow = Popup(title="Popup window", content=show, \
-					    size_hint=(None, None), size=(400, 400))
+			    size_hint=(None, None), size=(400, 400))
 	# Показывает контент
 	popupWindow.open()
 

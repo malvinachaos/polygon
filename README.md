@@ -12,13 +12,20 @@
                иного языка программирования
   * **bashcommands.txt** -- этот файл содержит настройки для оболочки BASH,
                             чтобы удобнее управлять проектом
+### Notes:
+1) Лол, на Mint и Xubuntu python версии 3.6.9, когда нужен 3.7+. Но он есть 
+на Manjaro. Ещё одна причина любить Manjaro.
 
 ### ToDo:
   * **Table Role Assistant**  
-  	* Не переключаются экраны [X]
-	* PartyMenu []
-	* PlayersMenu []
-	* PlayerEditor []
-	* Game []
+  	* [X] Не переключаются экраны
+	* [ ] PartyMenu
+        * [ ] PartyEditor
+            * [ ] Структура файла партий
+	* [ ] PlayersMenu
+	* [ ] PlayerEditor
+	* [ ] Game
 
-  * **Pixel art drawing**  
+  * **Pixel art drawing for Android**  
+  * **Установить KivyMD**  
+  * **Установить мастер создания нового проекта для Kivy**

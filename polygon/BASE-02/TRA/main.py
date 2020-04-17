@@ -19,6 +19,8 @@ class MainMenu(Screen):
 class PartyMenu(Screen):
 	pass
 
+class PartyEditor(Popup):
+        pass
 '''
 class PlayersMenu(Screen):
 	pass
@@ -33,7 +35,7 @@ class Game(Screen):
 class WindowManager(ScreenManager):
 	pass
 # ---------------------------[Главный исполнительный блок]---------------------
-kv = Builder.load_file("BACK.kv")
+kv = Builder.load_file("TRA.kv")
 
 class DragonApp(App):
 	def build(self):
