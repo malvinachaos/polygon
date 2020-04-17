@@ -15,5 +15,10 @@
 
 ### ToDo:
   * **Table Role Assistant**  
-  	* Не переключаются экраны
+  	* Не переключаются экраны [X]
+	* PartyMenu []
+	* PlayersMenu []
+	* PlayerEditor []
+	* Game []
+
   * **Pixel art drawing**  

@@ -14,7 +14,7 @@ WindowManager:
 		Button:
 			background_normal: "data/menu/MenuButton.png"
 			background_active: "data/menu/MenuButtonActive.png"
-			size_hint: .25, .5
+			size: 100, 200
 			pos_hint: {"x": .375, "y": 1}
 			text: "Start"
 			on_release:
@@ -23,15 +23,14 @@ WindowManager:
 				root.manager.transition.direction = "left"
 	
 		Button:
-			size_hint: .25, .5
+			size: 100, 200
 			pos_hint: {"x": .375, "y": 1}
-			size: 1, .5
 			background_normal: "data/menu/MenuButton.png"
 			background_active: "data/menu/MenuButtonActive.png"
 			text: "Players"
 
 		Button:
-			size_hint: .25, .5
+			size: 100, 200
 			pos_hint: {"x": .375, "y": 1}
 			background_normal: "data/menu/MenuButton.png"
 			background_active: "data/menu/MenuButtonActive.png"
@@ -42,13 +41,17 @@ WindowManager:
 <PartyMenu>:
 	name: "party"
 	FloatLayout:
-
 		# Back to MainMenu
 		Button:
-			size_hint: .25, .5
+			size: 100, 200
 			background_normal: "data/menu/MenuButton.png"
 			background_active: "data/menu/MenuButtonActive.png"
 			text: "Back"
 			on_release:
 				app.root.current = "main"
 				root.manager.transition.direction = "right"
+
+		# Create Game Party
+		Button:
+			size: 100, 100
+			pos_hint: {"x": .75, "y": .0125}

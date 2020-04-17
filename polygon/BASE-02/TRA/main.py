@@ -20,9 +20,17 @@ class MainMenu(Screen):
 class PartyMenu(Screen):
 	pass
 
-# class Game(Screen):
-# 	pass
+'''
+class PlayersMenu(Screen):
+	pass
 
+class PlayerEditor(Screen):
+	pass
+
+class Game(Screen):
+ 	pass
+
+'''
 class WindowManager(ScreenManager):
 	pass
 # ---------------------------[Главный исполнительный блок]---------------------
