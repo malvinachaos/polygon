@@ -26,6 +26,5 @@
 	* [ ] PlayerEditor
 	* [ ] Game
 
-  * **Pixel art drawing for Android**  
   * **Установить KivyMD**  
   * **Установить мастер создания нового проекта для Kivy**
