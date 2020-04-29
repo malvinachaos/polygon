@@ -17,14 +17,5 @@
 на Manjaro. Ещё одна причина любить Manjaro.
 
 ### ToDo:
-  * **Table Role Assistant**  
-  	* [X] Не переключаются экраны
-	* [ ] PartyMenu
-        * [ ] PartyEditor
-            * [ ] Структура файла партий
-	* [ ] PlayersMenu
-	* [ ] PlayerEditor
-	* [ ] Game
-
-  * **Установить KivyMD**  
-  * **Установить мастер создания нового проекта для Kivy**
+    * BASE-02: game.py:
+        * Просто сделать игру, использующая консольную графику
