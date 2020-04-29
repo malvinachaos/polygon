@@ -1,5 +1,5 @@
 VAR a: array[1..10] of integer;
-    i, n, m, j: integer;
+    i, n, m, j, buf: integer;
 
 BEGIN
     write('Введите размерность массива(минимум 2, максимум 10):');
@@ -17,15 +17,12 @@ BEGIN
         m:= i;
         
         for j:= 1 to i-1 do
-        begin
-            if a[i] < a[m] then
-            begin
+            if a[j] > a[m] then
                 m:= j;
-                a[i]:= a[i]+a[m];
-                a[m]:= a[i]-a[m];
-                a[i]:= a[i]-a[m];
-            end
-        end
+        buf:= a[i];
+        a[i]:= a[m];
+        a[m]:= buf;
+        
     end;
 
     writeln('Вывод упорядочного массива');
