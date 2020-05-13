@@ -2,28 +2,41 @@
 from os import system as S
 S('clear')
 
+def number_input(num):
+    if num == '' or num.isalpha():
+            num = 1
+            return num
+    elif num[0] == '-':
+        if num[1:].isdigit():
+            num = int(num) * (-1)
+            return num
+    elif num.isdigit():
+            num = int(num)
+            return num
+
 while True:
     c = input("Введите 'q', завершить программу, а чтобы продолжить, нажмите ENTER: ")
     if c == 'q':
         break
     S('clear')
 
-    a = int(input("Введите a: "))
-    if a == 0:
+    a = input("Введите a: ")
+    if a == '0':
         print("это уже не квадратное уравнение, лмао\n\n")
         continue
-    
-    b, c = int(input("Введите b: ")), int(input("Введите c: "))
+    a = number_input(a)
+
+    b, c = number_input(input("Введите b: ")), number_input(input("Введите c: "))
 
     D = b**2 - 4*a*c
     if D < 0:
-        print("Дискриминант отрицателен")
+        print("Дискриминант отрицателен (", D, ")", sep='')
         continue
     elif D == 0:
         print("Корень этого уравнения:", (-b)/(2*a))
     else:
         x1, x2 = ((-b) - D**(1/2))/(2*a), ((-b) + D**(1/2))/(2*a)
         print(f"Корни этого уравнения: {x1} и {x2}\nДискриминант: {D}")
-    
+
     input("Чтобы продолжить, нажмиите ENTER...")
     S('clear')

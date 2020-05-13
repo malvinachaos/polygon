@@ -72,11 +72,11 @@ BEGIN
     write('Введите имя файла, куда записать данные(не забудьте потом поставить .txt): ');
     readln(name);
     
-    assign(out, name);
-    rewrite(out);
-
-    inarray(n, a);
-    outarray(n, a, out);
+    assign(out, name);          {~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+    rewrite(out);               { Ну, тут нечего комментировать }
+                                { Ы, хочу написать простенькую  }
+    inarray(n, a);              { рпг-игру на паскале           }
+    outarray(n, a, out);        {~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
 
     close(out);
 END.

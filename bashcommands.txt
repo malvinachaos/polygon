@@ -1,5 +1,5 @@
 --[КОММАНДЫ И ИХ ОПИСАНИЕ]--
-PY   -- перейти в каталог training.py
+PY   -- перейти в каталог training
 PYU  -- сохранить изменение локального репозитория(обязательно в кавычках указать сообщение)
 PYS  -- обновить глобальный репозиторий
 PYG  -- обновить локальный репозиторий
@@ -8,7 +8,7 @@ STAT -- git status
 BASE-01 -- запускает программу в BASE-01
 
 --[НАСТРОЙКИ]--
-alias PY="cd ~/Documents/training.py;ls"
+alias PY="cd ~/Documents/training;ls"
 alias PYC="cat ~/Documents/training.py/bashcommands.txt"
 alias PYU="cd ~/Documents/training.py/ && git add * && git status && git commit -m"
 alias PYS="cd ~/Documents/training.py/ && git push training.py master"
