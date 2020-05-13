@@ -44,6 +44,7 @@ END;
 Block = RECORD
     Name:string;
     Texture:file;
+    Position: array[1..2] of byte;
 END;
 {-----------------------------------------~~~~ END ~~~~--------------------------------------------}
 

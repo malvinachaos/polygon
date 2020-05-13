@@ -1,0 +1,3 @@
+## Dependences
+  * [ ] GLScene
+  * [ ] BGRABitmap
