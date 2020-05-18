@@ -1,18 +1,16 @@
 #! /usr/bin/python3
+# Updated 17.05.20
 from os import system as S
 S('clear')
 
 def number_input(num):
-    if num == '' or num.isalpha():
-            num = 1
-            return num
-    elif num[0] == '-':
+    if num[0] == '-':
         if num[1:].isdigit():
-            num = int(num) * (-1)
-            return num
+            return int(num)
     elif num.isdigit():
-            num = int(num)
-            return num
+            return int(num)
+    else:
+        return 1
 
 while True:
     c = input("Введите 'q', завершить программу, а чтобы продолжить, нажмите ENTER: ")
@@ -28,7 +26,7 @@ while True:
 
     b, c = number_input(input("Введите b: ")), number_input(input("Введите c: "))
 
-    D = b**2 - 4*a*c
+    D = b**2 + 4*a*c*(-1)
     if D < 0:
         print("Дискриминант отрицателен (", D, ")", sep='')
         continue

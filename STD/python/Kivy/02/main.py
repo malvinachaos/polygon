@@ -4,7 +4,7 @@
     1) Название в нижнем регистре
     2) Оно содержит только название основного класса, где приложение собирается
     3) Если название оканчивается на 'app', то пишем без него
-    
+
     Пример:
     class MyApp() --> my.lv
     class TELEPHONE() --> telephone.kv
@@ -24,7 +24,7 @@ class MyWidget(Widget):
     # Задаём переменные
     text1 = ObjectProperty(None)
     text2 = ObjectProperty(None)
-    
+
     def ded(self, instance):
         self.remove_widget(self.btn)
     def press(self):
