@@ -1,6 +1,0 @@
-#! /usr/bin/python3
-import time
-for i in range(10):
-    time.sleep(.3)
-    print("\033[H\033[J")
-print()
