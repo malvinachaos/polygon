@@ -1,0 +1,37 @@
+#! /usr/bin/python3
+from os import system as S
+s = 'clear'
+S(s)
+
+import csv
+
+users= [["Marina", 17], ["Alisa", 22], ["Bilbo", 12]]
+
+with open("usr.csv", 'w', newline='') as f:
+    csv.writer(f).writerows(users)
+
+print("Let's see, what we've got:\n")
+with open("usr.csv", 'r') as f:
+    reader = csv.reader(f)
+    for row in reader:
+        print(row[0], '-', row[1])
+        S("sleep 0.25s")
+
+print("Let's add new record!")
+S("sleep 1s")
+with open("usr.csv", 'a') as f:
+    csv.writer(f).writerows([["Malvina", 16]])
+
+S("sleep 0.5s")
+
+print("\nWatch see, what you've got:\n")
+S("cat usr.csv")
+input(". . .")
+
+S(s)
+
+usr=[{"name":"Toriel", "surname":"Dreemurr", "age":16},
+    {"name":"Twilight", "surname":"Sparkle", "age":20},
+    {"name":"Starlight", "surname":"Glimmer", "age":20}]
+
+

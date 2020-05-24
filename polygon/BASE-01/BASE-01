@@ -4,8 +4,8 @@ S("clear")
 
 # ---------------------------[Запуск программы]--------------------------------
 # Титульный экран
-print("\n\tBASE-01 v0.1.1\n\n\tMADE BY SPACE UNICORN!\n\n\n\
-Создан 29.03.2020\nПоследнее обновление 21.05.2020")
+print("\n\tBASE-01 v0.1.2\n\n\tMADE BY SPACE UNICORN!\n\n\n\
+Создан 29.03.2020\nПоследнее обновление 23.05.2020")
 
 S("sleep 2s")
 S("clear")
@@ -75,24 +75,26 @@ def program():
 def super_menu():
     print('--------------------------------')
     print(" \tipython3  -- запуск интерактивной оболочки\n\
-            python3  -- запуск обычной оболочки python\n\
-            edit     -- редактировать существующую программу\n\
-            q        -- вернуться обратно")
+        python3  -- запуск обычной оболочки python\n\
+        edit     -- редактировать существующую программу\n\
+        q        -- вернуться обратно")
     c = input(": ")
     if c == 'ipython3': S("ipython3")
     elif c == 'python3': S("python3")
     elif c == 'edit':
-        c = choose_program()
-        c = 'vim ' + c
-        S(c)
+        choose = choose_program()
+        if choose[0] == 0:
+            return
+        command = "cd {} ; vim {}".format(choose[1][:-1], choose[0])
+        S(command)
     elif c == 'q': return 0
 
 
 # ---------------------------[Главный исполнительный блок]---------------------
 while True:
-    print("MAN     -- вызов справки\nНажать 'ENTER' -- вызов \
-программы\nOPTIONS -- вызов дополнительных опций\n\
-q        -- выход из BASE-01")
+    print("MAN -- справки\nНажать 'ENTER' -- вызов программы\
+\nOPTIONS -- вызов дополнительных опций\n\
+q -- выход из BASE-01")
     c = input(": ")
     if c.upper() == 'MAN': manual()
     elif c == '': program()
