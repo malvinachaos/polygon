@@ -4,7 +4,7 @@ import pickle
 S("clear")
 # ---------------------------[GREETINGS]------------------------------------- #
 print("""
-    CHECK-LIST CREATOR v0.1
+    CHECK-LIST CREATOR v0.2
         Made by MalvinaChaos
 
 """)
@@ -65,14 +65,14 @@ def read_data():
 # Вывод на экран
 def show_data(Data):
     S("clear")
-    print("-"*77)
-    print("№ | сложность | оценка | ошибки           | что делать?")
-    print("-"*77)
+    print("-"*134)
+    print("№  | сложность | оценка | ошибки                             | что делать?")
+    print("-"*134)
     for i, item in enumerate(Data):
         to_load = [item.get("№"), item.get("сложность"), item.get("оценка"),\
             item.get("ошибка"), item.get("что делать?")]
-        print("{0[0]} | {0[1]:9} | {0[2]:6} | {0[3]:16} | {0[4]:24}".format(to_load))
-        print("-"*77)
+        print("{0[0]:2} | {0[1]:9} | {0[2]:6} | {0[3]:34}   {0[4]:24}".format(to_load))
+        print("-"*134)
     c = input("\n. . . ENTER . . .")
 
 # Запись в файл
@@ -85,7 +85,7 @@ def write_data(Data):
         if ".data" not in c:
             c = c + ".data"
         if c in CHECKLIST:
-            message("Такой файл уже существует! Перезаписать существующий файл??")
+            message("Такой файл уже существует! Перезаписать его??")
             choose = input("[Y/N]: ")
             if choose.upper() == 'Y':
                 break
@@ -96,6 +96,8 @@ def write_data(Data):
 
     with open(c, 'wb') as f:
         pickle.dump(Data, f)
+    
+    message("Записано")
 
 # Запись и редактирование в список
 def edit_data(Data):
@@ -116,33 +118,34 @@ def edit_data(Data):
                         }
         else:
             message("Вы неверно ввели данные ")
-            return {
-                        "№":'0',\
-                        "сложность":'none',\
-                        "оценка":'0',\
-                        "ошибка":'none',\
-                        "что делать?":'none'\
-                        }
+            return
 
     while True:
         S("clear")
-        message("Добавить или редактировать существующую запись??")
-        choice = input("add/edit: ")
-        if choice not in ("add", "edit"):
+        message("Добавить, редактировать или удалить запись??")
+        choice = input("add/edit/remove: ")
+        if choice not in ("add", "edit", "remove"):
             message("Такой опции нетт")
             continue
         elif choice == "add":
-            Data.append(add_record())
+            a = add_record()
+            if type(a) == dict:
+                Data.append(a)
         elif choice == "edit":
             message("Введите номер записи, (их всего) {}  ".format(len(Data)))
             n = int(input(": ")) - 1
             Data[n] = add_record()
+        elif choice == "remove":
+            message("Введите номер записи, (их всего) {}  ".format(len(Data)))
+            n = int(input(": ")) - 1
+            Data.pop(n)
         message("Создать ещё одну запись??")
         choice = input("[Y/N]: ")
         if choice.upper() == "Y":
             continue
         else:
             return Data
+
 
 # ---------------------------[MAIN]------------------------------------------ #
 
