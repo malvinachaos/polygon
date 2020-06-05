@@ -3,6 +3,10 @@ from os import system as S
 import pickle
 S("clear")
 # ---------------------------[GREETINGS]------------------------------------- #
+'''
+    Даный фрагмент кода приветствует пользователя и создаёт список чек-листов,
+    которые есть в той же директории, что и сама программа. 
+'''
 print("""
     CHECK-LIST CREATOR v0.2
         Made by MalvinaChaos
@@ -21,19 +25,19 @@ CHECKLIST.pop()
 S("rm list")
 
 # ---------------------------[FUNCTIONS]------------------------------------- #
-# Выбирает нужный файл из списка
+# Выбирает нужный файл из заранее сгенерированного списка
 def choose_checklist():
     global CHECKLIST
     while True:
         message("Введите цифру чек-листа: ")
-        for i, item in enumerate(CHECKLIST):
-            print('\t(', i,') ', item, sep='')
+        for i, item in enumerate(CHECKLIST):    # выводит список (0) FST.data
+            print('\t(', i,') ', item, sep='')  # к примеру      (1) SNВ.data
         c = input(": ")
 
         if not c.isdigit():
-            message("Вы неверно ввели даные!!")
-            S("sleep 1s")
-            S("clear")
+            message("Вы неверно ввели даные!!") # Следующие два блока -- 
+            S("sleep 1s")                       # проверка на правильность
+            S("clear")                          # ввода
             continue
         else: c = int(c)
 
@@ -44,7 +48,7 @@ def choose_checklist():
             continue
         else: return CHECKLIST[c]
 
-# "Специальный" вывод текста
+# Анимация вывода текста
 def message(msg):
     for i in range(len(msg)):
         print(msg[:i], end='\r')
@@ -66,7 +70,8 @@ def read_data():
 def show_data(Data):
     S("clear")
     print("-"*134)
-    print("№  | сложность | оценка | ошибки                             | что делать?")
+    print("№  | сложность | оценка | ошибки\
+                                     | что делать?")
     print("-"*134)
     for i, item in enumerate(Data):
         to_load = [item.get("№"), item.get("сложность"), item.get("оценка"),\
@@ -85,7 +90,7 @@ def write_data(Data):
         if ".data" not in c:
             c = c + ".data"
         if c in CHECKLIST:
-            message("Такой файл уже существует! Перезаписать его??")
+            message("Такой файл уже существует! Перезаписать его? ")
             choose = input("[Y/N]: ")
             if choose.upper() == 'Y':
                 break
