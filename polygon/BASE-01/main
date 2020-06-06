@@ -4,15 +4,15 @@ S("clear")
 
 # ---------------------------[Запуск программы]--------------------------------
 # Титульный экран
-print("\n\tBASE-01 v0.1.2\n\n\tMADE BY SPACE UNICORN!\n\n\n\
-Создан 29.03.2020\nПоследнее обновление 28.05.2020")
+print("\n\tBASE-01 v0.1.4\n\n\tMADE BY SPACE UNICORN!\n\n\n\
+Создан 29.03.2020\nПоследнее обновление 06.06.2020")
 
 S("sleep 2s")
 S("clear")
-
+PATH = "/home/marina/Documents/training/polygon/BASE-01/"
 # Генерация списка пограмм
-PROGRAMS = []
-S("ls manuals/ > list")
+PROGRAMS, command = [], "ls {}manuals/ > list".format(PATH)
+S(command)
 F = open('list', 'r')
 l = ''
 while True:
@@ -39,7 +39,7 @@ def choose_program():
             print("Вы неверно ввели данные")
         else: break
     choose.append('')
-    road = 'manuals/' + choose[0] + '.txt'
+    road = PATH + 'manuals/' + choose[0] + '.txt'
     F = open(road, 'r')
     choose[1] = F.readline()
     F.close()
@@ -52,7 +52,7 @@ def manual():
     choose = choose_program()
     if choose[0] == 0:
         return
-    choose[0] = 'manuals/' + choose[0] + ".txt" \
+    choose[0] = PATH + 'manuals/' + choose[0] + ".txt" \
             if (".txt" not in choose[0]) else choose[0]
     with open(choose[0], 'r') as F:
         F.readline()
@@ -67,7 +67,7 @@ def program():
     choose = choose_program()
     if choose[0] == 0:
         return
-    command = "cd {} ; ./{}".format(choose[1][:-1], choose[0])
+    command = "cd {0}{1}; ./{2}".format(PATH, choose[1][:-1], choose[0])
     S(command)
     input(". . . E N T E R . . .")
 
@@ -87,7 +87,7 @@ def super_menu():
         choose = choose_program()
         if choose[0] == 0:
             return
-        command = "cd {} ; vim {}".format(choose[1][:-1], choose[0])
+        command = "cd {}{} ; vim {}".format(PATH, choose[1][:-1], choose[0])
         S(command)
     elif c == 'q': return 0
 
@@ -95,11 +95,11 @@ def super_menu():
 # ---------------------------[Главный исполнительный блок]---------------------
 while True:
     print("MAN -- справки\nНажать 'ENTER' -- вызов программы\
-\nOPTIONS -- вызов дополнительных опций\n\
+\no -- вызов дополнительных опций\n\
 q -- выход из BASE-01")
     c = input(": ")
     if c.upper() == 'MAN': manual()
     elif c == '': program()
-    elif c.lower() == 'options': super_menu()
+    elif c.lower() == 'o': super_menu()
     elif c.lower() == 'q': break
     S("clear")
