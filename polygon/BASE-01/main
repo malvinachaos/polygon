@@ -1,5 +1,6 @@
 #! /usr/bin/python3
 from os import system as S
+from os.path import abspath
 S("clear")
 
 # ---------------------------[Запуск программы]--------------------------------
@@ -9,7 +10,8 @@ print("\n\tBASE-01 v0.1.4\n\n\tMADE BY SPACE UNICORN!\n\n\n\
 
 S("sleep 2s")
 S("clear")
-PATH = "/home/marina/Documents/training/polygon/BASE-01/"
+PATH = abspath("") + '/'
+
 # Генерация списка пограмм
 PROGRAMS, command = [], "ls {}help/ > list".format(PATH)
 S(command)
