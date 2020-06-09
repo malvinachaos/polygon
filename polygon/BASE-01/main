@@ -11,7 +11,7 @@ S("sleep 2s")
 S("clear")
 PATH = "/home/marina/Documents/training/polygon/BASE-01/"
 # Генерация списка пограмм
-PROGRAMS, command = [], "ls {}manuals/ > list".format(PATH)
+PROGRAMS, command = [], "ls {}help/ > list".format(PATH)
 S(command)
 F = open('list', 'r')
 l = ''
@@ -39,7 +39,7 @@ def choose_program():
             print("Вы неверно ввели данные")
         else: break
     choose.append('')
-    road = PATH + 'manuals/' + choose[0] + '.txt'
+    road = PATH + 'help/' + choose[0] + '.txt'
     F = open(road, 'r')
     choose[1] = F.readline()
     F.close()
@@ -52,7 +52,7 @@ def manual():
     choose = choose_program()
     if choose[0] == 0:
         return
-    choose[0] = PATH + 'manuals/' + choose[0] + ".txt" \
+    choose[0] = PATH + 'help/' + choose[0] + ".txt" \
             if (".txt" not in choose[0]) else choose[0]
     with open(choose[0], 'r') as F:
         F.readline()
