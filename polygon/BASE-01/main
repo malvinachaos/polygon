@@ -2,6 +2,7 @@
 from os import system as S
 from os.path import abspath
 S("clear")
+PATH = abspath("") + '/'
 
 # ---------------------------[Запуск программы]--------------------------------
 # Титульный экран
@@ -10,7 +11,6 @@ print("\n\tBASE-01 v0.1.4\n\n\tMADE BY SPACE UNICORN!\n\n\n\
 
 S("sleep 2s")
 S("clear")
-PATH = abspath("") + '/'
 
 # Генерация списка пограмм
 PROGRAMS, command = [], "ls {}help/ > list".format(PATH)
