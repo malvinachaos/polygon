@@ -25,7 +25,6 @@ F.close()
 S("rm list")
 
 # ---------------------------[Блок функций]------------------------------------
-
 # Функция выбора программы
 def choose_program():
     for i in PROGRAMS:
@@ -77,9 +76,9 @@ def program():
 def super_menu():
     print('--------------------------------')
     print("""
-    ipython3  -- запуск интерактивной оболочки
     python3   -- запуск обычной оболочки python
     edit      -- редактировать существующую программу
+    l         -- создать ярлык
     q         -- вернуться обратно
     """)
     c = input(": ")
@@ -91,6 +90,7 @@ def super_menu():
             return
         command = "cd {}{} ; vim {}".format(PATH, choose[1][:-1], choose[0])
         S(command)
+    elif c == 'l': link_creator()
     elif c == 'q': return 0
 
 
