@@ -23,7 +23,7 @@ from kivy.config import Config
 # -----------------------------------------------------------------------------
 
 Config.set('kivy', 'keyboard_mode', 'systemanddock')
-Window.size = (480, 853) # 720, 1280
+Window.size = (1200, 1980) # 720, 1280
 
 class FirstScreen(Screen):
     pass

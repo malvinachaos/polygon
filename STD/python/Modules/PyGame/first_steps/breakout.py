@@ -9,5 +9,3 @@ while True:
     screen.blit(background_image, (0, 0))
     pygame.display.update()
     clock.tick(60)
-
-1
