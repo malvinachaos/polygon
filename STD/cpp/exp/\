@@ -1,0 +1,35 @@
+#include <iostream>
+
+using namespace std;
+
+void output_array(int a[], unsigned size)
+{
+    for (int i = 0; i < size; i++)
+        cout << a[i] << ' ';
+    cout << endl;
+}
+
+void rotate(int a[], unsigned size, int shift)
+{
+    if (shift%size != 0)
+    {
+        int tmp_fst = 0, tmp_snd = 0;
+        unsigned k = 0, j = 0;
+        for (unsigned i = 0; i < size*shift; i += shift)
+        {
+            k = (i+shift)%size;
+            j = i%size;
+            tmp_fst = a[j];
+            tmp_snd = a[k];
+            output_array(a, size);
+        }
+    }
+}
+
+
+int main()
+{
+    int a[5] = {0, 1, 2, 3, 4};
+    rotate(a, 5, 2);
+    return 0;
+}
