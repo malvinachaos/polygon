@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void reverse(int a)
+void reverse(int a = 0)
 {
     cin >> a;
     if (a == 0) return;
@@ -12,6 +12,6 @@ void reverse(int a)
 
 int main()
 {
-    reverse(0);
+    reverse();
     return 0;
 }
