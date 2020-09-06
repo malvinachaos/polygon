@@ -1,0 +1,14 @@
+table 
+{
+    color: #ffffff;
+    background-color: #8700af;
+    border: 5px dashed #540068;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+body
+{
+    background-color: #ffd7ff;
+    font-family: Ubuntu;
+}

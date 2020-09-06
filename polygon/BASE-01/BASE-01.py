@@ -3,7 +3,7 @@ from os import getcwd, getlogin, mkdir, listdir
 from os import system as S
 from os.path import abspath, isdir
 from time import sleep
-S("clear")
+S("clear||cls")
 
 if not isdir(".base_01_files"):
     mkdir(".base_01_files")

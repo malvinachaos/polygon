@@ -29,6 +29,7 @@ BEGIN
             writeln('Фигуры не пересекаются.');
         if (xc = r) then
             writeln('Фигуры касаются.');
+        
         if (xc < r) then
         begin
             write('Фигуры пересекаются');
