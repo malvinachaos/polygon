@@ -49,4 +49,3 @@ for i, item in enumerate(BASE_LOGO):
 for i in range(H):
     print('\n' + BASE_LOGO_MIDDLE[0]*(2*W + 33), end='')
 print(end='\r')
-input()
