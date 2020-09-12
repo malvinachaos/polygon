@@ -3,19 +3,21 @@ from os import getcwd, getlogin, mkdir, listdir
 from os import system as S
 from os.path import abspath, isdir
 from time import sleep
-S("clear")
+
+
+S("clear||cls")
 
 if not isdir(".base_01_files"):
     mkdir(".base_01_files")
 
 PATH = getcwd()
-USER = getlogin()
+USER = "marina"
 FILE = "/.base_01_files"
 PATH_FILE = listdir(PATH+FILE)
 
 # ---------------------------[Запуск программы]--------------------------------
 # Титульный экран
-print("\n\tBASE-01 v0.2.0\n\n\tMADE BY SPACE UNICORN!\n\n\n\
+print("\n\tBASE-01 v0.2.0\n\n\tMADE BY LAZY DRAGON!\n\n\n\
 Создан 29.03.2020\nПоследнее обновление 22.06.2020")
 
 sleep(2)
@@ -23,6 +25,9 @@ S("clear")
 
 # setup
 
+import logo
+sleep(2)
+S("clear")
 # ---------------------------[Блок математических подпрограм]------------------
 def number_system():
     ''' Эта функция переводит целые положительные числа с основанием по модулю
@@ -441,7 +446,6 @@ def manual():
     elif choose == 5: print(check_creator.__doc__)
 
 def program():
-    message("Какую программу хотите запустить?")
     choose = choose_program()
 
     if choose == 1: number_system()
@@ -468,3 +472,4 @@ while True:
 
     input("...")
     S("clear")
+S("rm -rfv __pycache__")
