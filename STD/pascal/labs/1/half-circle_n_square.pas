@@ -3,6 +3,7 @@ PROGRAM by_Marina;
 VAR xc, xs, a, r: real;
     k:integer;
 
+{Мне просто страшно смотреть на этого монстра. А ещё страшнее то, что я его создала}
 
 BEGIN
     writeln('Введите следующие значения:');
@@ -28,7 +29,79 @@ BEGIN
 
     if ((r > 0) and (a > 0) and ((k = 1) or (k = 2) or (k = 3))) then
     begin
-        writeln('Okay');
+        a:= a/2;
+
+        if (k = 1) then
+        begin   {полуокружность слева        полуокружность справа}
+            if ( ((xc + r) >= (xs - a)) and ((xc - r) <= (xs + a)) ) then
+            begin
+                if ( ((xc + r) = (xs - a)) or ((xc - r) = (xs + a)) ) then
+                    writeln('Фигуры касаются')
+                else
+                begin   {крайняя левая точка полуокр-ти правее к.л. квадрата и к. правая т. полуокр-и левее к.п.т. квадрата}
+                    if ( ((xc - r) >= (xs - a)) and ((xc + r) <= (xs + a)) ) then
+                        writeln('Полуокружность вписана в квадрат')
+                    else
+                        writeln('Фигуры пересекаются');
+
+                    if ( ((xc - r) <= (xs - a)) and ((xc + r) >= (xs + a)) ) then
+                        writeln('Квадрат вписан в полуокружность')
+                    else
+                        writeln('Фигуры пересекаются');
+                end;
+            end
+            else
+                writeln('Фигуры не пересекаются');
+        end;
+
+        if (k = 2) then
+        begin
+            if ( (xc >= (xs - a)) and ((xc - r) <= (xs + a)) ) then
+            begin
+                if ( (xc = (xs - a)) or ((xc - r) = (xs + a)) ) then
+                    writeln('Фигуры касаются')
+                else
+                begin
+                    if ( ((xc - r) >= (xs - a)) and (xc <= (xs + a)) ) then
+                        writeln('Полуокружность вписана в квадрат')
+                    else
+                        writeln('Фигуры пересекаются');
+
+                    if ( ((xc - r) <= (xs - a)) and (xc >= (xs + a)) ) then
+                        writeln('Квадрат вписан в полуокружность')
+                    else
+                        writeln('Фигуры пересекаются');
+                end;
+            end
+            else
+                writeln('Фигуры не пересекаются');
+        end;
+
+        if (k = 3) then
+        begin
+            if ( ((xc + r) >= (xs - a)) and (xc <= (xs + a)) ) then
+            begin
+                if ( ((xc + r) = (xs - a)) or (xc = (xs + a)) ) then
+                    writeln('Фигуры касаются')
+                else
+                begin
+                    if ( (xc >= (xs - a)) and ((xc + r) <= (xs + a)) ) then
+                        writeln('Полуокружность вписана в квадрат')
+                    else
+                        writeln('Фигуры пересекаются');
+
+                    if ( (xc <= (xs - a)) and ((xc + r) >= (xs + a)) ) then
+                        writeln('Квадрат вписан в полуокружность')
+                    else
+                        writeln('Фигуры пересекаются');
+                end;
+            end
+            else
+                writeln('Фигуры не пересекаются');
+        end;
+        
+        if (xc = xs) then
+            writeln('Фигуры концетричны');
     end
     else writeln(#13#10, #13#10, 
         'Вы ввели неверные данные!', #13#10, 
