@@ -42,8 +42,8 @@ BEGIN
         else
         begin
             if ( ( (k = 1) and ( ((xc - r) >= (xs - a)) and ((xc + r) <= (xs + a)) or ((xc - r) <= (xs - a)) and ((xc + r) >= (xs + a)) ) ) or {вложенность}
-                 ( (k = 2) and ( ((xc - r) >= (xs - a)) and (xc <= (xs + a)) or ((xc - r) <= (xs - a)) and (xc >= (xs + a)) ) ) or
-                 ( (k = 3) and ( (xc >= (xs - a)) and ((xc + r) <= (xs + a)) or (xc <= (xs - a)) and ((xc + r) >= (xs + a)) ) )
+                 ( (k = 2) and ( ((xc - r) >= (xs - a)) and (xc <= (xs + a)) or ((xc - r) <= (xs - a)) and (xc >= (xs + a)) ) and (r/2 <> a) ) or
+                 ( (k = 3) and ( (xc >= (xs - a)) and ((xc + r) <= (xs + a)) or (xc <= (xs - a)) and ((xc + r) >= (xs + a)) ) and (r/2 <> a) )
                ) then writeln('Фигуры вложены')
             else
                 writeln('Фигуры пересекаются');
