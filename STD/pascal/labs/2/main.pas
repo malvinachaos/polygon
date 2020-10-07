@@ -4,18 +4,21 @@ VAR X: array[0..4] of real = (-0.98, -0.5, 0.1, 0.5, 0.95);
     S, E, F: real;
     K, i: integer;
 
-FUNCTION fact(x: integer): integer;     { Вычисляет }
-Begin                                   { факториал }
-    if x > 1 then fact:= x * fact(x-1)
-    else fact:= 1;
+FUNCTION fact(x: integer): integer;
+Var k: integer;
+Begin
+    k:= x - 1;
+    while k > 1 do
+    begin
+        x:= x * k;
+        k:= k - 1;
+    end;
+    fact:= x;
 End;
 
 FUNCTION pow(x: real; y: integer): real;
 Begin
-    if (y > 1) and (x > 1) then pow:= x * pow(x, y-1);  { Вычисляет }
-    if y = 1 then pow:= x;                              { степень   }
-    if x = 1 then pow:= 1;                              { колхозным }
-    if x = 0 then pow:= 0;                              { способом  }
+    {Что-то надо сделать...}
 End;
 
 BEGIN
@@ -31,11 +34,11 @@ BEGIN
     for i:= 0 to 4 do
     begin
         S:= 0; 
-        K:= 0;
-        while S < E do
+        K:= 1;
+        while S <= E do
         begin
+            S:= S + ( (pow(X[i], (4*K-3)) * (4*K-X[i])) / (fact(4*K)) ) * pow(-1, K);
             K:= K + 1;
-            S:= S + ( (pow(X[i], (4*K-3)) * (4*K-X[i])) / fact(4*K) );
         end;
         writeln(' ', (i+1), ' ', X[i]:2:2, ' ', S:2:8, '     ', K:4, ' ', F, ' ', ' ', (S-F):2:8, ' ');
     end;

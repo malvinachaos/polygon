@@ -14,7 +14,7 @@ with open("TEST", 'r') as T:
         txt = tmp.read().split()
         tmp.close()
 
-        command = "./ < tmp_test"
+        command = "./main < tmp_test"
         S(command)
         input("\n\nENTER...")
         S("rm tmp_test")
