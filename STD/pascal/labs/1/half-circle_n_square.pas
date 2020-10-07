@@ -41,15 +41,28 @@ BEGIN
            ) then writeln('Фигуры касаются')
         else
         begin
-            if ( ( (k = 1) and ( (xc - r >= xs - a) and (xc + r <= xs + a) or (xc - r <= xs - a) and (xc + r >= xs + a) ) ) or {вложенность}
-                 ( (k = 2) and ( (xc - r >= xs - a) and (xc <= (xs + a)) or (xc - r <= xs - a) and (xc >= (xs + a)) ) and (r/2 <> a) ) or
-                 ( (k = 3) and ( (xc >= (xs - a)) and (xc + r <= xs + a) or (xc <= (xs - a)) and (xc + r >= xs + a) ) and (r/2 <> a) )
-               ) then writeln('Фигуры вложены')
+            if ( ( (k = 1) and ( (xc - r >= xs - a) and (xc + r <= xs + a) ) ) or
+                 ( (k = 2) and ( (xc - r >= xs - a) and (xc <= (xs + a)) ) ) or
+                 ( (k = 3) and ( (xc >= (xs - a)) and (xc + r <= xs + a) ) )
+               ) then 
+            begin
+                    writeln('Полуокружность вложена в квадрат');
+                    if (xc = xs) then
+                        writeln('Фигуры концетричны');
+            end
             else
-                writeln('Фигуры пересекаются');
-        
-            if (xc = xs) then
-                writeln('Фигуры концетричны');
+            begin
+                if ( ( (k = 1) and (xc - r <= xs - a) and (xc + r >= xs + a) ) or
+                     ( (k = 2) and (xc - r <= xs - a) and (xc >= (xs + a)) and (r/2 <> a) ) or        
+                     ( (k = 3) and (xc <= (xs - a)) and (xc + r >= xs + a) and (r/2 <> a) )
+                   ) then
+                begin
+                        writeln('Квадрат вписан в полуокружность');
+                        if (xc = xs) then
+                            writeln('Фигуры концетричны');
+                end
+                else writeln('Фигуры пересекаются');
+            end;
         end;
     end
     else

@@ -1,25 +1,8 @@
 PROGRAM by_Marina;
 
 VAR X: array[0..4] of real = (-0.98, -0.5, 0.1, 0.5, 0.95);
-    S, E, F: real;
-    K, i: integer;
-
-FUNCTION fact(x: integer): integer;
-Var k: integer;
-Begin
-    k:= x - 1;
-    while k > 1 do
-    begin
-        x:= x * k;
-        k:= k - 1;
-    end;
-    fact:= x;
-End;
-
-FUNCTION pow(x: real; y: integer): real;
-Begin
-    {Что-то надо сделать...}
-End;
+    S, E, F, a, X4: real;
+    K, i, one: integer;
 
 BEGIN
     F:= 4.58342634; {при X = 0.5 контрольная формула будет равна 4.58342634}
@@ -28,18 +11,23 @@ BEGIN
     readln(E);
     
     {вывод тёплой шапки}
-    writeln('| № |', ' X |', ' S(X) сумма ряда |', ' K |', ' F(X) к.ф. |', ' S(x) - F(X) |');
+    writeln('| № |', '   X   |', ' S(X) сумма ряда |', ' K |', ' F(X) к.ф. |', ' S(x) - F(X) |');
     {3, 4, 18, 4, 12, 14}
 
     for i:= 0 to 4 do
     begin
         S:= 0; 
         K:= 1;
-        while S <= E do
+        a:= 0;
+        one:= 1;
+        X4:= X[i]*X[i]*X[i]*X[i];
+        while a < E do
         begin
-            S:= S + ( (pow(X[i], (4*K-3)) * (4*K-X[i])) / (fact(4*K)) ) * pow(-1, K);
             K:= K + 1;
+            one:= -one;
+            a:= (X4 * (4.0*K - X[i]) ) / (4.0*(K-1)-X[i]) * one;
+            S:= S + a;
         end;
-        writeln(' ', (i+1), ' ', X[i]:2:2, ' ', S:2:8, '     ', K:4, ' ', F, ' ', ' ', (S-F):2:8, ' ');
+        writeln('| ', (i+1), ' | ', X[i]:3:2, ' |   ', S:8:3, '   | ', K, ' | ', F:2:3, '   | ', (S-F):2:3, ' |');
     end;
 END.
