@@ -1,16 +1,17 @@
 PROGRAM by_Marina;
 
 VAR x, S, E, a, X4, F: real;
-    K, one: integer;
+    K, one, iE: integer;
 
 BEGIN
     write('Введите точность E (10 в степени): ');
     readln(E);
+    iE:= trunc(ln(round(1/E))/ln(10)); {данный код вычисляет степень для 1/E}
 
     write('Введите значение x: ');
     readln(x);
     
-    {вывод тёплой шапки}
+    {вывод шапки}
     writeln('|   X   | S(X) сум ряда | K |  F(X) | S(x) - F(X) |');
 
     S:= 0; 
@@ -30,5 +31,5 @@ BEGIN
         one:= one * (-1);
     end;
 
-    writeln('| ', X:4:2, ' |   ', S:3:6, '    | ', K, ' | ', F:2:3, ' |  ', (S-F):2:6, '  |')
+    writeln('| ', X:4:2, ' |   ', S:(3+iE):iE, '    | ', K, ' | ', F:(2+iE):iE, ' |  ', (S-F):(2+iE):iE, '  |')
 END.
