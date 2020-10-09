@@ -1,2 +1,2 @@
 #! /bin/sh
-fpc main.pas > log && ./test || less log
+fpc main.pas > log && ./test || less log; rm main.o main
