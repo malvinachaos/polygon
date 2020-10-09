@@ -21,6 +21,7 @@ BEGIN
         a:= 0;
         one:= 1;
         X4:= X[i]*X[i]*X[i]*X[i];
+        
         while a < E do
         begin
             K:= K + 1;
@@ -28,6 +29,7 @@ BEGIN
             a:= (X4 * (4.0*K - X[i]) ) / (4.0*(K-1)-X[i]) * one;
             S:= S + a;
         end;
+        
         writeln('| ', (i+1), ' | ', X[i]:3:2, ' |   ', S:8:3, '   | ', K, ' | ', F:2:3, '   | ', (S-F):2:3, ' |');
     end;
 END.
