@@ -4,10 +4,8 @@ VAR x, S, E, a, X4, F: real;
     K, one: integer;
 
 BEGIN
-    {E = 10e-2, 10e-4, 10e-6, 10-8}
     write('Введите точность E (10 в степени): ');
     readln(E);
-    writeln(#10#13, E, #10#13);
 
     write('Введите значение x: ');
     readln(x);
