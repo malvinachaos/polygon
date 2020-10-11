@@ -1,18 +1,19 @@
 PROGRAM by_Marina;
 
 VAR x, S, E, a, X4, F: real;
-    K, one: integer;
+    K, one, iE: integer;
 
 BEGIN
-    write('Введите точность E (10 в степени): ');
-    readln(E);
+    repeat
+        write('Введите точность E, (-1;0) U (0;1]: ');
+        readln(E);
+    until ( (-1 < E) and (E < 0) or (0 < E) and (E <= 1));
+
+    iE:= trunc(ln(round(1/E))/ln(10)); {данный код вычисляет степень для 1/E}
 
     write('Введите значение x: ');
     readln(x);
     
-    {вывод тёплой шапки}
-    writeln('|   X   | S(X) сум ряда | K |  F(X) | S(x) - F(X) |');
-
     S:= 0; 
     K:= 1;
     a:= 0;
@@ -30,5 +31,11 @@ BEGIN
         one:= one * (-1);
     end;
 
-    writeln('| ', X:4:2, ' |   ', S:3:6, '    | ', K, ' | ', F:2:3, ' |  ', (S-F):2:6, '  |')
+    writeln(
+            'X = ', X:4:iE, #10#13,
+            'Cумма ряда S(X) = ', S:(3+iE):iE, #10#13,
+            'Количество потребовавшихся итераций K = ', K, #10#13,
+            'Результат вычисления контрольной формулы F(x) = ', F:(2+iE):iE, #10#13,
+            'S(X) - F(X) = ', (S-F):(2+iE):iE
+          );
 END.
