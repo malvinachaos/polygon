@@ -42,8 +42,8 @@ BEGIN
         else
         begin
             if ( ( (k = 1) and ( (xc - r >= xs - a) and (xc + r <= xs + a) ) ) or
-                 ( (k = 2) and ( (xc - r >= xs - a) and (xc <= (xs + a)) ) ) or
-                 ( (k = 3) and ( (xc >= (xs - a)) and (xc + r <= xs + a) ) )
+                 ( (k = 2) and ( (xc - r >= xs - a) and (xc <= (xs + a)) ) and (r/2 <> a) ) or
+                 ( (k = 3) and ( (xc >= (xs - a)) and (xc + r <= xs + a) ) and (r/2 <> a) )
                ) then 
             begin
                     writeln('Полуокружность вложена в квадрат');
@@ -57,7 +57,7 @@ BEGIN
                      ( (k = 3) and (xc <= (xs - a)) and (xc + r >= xs + a) and (r/2 <> a) )
                    ) then
                 begin
-                        writeln('Квадрат вписан в полуокружность');
+                        writeln('Квадрат вложен в полуокружность');
                         if (xc = xs) then
                             writeln('Фигуры концетричны');
                 end
