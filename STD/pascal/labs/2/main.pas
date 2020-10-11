@@ -5,9 +5,9 @@ VAR x, S, E, a, X4, F: real;
 
 BEGIN
     repeat
-        write('Введите точность E, (-1 < E < 0) U (0 < E <= 1): ');
+        write('Введите точность E, (-1;0) U (0;1]: ');
         readln(E);
-    until ( (-1 < E) and (E < 0) or (E > 0) and (E <= 1));
+    until ( (-1 < E) and (E < 0) or (0 < E) and (E <= 1));
 
     iE:= trunc(ln(round(1/E))/ln(10)); {данный код вычисляет степень для 1/E}
 
