@@ -1,0 +1,3 @@
+#! /bin/sh
+
+fpc main.pas && ./create_test && ./main; less out.txt; rm main main.o
