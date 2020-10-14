@@ -15,20 +15,16 @@ BEGIN
     readln(x);
     
     S:= 0; 
-    K:= 1;
+    K:= 0;
     a:= 0;
-    one:= 1;
     X4:= x*x*x*x;
     F:= (2 - sin(x) - cos(x) - exp(-x)) / (2*x*x);
 
     while a < E do
     begin
         K:= K + 1;
-        a:= X4 * (4.0*K - x);
-        X4:= (4.0*(K-1) - x);
-        a:= a/X4;
-        S:= S + (a * one);
-        one:= one * (-1);
+        a:= - (X4 * (4.0*K - x)) / (4.0*(K-1) - x);
+        S:= S + a;
     end;
 
     writeln(
