@@ -1,5 +1,4 @@
 #! /usr/bin/python3
-from os import system as S
 from random import randint as R
 
 

@@ -1,10 +1,10 @@
-PROGRAM by_Marina;
+PROGRAM from_Dragon_Cave;
 
 TYPE
     onedim = array[1..30] of integer;
 
 VAR n, i: integer;
-    sum: longint = 0;
+    sum: integer = 0;
     k: integer = 0;
     Xtxt, Ytxt: text;
     otxt: text;
@@ -28,16 +28,30 @@ BEGIN
     begin
         read(Xtxt, X[i]);
         read(Ytxt, Y[i]);
-        
+    end;
+
+    writeln(otxt, 'Значения массива X:');
+    for i:= 1 to n do
+        write(otxt, X[i], ' ');
+    
+    writeln(otxt, #10#13);
+
+    writeln(otxt, 'Значения массива Y:');
+    for i:= 1 to n do
+        write(otxt, Y[i], ' ');
+
+    for i:= 1 to n do
         if (X[i] > 0) and (X[i] > Y[i]) then
         begin
             sum:= sum + X[i];
             k:= k + 1;
         end;
-    end;
 
+    writeln(otxt, #10#13);
+    write(otxt, 'Сумма: ');
     write(otxt, sum);
-    write(otxt, ' ');
+    writeln(otxt, ' ');
+    write(otxt, 'Количество: ');
     write(otxt, k);
 
     close(Xtxt);
