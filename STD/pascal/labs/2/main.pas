@@ -16,15 +16,15 @@ BEGIN
     
     S:= 0; 
     K:= 0;
-    a:= 0;
+    a:= x * (4 - x) / 24;
     X4:= x*x*x*x;
     F:= (2 - sin(x) - cos(x) - exp(-x)) / (2*x*x);
 
-    while a < E do
+    while (a < E) and (K < 100) do
     begin
-        K:= K + 1;
-        a:= - (X4 * (4.0*K - x)) / (4.0*(K-1) - x);
         S:= S + a;
+        K:= K + 1;
+        a:= - a * (X4 * (4.0*K - x)) / (4.0*(K-1) - x);
     end;
 
     writeln(
