@@ -11,7 +11,7 @@ if not isdir(".base_01_files"):
     mkdir(".base_01_files")
 
 PATH = getcwd()
-USER = "marina"
+USER = ". . ."
 FILE = "/.base_01_files"
 PATH_FILE = listdir(PATH+FILE)
 
