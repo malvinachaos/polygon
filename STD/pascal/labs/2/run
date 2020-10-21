@@ -1,2 +1,2 @@
 #! /bin/sh
-fpc main.pas && ./main ; rm main.o main
+fpc main.pas && clear && ./main ; rm main.o main
