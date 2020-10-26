@@ -7,15 +7,15 @@ BEGIN
     repeat
         write('Введите точность E, (0;1]: ');
         readln(E);
-        write('Введите значение x, [-1;1]: ');
+        write('Введите значение x, (-1;1): ');
         readln(x);
-    until ((0 < E) and (E <= 1)) and ((x > -1) and (x < 1));
+    until ((0 < E) and (E < 1)) and ((x > -1) and (x < 1));
 
     iE:= trunc(ln(round(1/E))/ln(10)); {данный код вычисляет степень для 1/E}
 
+    a:= (x * (4 - x)) / 24;
     S:= 0; 
     K:= 1;
-    a:= (x * (4 - x)) / 24;
     X4:= x*x*x*x;
     F:= (2 - sin(x) - cos(x) - exp(-x)) / (2*x*x);
 
