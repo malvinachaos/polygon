@@ -15,15 +15,15 @@ BEGIN
 
     a:= (x * (4 - x)) / 24;
     S:= 0; 
-    K:= 1;
+    K:= 2;
     X4:= x*x*x*x;
     F:= (2 - sin(x) - cos(x) - exp(-x)) / (2*x*x);
 
     while (abs(a) > E) do
     begin
-        S:= S + a;
         a:= a * (-1) * ((X4 * (4*K - x)) / (4*K * (4*K - 4 - x)));
         K:= K + 1;
+        S:= S + a;
         writeln
         (
             '======[', K:2, ']======', #10#13, 
