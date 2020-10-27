@@ -1,7 +1,7 @@
 PROGRAM by_Marina;
 
 VAR x, S, E, a, X4, F: real;
-    K, one, iE: integer;
+    K, one, iE, k4: integer;
 
 BEGIN
     repeat
@@ -22,7 +22,8 @@ BEGIN
     while (abs(a) > E) do
     begin
         K:= K + 1;
-        a:= a * ((-1) * ((X4 * (4*K - x)) / (4*K * (4*(K - 1) - x))));
+        k4:= 4 * K;
+        a:= a * ((-1) * ((X4 * (k4 - x)) / ((k4+1)*(k4+2)*(k4+3)*(k4+4) * (4*(K - 1) - x))));
         S:= S + a;
         writeln
         (
