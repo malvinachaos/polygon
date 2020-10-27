@@ -1,0 +1,5 @@
+PROGRAM by_Marina;
+
+BEGIN
+
+END.

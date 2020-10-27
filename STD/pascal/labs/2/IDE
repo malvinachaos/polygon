@@ -69,7 +69,8 @@ set shortmess=aoO
 badd +1 main.pas
 badd +1 notes
 badd +1 run
-badd +0 ~/Downloads/Laba_3.pas
+badd +1 ~/Downloads/Laba_3.pas
+badd +0 Laba_3.pas
 argglobal
 silent! argdel *
 $argadd main.pas
@@ -605,7 +606,7 @@ normal! zt
 normal! 021|
 wincmd w
 argglobal
-if bufexists('~/Downloads/Laba_3.pas') | buffer ~/Downloads/Laba_3.pas | else | edit ~/Downloads/Laba_3.pas | endif
+if bufexists('Laba_3.pas') | buffer Laba_3.pas | else | edit Laba_3.pas | endif
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -721,16 +722,16 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 36 - ((35 * winheight(0) + 28) / 56)
+let s:l = 1 - ((0 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-36
+1
 normal! 0
 wincmd w
 exe 'vert 1resize ' . ((&columns * 79 + 79) / 159)
 exe 'vert 2resize ' . ((&columns * 79 + 79) / 159)
-tabnext 2
+tabnext 1
 set stal=1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
