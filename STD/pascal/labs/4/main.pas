@@ -43,11 +43,11 @@ Begin
 End;
 
 BEGIN
-    if (argv[1] <> '') and (argv[2] <> '') then
+    if (argv[1] <> '') and (argv[2] <> '') and (argv[3] <> '') then
     begin
         assign(Af, argv[1]);
         assign(Cf, argv[2]);
-        assign(out, 'out.txt');
+        assign(out, argv[3]);
         rewrite(out);
 
         repeat
@@ -60,7 +60,7 @@ BEGIN
         arr_o(out, A, n);
 
         arr_i(Cf, C, n);
-        write(out, #13#10, #13#10, 'Значения массива C:');
+        write(out, #13#10, #13#10, 'Значения массива C:', #13#10);
         arr_o(out, C, n);
 
         write(out, #13#10, #13#10, 'Номер наименьшего из значений A^2 - C^2:', #13#10);
