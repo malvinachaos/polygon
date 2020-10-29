@@ -1,11 +1,14 @@
 PROGRAM by_Marina;
 
+USES sysutils;
 
 TYPE onedim = array of integer;
 
 VAR Af, Cf, out: text;
     A, C: onedim;
     n: integer;
+    fexists: boolean;
+    allargs: boolean;
 
 PROCEDURE arr_i(var f: text; var x: onedim; n: integer);
 Var i: integer;
@@ -43,7 +46,10 @@ Begin
 End;
 
 BEGIN
-    if (argv[1] <> '') and (argv[2] <> '') and (argv[3] <> '') then
+    fexists:= FileExists(argv[1]) and FileExists(argv[2]);
+    allargs:= (argv[1] <> '') and (argv[2] <> '') and (argv[3] <> '');
+
+    if allargs and fexists then
     begin
         assign(Af, argv[1]);
         assign(Cf, argv[2]);
@@ -68,6 +74,7 @@ BEGIN
 
         close(out);
     end
-    else writeln(#13#10, 'Использование:', #13#10,
-        './main file1.txt file2.txt [out_file.txt]');
+    else if (not allargs) then writeln(#13#10, 'Использование:', #13#10,
+        './main file1.txt file2.txt [out_file.txt]')
+    else if (not fexists) then writeln(#13#10, 'Один или оба файла не существуют')
 END.

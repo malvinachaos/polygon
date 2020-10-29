@@ -1,10 +1,13 @@
 PROGRAM by_Marina;
 
+USES sysutils;
+
 TYPE onedim = array of integer;
 
 VAR xf, otxt: text;
     x: onedim;
     n, num: integer;
+    fexist, argexist: boolean;
 
 PROCEDURE arr_i(var f: text; var x: onedim; n: integer);
 Var i: integer;
@@ -55,7 +58,10 @@ End;
 
 
 BEGIN
-	if (argv[1] <> '') and (argv[2] <> '') then
+    fexist:= FileExists(argv[1]);
+    argexist:= (argv[1] <> '') and (argv[2] <> '');
+	
+    if argexist and fexist then
     begin
         repeat
             write('Введите количество элементов массива(от 2 до 50): ');
@@ -74,6 +80,10 @@ BEGIN
         arr_o(otxt, x, n);
         find_num(otxt, x, n, num);
     end
-    else writeln('Использование: ./main in_file.txt out_file.txt');
+    else if (not argexist) then
+        writeln('Использование: ./main in_file.txt out_file.txt')
+    else if (not fexist) then
+        writeln('Файла ', argv[1], ' не существует');
+
 
 END.

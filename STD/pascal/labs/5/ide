@@ -62,19 +62,20 @@ set wildignore=*.pyc
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-cd ~/Documents/git/training/STD/pascal/labs/4
+cd ~/Documents/git/training/STD/pascal/labs/5
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +1 run
-badd +1 main.pas
-badd +19 notes
-badd +1 create_test
 badd +3 build
+badd +1 main.pas
+badd +1 create_test
+badd +1 notes
+badd +3 run
+badd +6 clean
 argglobal
 silent! argdel *
-$argadd run
+$argadd build
 set stal=2
 edit main.pas
 set splitbelow splitright
@@ -90,11 +91,11 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 95 + 79) / 159)
-exe '2resize ' . ((&lines * 39 + 29) / 59)
-exe 'vert 2resize ' . ((&columns * 63 + 79) / 159)
-exe '3resize ' . ((&lines * 16 + 29) / 59)
-exe 'vert 3resize ' . ((&columns * 63 + 79) / 159)
+exe 'vert 1resize ' . ((&columns * 98 + 79) / 159)
+exe '2resize ' . ((&lines * 46 + 29) / 59)
+exe 'vert 2resize ' . ((&columns * 60 + 79) / 159)
+exe '3resize ' . ((&lines * 9 + 29) / 59)
+exe 'vert 3resize ' . ((&columns * 60 + 79) / 159)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -211,12 +212,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 28) / 56)
+let s:l = 86 - ((52 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
+86
+normal! 051|
 wincmd w
 argglobal
 if bufexists('notes') | buffer notes | else | edit notes | endif
@@ -335,12 +336,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 19) / 39)
+let s:l = 1 - ((0 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 1
-normal! 02|
+normal! 0
 wincmd w
 argglobal
 if bufexists('create_test') | buffer create_test | else | edit create_test | endif
@@ -459,19 +460,19 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 5 - ((4 * winheight(0) + 8) / 16)
+let s:l = 1 - ((0 * winheight(0) + 4) / 9)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-5
+1
 normal! 0
 wincmd w
 3wincmd w
-exe 'vert 1resize ' . ((&columns * 95 + 79) / 159)
-exe '2resize ' . ((&lines * 39 + 29) / 59)
-exe 'vert 2resize ' . ((&columns * 63 + 79) / 159)
-exe '3resize ' . ((&lines * 16 + 29) / 59)
-exe 'vert 3resize ' . ((&columns * 63 + 79) / 159)
+exe 'vert 1resize ' . ((&columns * 98 + 79) / 159)
+exe '2resize ' . ((&lines * 46 + 29) / 59)
+exe 'vert 2resize ' . ((&columns * 60 + 79) / 159)
+exe '3resize ' . ((&lines * 9 + 29) / 59)
+exe 'vert 3resize ' . ((&columns * 60 + 79) / 159)
 tabedit main.pas
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -600,12 +601,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 10 - ((9 * winheight(0) + 28) / 56)
+let s:l = 2 - ((1 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-10
-normal! 05|
+2
+normal! 0
 wincmd w
 argglobal
 if bufexists('main.pas') | buffer main.pas | else | edit main.pas | endif
@@ -724,12 +725,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 79 - ((51 * winheight(0) + 28) / 56)
+let s:l = 54 - ((18 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-79
-normal! 085|
+54
+normal! 0
 wincmd w
 exe 'vert 1resize ' . ((&columns * 79 + 79) / 159)
 exe 'vert 2resize ' . ((&columns * 79 + 79) / 159)

@@ -62,19 +62,18 @@ set wildignore=*.pyc
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-cd ~/Documents/git/training/STD/pascal/labs/5
+cd ~/Documents/git/training/STD/pascal/labs/6
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +3 build
-badd +1 main.pas
-badd +1 create_test
-badd +1 notes
-badd +0 run
+badd +0 create_test
+badd +0 main.pas
+badd +0 notes
 argglobal
 silent! argdel *
-$argadd build
+$argadd create_test
+set stal=2
 edit main.pas
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -83,22 +82,17 @@ vsplit
 wincmd w
 wincmd _ | wincmd |
 split
-wincmd _ | wincmd |
-split
-2wincmd k
-wincmd w
+1wincmd k
 wincmd w
 set nosplitbelow
 set nosplitright
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
 exe 'vert 1resize ' . ((&columns * 98 + 79) / 159)
-exe '2resize ' . ((&lines * 38 + 29) / 59)
+exe '2resize ' . ((&lines * 35 + 29) / 59)
 exe 'vert 2resize ' . ((&columns * 60 + 79) / 159)
-exe '3resize ' . ((&lines * 8 + 29) / 59)
+exe '3resize ' . ((&lines * 20 + 29) / 59)
 exe 'vert 3resize ' . ((&columns * 60 + 79) / 159)
-exe '4resize ' . ((&lines * 9 + 29) / 59)
-exe 'vert 4resize ' . ((&columns * 60 + 79) / 159)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -215,7 +209,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 28) / 57)
+let s:l = 1 - ((0 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -339,12 +333,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 25 - ((24 * winheight(0) + 19) / 38)
+let s:l = 25 - ((24 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 25
-normal! 021|
+normal! 0
 wincmd w
 argglobal
 if bufexists('create_test') | buffer create_test | else | edit create_test | endif
@@ -463,15 +457,32 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 8 - ((7 * winheight(0) + 4) / 8)
+let s:l = 1 - ((0 * winheight(0) + 10) / 20)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-8
+1
 normal! 0
 wincmd w
+2wincmd w
+exe 'vert 1resize ' . ((&columns * 98 + 79) / 159)
+exe '2resize ' . ((&lines * 35 + 29) / 59)
+exe 'vert 2resize ' . ((&columns * 60 + 79) / 159)
+exe '3resize ' . ((&lines * 20 + 29) / 59)
+exe 'vert 3resize ' . ((&columns * 60 + 79) / 159)
+tabedit main.pas
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+exe 'vert 1resize ' . ((&columns * 79 + 79) / 159)
+exe 'vert 2resize ' . ((&columns * 79 + 79) / 159)
 argglobal
-if bufexists('run') | buffer run | else | edit run | endif
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -489,7 +500,7 @@ setlocal cinoptions=
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
 setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
-setlocal commentstring=#%s
+setlocal commentstring=/*%s*/
 setlocal complete=.,w,b,u,t,i
 setlocal concealcursor=
 setlocal conceallevel=0
@@ -505,8 +516,8 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal expandtab
-if &filetype != 'sh'
-setlocal filetype=sh
+if &filetype != 'pascal'
+setlocal filetype=pascal
 endif
 setlocal fixendofline
 setlocal foldcolumn=0
@@ -528,8 +539,8 @@ setlocal iminsert=0
 setlocal imsearch=-1
 setlocal include=
 setlocal includeexpr=
-setlocal indentexpr=GetShIndent()
-setlocal indentkeys=0{,0},!^F,o,O,e,0=then,0=do,0=else,0=elif,0=fi,0=esac,0=done,0=end,),0=;;,0=;&,0=fin,0=fil,0=fip,0=fir,0=fix
+setlocal indentexpr=GetPascalIndent(v:lnum)
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e,=end;,==const,==type,==var,==begin,==repeat,==until,==for,=program,==function,==procedure,==object,==private,=record,==if,==else,==case
 setlocal noinfercase
 setlocal iskeyword=@,48-57,_,192-255
 setlocal keywordprg=
@@ -570,8 +581,8 @@ setlocal statusline=
 setlocal suffixesadd=
 setlocal noswapfile
 setlocal synmaxcol=3000
-if &syntax != 'sh'
-setlocal syntax=sh
+if &syntax != 'pascal'
+setlocal syntax=pascal
 endif
 setlocal tabstop=4
 setlocal tagcase=
@@ -587,22 +598,141 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 5 - ((4 * winheight(0) + 4) / 9)
+let s:l = 1 - ((0 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-5
+1
 normal! 0
 wincmd w
-4wincmd w
-exe 'vert 1resize ' . ((&columns * 98 + 79) / 159)
-exe '2resize ' . ((&lines * 38 + 29) / 59)
-exe 'vert 2resize ' . ((&columns * 60 + 79) / 159)
-exe '3resize ' . ((&lines * 8 + 29) / 59)
-exe 'vert 3resize ' . ((&columns * 60 + 79) / 159)
-exe '4resize ' . ((&lines * 9 + 29) / 59)
-exe 'vert 4resize ' . ((&columns * 60 + 79) / 159)
+argglobal
+if bufexists('main.pas') | buffer main.pas | else | edit main.pas | endif
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal backupcopy=
+setlocal balloonexpr=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'pascal'
+setlocal filetype=pascal
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=-1
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=GetPascalIndent(v:lnum)
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e,=end;,==const,==type,==var,==begin,==repeat,==until,==for,=program,==function,==procedure,==object,==private,=record,==if,==else,==case
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+set linebreak
+setlocal linebreak
+setlocal nolisp
+setlocal lispwords=
+setlocal nolist
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal signcolumn=auto
+setlocal nosmartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != 'pascal'
+setlocal syntax=pascal
+endif
+setlocal tabstop=4
+setlocal tagcase=
+setlocal tags=
+setlocal termkey=
+setlocal termsize=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 1 - ((0 * winheight(0) + 28) / 56)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+1
+normal! 0
+wincmd w
+exe 'vert 1resize ' . ((&columns * 79 + 79) / 159)
+exe 'vert 2resize ' . ((&columns * 79 + 79) / 159)
 tabnext 1
+set stal=1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
 endif

@@ -1,9 +1,0 @@
-#! /bin/sh
-./create_test $1 $2 && ./main $1 $2 $3 && less $3
-
-read -p "Delete all created files? [no/yes]=[0/1] " choice
-
-if [ $choice -eq 1 ]; then
-    rm $1 $2 $3 
-    echo "Deleted"
-fi
