@@ -1,0 +1,13 @@
+#! /usr/bin/python3
+from random import randint as R
+
+
+A = open("A.txt", "w")
+C = open("C.txt", "w")
+
+for i in range(50):
+    A.write(str(R(-1024, 1024)) + ' ')
+    C.write(str(R(-1024, 1024)) + ' ')
+
+A.close()
+C.close()

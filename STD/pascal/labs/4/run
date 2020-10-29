@@ -1,2 +1,9 @@
 #! /bin/sh
-fpc main.pas && ./test
+./create_test && ./main $1 $2 && less out.txt
+
+read -p "Delete all txt files? [no/yes]=[0/1] " choice
+
+if [ $choice -eq 1 ]; then
+    rm A.txt C.txt out.txt
+    echo "Deleted"
+fi
