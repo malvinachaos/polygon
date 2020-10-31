@@ -1,0 +1,21 @@
+#! /usr/bin/python3
+from random import randint as r
+from sys import argv as a
+
+if len(a) > 1:
+    print('Good')
+    a6 = len(a) == 4
+
+    m = 100
+    n = 100
+    s = int(a[2]) if a6 else -32767
+    e = int(a[3]) if a6 else 32767
+
+    with open(a[1], 'w') as f:
+        for i in range(m):
+            for j in range(n):
+                f.write(str(r(s, e)) + ' ')
+            f.write('\n')
+else:
+    print('Использование:\n./create_test file.txt [m] [n]\
+            [start] [end]')

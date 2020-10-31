@@ -6,5 +6,5 @@ from sys import argv
 if len(argv) > 1:
     with open(argv[1], 'w') as f:
         for i in range(50):
-            f.write(str(R(-1024, 1024)), ' ')
+            f.write(str(R(-1024, 1024)) +  ' ')
 
