@@ -35,7 +35,7 @@ Begin
 End;
 
 FUNCTION  find_num(x: onedim; y: onedim; n: integer):integer;
-Var i, num: integer; mini, chibi: integer;
+Var i, num, mini, chibi: integer;
 Begin
     num:= -1;
     mini:= pow(x[0]) - pow(y[0]);
