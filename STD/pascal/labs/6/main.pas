@@ -36,26 +36,31 @@ End;
 
 PROCEDURE find_num(var f: text; var x: one; n, t1, t2: integer);
 Var i, j, num, number: integer;
+    flg: boolean;
 Begin
     writeln(f, 'Значения массива:', #13#10);
     arr_o(f, x, n);
     j:= 0;
     i:= 0;
+    flg:= true;
 
-    while (i < n) and (x[i] < t2) do
+    while (i < n) and flg do
     begin
-        if x[i] > t2 then 
+        if x[i] > t2 then
+        begin
             j:= i;
+            flg:= false;
+        end;
         i:= i + 1;
     end;
 
     number:= 32767;
 
     for i:= j to n do
-        if (x[j] > t1) and (number > x[i]) then
+        if (x[i] > t1) and (number > x[i]) then
         begin
             number:= x[i];
-            num:= i;
+            num:= i + 1;
         end;
 
     if (number <> 32767) then writeln(f, 'Номер последнего минимального элемента: ', num)

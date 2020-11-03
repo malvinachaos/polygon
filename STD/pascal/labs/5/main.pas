@@ -30,7 +30,7 @@ Begin
 End;
 
 
-PROCEDURE find_num(var f: text; x: onedim; n: integer; num: integer);
+PROCEDURE find_num(var f: text; x: onedim; n, num: integer);
 Var flg: boolean;
     i, j: integer;
 Begin 
@@ -80,10 +80,10 @@ BEGIN
         arr_o(otxt, x, n);
         find_num(otxt, x, n, num);
     end
-    else if (not argexist) then
-        writeln('Использование: ./main in_file.txt out_file.txt')
     else if (not fexist) then
-        writeln('Файла ', argv[1], ' не существует');
+        writeln('Файла ', argv[1], ' не существует')
+    else if (not argexist) then
+        writeln('Использование: ./main in_file.txt out_file.txt');
 
 
 END.

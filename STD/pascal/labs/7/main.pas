@@ -11,22 +11,18 @@ VAR a: twodim;
 
 PROCEDURE matrix_i(var f: text; var x: twodim; m, n: integer);
 Var i, j, c: integer;
-{log} k: integer;
 Begin 
     reset(f);
-{log} writeln('check input');
-{log} k:= 1;
+    setlength(x, m+1, n);
     for i:= 0 to m do
     begin
         for j:= 0 to n do
         begin
             read(f, x[i, j]);
-{log} write('[', i, 'x', j, ']', ' ', x[i, j], '    ');
-{log} if (k mod 10 = 0) then writeln();
-{log} k:= k + 1;
         end;
-
-        while not seekeoln(f) do read(f, c);
+        
+        if i < m then
+            while not seekeoln(f) do read(f, c);
     end;
 
     close(f);
@@ -38,12 +34,11 @@ Var i, j, sum: integer;
     flg: boolean;
 Begin
     flg:= false;
-{log} writeln('check output');
+    k:= 1;
     writeln(f, 'Номера строк матрицы:');
     for i:= 0 to m do
     begin
         sum:= 1;
-        k:= 0;
 
         for j:= 0 to n do
             sum:= sum + x[i, j];
@@ -51,14 +46,15 @@ Begin
         if sum < 0 then
         begin
             flg:= true;
-            write(f, i, '      ');
-            if (k mod 4 = 0) then writeln(f);
+            write(f, i, '    ');
+            if (k mod 4 = 0) then write(f, #13#10);
             k:= k + 1;
         end;
-{log} writeln('Good');
     end;
 
     if not flg then writeln(f, 'Не найдено');
+    writeln(f);
+    close(f);
 End;
 
 BEGIN
@@ -77,14 +73,11 @@ BEGIN
         until (m >= 2) and (m <= 100) and (n >= 2) and (n <= 100);
         n:= n - 1;
         m:= m - 1;
-        setlength(a, m, n);
 
         matrix_i(matfile, a, m, n);
         fnd(otxt, a, m, n);
     end
-    else if not fexist then writeln('Файла ', argv[1], ' не существует')
-    else if not aexist then writeln('Использование:', #13#10, './main file.txt out.txt');
-
-    close(otxt);
+    else if not aexist then writeln('Использование:', #13#10, './main file.txt out.txt')
+    else if not fexist then writeln('Файла ', argv[1], ' не существует');
 
 END.
