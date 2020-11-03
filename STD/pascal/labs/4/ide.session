@@ -88,11 +88,11 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 106 + 106) / 212)
+exe 'vert 1resize ' . ((&columns * 148 + 106) / 212)
 exe '2resize ' . ((&lines * 28 + 29) / 58)
-exe 'vert 2resize ' . ((&columns * 105 + 106) / 212)
+exe 'vert 2resize ' . ((&columns * 63 + 106) / 212)
 exe '3resize ' . ((&lines * 27 + 29) / 58)
-exe 'vert 3resize ' . ((&columns * 105 + 106) / 212)
+exe 'vert 3resize ' . ((&columns * 63 + 106) / 212)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -220,11 +220,11 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 3 - ((2 * winheight(0) + 28) / 56)
+let s:l = 1 - ((0 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-3
+1
 normal! 0
 wincmd w
 argglobal
@@ -355,11 +355,11 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 14) / 28)
+let s:l = 4 - ((3 * winheight(0) + 14) / 28)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
+4
 normal! 0
 wincmd w
 argglobal
@@ -497,15 +497,15 @@ normal! zt
 1
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 106 + 106) / 212)
+exe 'vert 1resize ' . ((&columns * 148 + 106) / 212)
 exe '2resize ' . ((&lines * 28 + 29) / 58)
-exe 'vert 2resize ' . ((&columns * 105 + 106) / 212)
+exe 'vert 2resize ' . ((&columns * 63 + 106) / 212)
 exe '3resize ' . ((&lines * 27 + 29) / 58)
-exe 'vert 3resize ' . ((&columns * 105 + 106) / 212)
+exe 'vert 3resize ' . ((&columns * 63 + 106) / 212)
 tabnext 1
+badd +1 main.pas
 badd +1 notes
-badd +0 c
-badd +0 main.pas
+badd +1 c
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
