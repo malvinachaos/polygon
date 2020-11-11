@@ -1,3 +1,4 @@
 # WHAT ARE U DOING IN MY SWAMP???
 
-THERE IS NO USEFUL PROGRAMS, GO AWAY
+There is I experimenting with python, creating some random staff
+TRIGGER WARNING: shitcode

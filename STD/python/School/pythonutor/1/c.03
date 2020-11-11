@@ -1,4 +1,0 @@
-#! /bin/bash
-
-vim 03.списки.py
-python 03.списки.py

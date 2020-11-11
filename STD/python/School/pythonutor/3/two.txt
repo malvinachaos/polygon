@@ -1,9 +1,0 @@
-i3wm
-42
-I love you
-Dwarf Fortress
-Krita
-lua
-1.py
-STD.cpp
-Line sex
