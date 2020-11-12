@@ -1,11 +1,11 @@
 pytrash (by MalvinaLazyDragon)
 
- * Crossplatform(minimum os.system)
  * Some GrApHiCs(colored)
  * Progress bar(tqdm)
  * Arguments parsing(argparse)
  * Last not necessary oprion -- PyInstaller
-
+ * ATTENTION: this program cannot working with files with same 
+   name, but in various dirs
 -------------------------------------------------------------------
 1) Фишки diy_rm:
 [ ] цикл по аргументам строки
@@ -30,39 +30,11 @@ pytrash (by MalvinaLazyDragon)
 -------------------------------------------------------------------
 !!! Путём может быть и файлом и папкой
 
-================================[os]===============================
-getlogin()
-    возвращает имя пользователя
-
-uname()
-    возвращает кортеж данных об операционной системе пользователя.
-    самое полезное -- uname()[0]
-
-mkdir(path)
-    создаёт папку по пути path, если она уже существует, то
-    возникает FileExistsError
-
-replace(src, dst, *, src_dir_fd=None, dst_dir_fd=None)
-    переименовывает файл или каталог из src в dst. Если dst -- 
-    каталог, возникает OSError. Если dst существует и является
-    файлом, то он автоматически перезаписывается
-
-                        ~~--[os.path.<>]--~~
-exists(path)
-    возвращает true, если путь существует, в противном случае --
-    false
-
-getatime(path)
-    возвращает время последнего доступа пути
-
-getctime(path)
-    возможно, время создания
-
-getsize(path)
-    возвращает размер в байтах
-
-realpath(path)
-    возвращает абсолютный путь указанного пути
-
-
-===============================[tqdm]==============================
+[x] -r: удалить указанный список файлов текущей директории
+[x] -d
+[ ] -i
+[x] -l
+[x] -u
+[x] -c
+[ ] -t
+[ ] -m
