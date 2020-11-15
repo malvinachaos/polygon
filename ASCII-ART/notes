@@ -1,0 +1,23 @@
+>>> from colored import fg, bg, attr
+>>>
+>>> print ('%s Hello World !!! %s' % (fg(1), attr(0)))
+Hello World !!!
+>>>
+>>> print ('%s%s Hello World !!! %s' % (fg(1), bg(15), attr(0)))
+Hello World !!!
+
+>>> print ('%s%s Hello World !!! %s' % (fg('white'), bg('yellow'), attr('reset')))
+Hello World !!!
+>>>
+>>> print ('%s%s Hello World !!! %s' % (fg('orchid'), attr('bold'), attr('reset')))
+Hello World !!!
+>>>
+>>> color = bg('indian_red_1a') + fg('white')
+>>> reset = attr('reset')
+>>> print (color + 'Hello World !!!' + reset)
+Hello World !!!
+
+>>> color = fg('#C0C0C0') + bg('#00005f')
+>>> res = attr('reset')
+>>> print (color + "Hello World !!!" + res)
+Hello World !!!

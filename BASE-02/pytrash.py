@@ -1,15 +1,18 @@
 import argparse
-from os import mkdir, getlogin, replace, listdir, path, getcwd, remove
+from os import mkdir, getlogin, replace, listdir, path, getcwd, remove, system
 
 
 # Creating needed folders and files
 USER = getlogin()
 PATH = f"/home/{USER}/.local/share/PyTrash"
 FILE = PATH + "/.pytrashdata"
+
 if not path.exists(PATH):
     mkdir(PATH)
     print(f"Created directory '{PATH}'")
-DATA = open(FILE, "a")
+if not path.exists(FILE):
+    system(f"touch {FILE}")
+    print(f"Created data file")
 
 # Parsing arguments
 parser = argparse.ArgumentParser(prog="pytrash", description="console trash")
@@ -42,24 +45,43 @@ parser.add_argument("-m", action="extend",\
                     metavar="FILE", nargs="+", type=str,\
                     help="recover listed files in current directory")
 
-parser.add_argument("-v", "--version", action="version", version="%(prog)s 0.1")
+parser.add_argument("-v", "--version", action="version", version="%(prog)s 0.2")
 
 args = parser.parse_args()
 
-if args.r:
-    todel = []
-    string= "', '"
-    for i in args.r:
-        if not path.exists(i):
-            todel.append(i)
+def files_exist(files, Path=""):
+    non = []
+    for i in files:
+        if not path.exists(Path+i):
+            non.append(i)
+            print("GOTCHA!")
+    return non
 
-    if not len(todel):
+def load():
+    READ = []
+    with open(FILE, "r") as DATA:
+        for i in DATA.readlines():
+            READ.append(i)
+    return READ
+
+def upload(READ):
+    with open(FILE, "w") as DATA:
+        for i in READ:
+            DATA.write(i+"\n")
+
+if args.r:
+    string= "', '"
+    f = files_exist(args.r)
+
+    if not len(f):
+        file_list = load()
         for i in args.r:
             replace(i, f"{PATH}/{i}")
             print(i, "MOVED")
-            DATA.write(f"{path.abspath(i)}\n")
+            file_list.append(f"{path.abspath(i)}\n")
+        upload(file_list)
     else:
-        print(f"Files: '{string.join(todel)}' aren't exist")
+        print(f"Files: '{string.join(f)}' aren't exist")
 
 elif args.d:
     string = "\n"
@@ -75,35 +97,41 @@ elif args.l:
                 print(i[len(CURR_PATH):-1])
 
 elif args.i:
-    pass
+    string= "', '"
+    f = files_exist(args.i, PATH + "/")
+    data = load()
+
+    if not len(f):
+        for item in args.i:
+            one = 0
+            for i in data:
+                if i.find(item) != -1:
+                    one = i[:-1]
+            print(f'''
+Info about '{item}':
+    Path: {one}
+    Size: {path.getsize(PATH+"/"+item)} Bytes
+    Date: {path.getctime(PATH+"/"+item)}
+''')
+    else:
+        print(f"Files: '{string.join(f)}' don't exist")
 
 elif args.u:
-    torec = []
     string= "', '"
-    for i in args.u:
-        if not path.exists(PATH+"/"+i):
-            torec.append(i)
+    f = files_exist(args.u, PATH + "/")
 
-    if not len(torec):
-        DATA.close()
-        DATA = open(FILE, "r")
-        filelist = []
-        for i in DATA.readlines():
-            filelist.append(i)
-        DATA.close()
+    if not len(f):
+        file_list = load()
 
-        DATA = open(FILE, "w")
-        for i, item in enumerate(filelist):
+        for i, item in enumerate(file_list):
             for j in args.u:
                 if j in item:
                     replace(PATH+"/"+j, item[:-1])
-                    filelist.pop(i)
-        for i in filelist:
-            DATA.write(i+"\n")
-        DATA.close()
-        DATA = open(FILE, "a")
+                    print(j, "RESTORED")
+                    file_list.pop(i)
+        upload(file_list)
     else:
-        print(f"Files: '{string.join(torec)}' aren't exist")
+        print(f"Files: '{string.join(f)}' aren't exist")
 
 elif args.c:
     for i in listdir(PATH):
@@ -113,7 +141,6 @@ elif args.c:
         else:
             rmdir(i)
 
-elif args.t:
+elif args.m:
     pass
 
-DATA.close()

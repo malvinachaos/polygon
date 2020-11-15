@@ -1,0 +1,16 @@
+#! /usr/bin/python3
+import argparse
+
+
+parser = argparse.ArgumentParser(description='Manage your universes!')
+# This line can accept many parameters
+parser.add_argument('names', metavar='U', nargs='+', type=str, help='universes names')
+#
+parser.add_argument('-R',\
+                    action='store_true',\
+                    help='Force delete the universe')
+parser.add_argument('-c', type=int, default=2, help='Count universes to create/delete')
+
+args = parser.parse_args()
+print(args.R)
+print(f'Universes, named as {" ".join(args.names)}, will split to {args.c} other universes')
