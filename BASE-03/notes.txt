@@ -1,0 +1,6 @@
+Инициализация графики вызывается InitGraph(переводит видеокарту в
+графический режим)
+
+PROCEDURE InitGraph(var graphdriver: integer; var graphmode: integer;
+                    pathtodriver: string);
+
