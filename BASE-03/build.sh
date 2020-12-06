@@ -7,24 +7,26 @@ do
     case $1 in
         "-h"|"--help")
             echo -e "building pascal program
-Usage build.sh [-h] [-n] [-c N [name]] [-b] [-v] [-r]
+Usage build.sh [-h|--help] [-b|--build] [-v|--verbose] [--run] [--remove]
 
 -h --help \t \t output this text
--b --build \t \t compile to program, named 'program'
+-b --build \t \t compile to program
+--run \t \t start compiled program
 -v --verbose \t \t compilt with additional information
--r --remove \t \t remove 'program'
+-r --remove \t \t remove program
 "
-        shift
         ;;
 
         "-b"|"--build")
-            fpc $name -oprogram.exe && rm -f *.o
-        shift
+            fpc $name -oprogram.exe  && rm -f *.o
+        ;;
+
+        "--run")
+            ./program.exe
         ;;
 
         "-v"|"--verbose")
-            fpc -ved $name -oprogram.exe && rm -f *.o
-        shift
+            fpc -ved $name -oprogram.exe  && rm -f *.o
         ;;
 
         "-r"|"--remove")

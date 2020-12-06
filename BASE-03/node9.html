@@ -1,0 +1,2492 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>8. The GRAPH unit.</TITLE>
+<META NAME="description" CONTENT="8. The GRAPH unit.">
+<META NAME="keywords" CONTENT="units">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta8">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="units.css">
+
+<LINK REL="next" HREF="node10.html">
+<LINK REL="previous" HREF="node8.html">
+<LINK REL="up" HREF="units.html">
+<LINK REL="next" HREF="node10.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><SCRIPT SRC="../search/search2.js"></script>
+<BR> <HR>
+<A NAME="tex2html2017"
+  HREF="node10.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="../buttons/next.gif"></A> 
+<A NAME="tex2html2011"
+  HREF="units.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="../buttons/up.gif"></A> 
+<A NAME="tex2html2005"
+  HREF="node8.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="../buttons/prev.gif"></A> 
+<A NAME="tex2html2013"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="../buttons/contents.gif"></A> 
+<A NAME="tex2html2015"
+  HREF="node22.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="../buttons/index.gif"></A> <A NAME="tex2html1"
+  HREF="javascript:opensearch()"><IMG
+ WIDTH="62" HEIGHT="24" ALIGN="BOTTOM" BORDER="0"
+ SRC="../buttons/search.gif"
+ ALT="search.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2018"
+  HREF="node10.html">9. The HEAPTRC unit.</A>
+<B>Up:</B> <A NAME="tex2html2012"
+  HREF="units.html">Free Pascal supplied units</A>
+<B> Previous:</B> <A NAME="tex2html2006"
+  HREF="node8.html">7. The GO32 unit</A>
+<BR> <HR> <P>
+</DIV>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html2019"
+  HREF="node9.html#SECTION00910000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">1</SPAN> Introduction</A>
+<UL>
+<LI><A NAME="tex2html2020"
+  HREF="node9.html#SECTION00911000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">1</SPAN> Requirements</A>
+<LI><A NAME="tex2html2021"
+  HREF="node9.html#SECTION00912000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">2</SPAN> A word about mode selection</A>
+</UL>
+<LI><A NAME="tex2html2022"
+  HREF="node9.html#SECTION00920000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">2</SPAN> Constants, Types and Variables</A>
+<UL>
+<LI><A NAME="tex2html2023"
+  HREF="node9.html#SECTION00921000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">1</SPAN> Types</A>
+</UL>
+<LI><A NAME="tex2html2024"
+  HREF="node9.html#SECTION00930000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">3</SPAN> Function list by category</A>
+<UL>
+<LI><A NAME="tex2html2025"
+  HREF="node9.html#SECTION00931000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">1</SPAN> Initialization</A>
+<LI><A NAME="tex2html2026"
+  HREF="node9.html#SECTION00932000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">2</SPAN> screen management</A>
+<LI><A NAME="tex2html2027"
+  HREF="node9.html#SECTION00933000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">3</SPAN> Color management</A>
+<LI><A NAME="tex2html2028"
+  HREF="node9.html#SECTION00934000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">4</SPAN> Drawing primitives</A>
+<LI><A NAME="tex2html2029"
+  HREF="node9.html#SECTION00935000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">5</SPAN> Filled drawings</A>
+<LI><A NAME="tex2html2030"
+  HREF="node9.html#SECTION00936000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">6</SPAN> Text and font handling</A>
+</UL>
+<LI><A NAME="tex2html2031"
+  HREF="node9.html#SECTION00940000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN> Functions and procedures</A>
+<UL>
+<LI><A NAME="tex2html2032"
+  HREF="node9.html#SECTION00941000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">1</SPAN> Arc</A>
+<LI><A NAME="tex2html2033"
+  HREF="node9.html#SECTION00942000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">2</SPAN> Bar</A>
+<LI><A NAME="tex2html2034"
+  HREF="node9.html#SECTION00943000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">3</SPAN> Bar3D</A>
+<LI><A NAME="tex2html2035"
+  HREF="node9.html#SECTION00944000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">4</SPAN> Circle</A>
+<LI><A NAME="tex2html2036"
+  HREF="node9.html#SECTION00945000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">5</SPAN> ClearDevice</A>
+<LI><A NAME="tex2html2037"
+  HREF="node9.html#SECTION00946000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">6</SPAN> ClearViewPort</A>
+<LI><A NAME="tex2html2038"
+  HREF="node9.html#SECTION00947000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">7</SPAN> CloseGraph</A>
+<LI><A NAME="tex2html2039"
+  HREF="node9.html#SECTION00948000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">8</SPAN> DetectGraph</A>
+<LI><A NAME="tex2html2040"
+  HREF="node9.html#SECTION00949000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">9</SPAN> DrawPoly</A>
+<LI><A NAME="tex2html2041"
+  HREF="node9.html#SECTION009410000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">10</SPAN> Ellipse</A>
+<LI><A NAME="tex2html2042"
+  HREF="node9.html#SECTION009411000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">11</SPAN> FillEllipse</A>
+<LI><A NAME="tex2html2043"
+  HREF="node9.html#SECTION009412000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">12</SPAN> FillPoly</A>
+<LI><A NAME="tex2html2044"
+  HREF="node9.html#SECTION009413000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">13</SPAN> FloodFill</A>
+<LI><A NAME="tex2html2045"
+  HREF="node9.html#SECTION009414000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">14</SPAN> GetArcCoords</A>
+<LI><A NAME="tex2html2046"
+  HREF="node9.html#SECTION009415000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">15</SPAN> GetAspectRatio</A>
+<LI><A NAME="tex2html2047"
+  HREF="node9.html#SECTION009416000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">16</SPAN> GetBkColor</A>
+<LI><A NAME="tex2html2048"
+  HREF="node9.html#SECTION009417000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">17</SPAN> GetColor</A>
+<LI><A NAME="tex2html2049"
+  HREF="node9.html#SECTION009418000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">18</SPAN> GetDefaultPalette</A>
+<LI><A NAME="tex2html2050"
+  HREF="node9.html#SECTION009419000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">19</SPAN> GetDriverName</A>
+<LI><A NAME="tex2html2051"
+  HREF="node9.html#SECTION009420000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">20</SPAN> GetFillPattern</A>
+<LI><A NAME="tex2html2052"
+  HREF="node9.html#SECTION009421000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">21</SPAN> GetFillSettings</A>
+<LI><A NAME="tex2html2053"
+  HREF="node9.html#SECTION009422000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">22</SPAN> GetGraphMode</A>
+<LI><A NAME="tex2html2054"
+  HREF="node9.html#SECTION009423000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">23</SPAN> GetImage</A>
+<LI><A NAME="tex2html2055"
+  HREF="node9.html#SECTION009424000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">24</SPAN> GetLineSettings</A>
+<LI><A NAME="tex2html2056"
+  HREF="node9.html#SECTION009425000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">25</SPAN> GetMaxColor</A>
+<LI><A NAME="tex2html2057"
+  HREF="node9.html#SECTION009426000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">26</SPAN> GetMaxMode</A>
+<LI><A NAME="tex2html2058"
+  HREF="node9.html#SECTION009427000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">27</SPAN> GetMaxX</A>
+<LI><A NAME="tex2html2059"
+  HREF="node9.html#SECTION009428000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">28</SPAN> GetMaxY</A>
+<LI><A NAME="tex2html2060"
+  HREF="node9.html#SECTION009429000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">29</SPAN> GetModeName</A>
+<LI><A NAME="tex2html2061"
+  HREF="node9.html#SECTION009430000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">30</SPAN> GetModeRange</A>
+<LI><A NAME="tex2html2062"
+  HREF="node9.html#SECTION009431000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">31</SPAN> GetPalette</A>
+<LI><A NAME="tex2html2063"
+  HREF="node9.html#SECTION009432000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">32</SPAN> GetPaletteSize</A>
+<LI><A NAME="tex2html2064"
+  HREF="node9.html#SECTION009433000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">33</SPAN> GetPixel</A>
+<LI><A NAME="tex2html2065"
+  HREF="node9.html#SECTION009434000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">34</SPAN> GetTextSettings</A>
+<LI><A NAME="tex2html2066"
+  HREF="node9.html#SECTION009435000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">35</SPAN> GetViewSettings</A>
+<LI><A NAME="tex2html2067"
+  HREF="node9.html#SECTION009436000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">36</SPAN> GetX</A>
+<LI><A NAME="tex2html2068"
+  HREF="node9.html#SECTION009437000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">37</SPAN> GetY</A>
+<LI><A NAME="tex2html2069"
+  HREF="node9.html#SECTION009438000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">38</SPAN> GraphDefaults</A>
+<LI><A NAME="tex2html2070"
+  HREF="node9.html#SECTION009439000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">39</SPAN> GraphErrorMsg</A>
+<LI><A NAME="tex2html2071"
+  HREF="node9.html#SECTION009440000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">40</SPAN> GraphResult</A>
+<LI><A NAME="tex2html2072"
+  HREF="node9.html#SECTION009441000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">41</SPAN> ImageSize</A>
+<LI><A NAME="tex2html2073"
+  HREF="node9.html#SECTION009442000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">42</SPAN> InitGraph</A>
+<LI><A NAME="tex2html2074"
+  HREF="node9.html#SECTION009443000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">43</SPAN> InstallUserDriver</A>
+<LI><A NAME="tex2html2075"
+  HREF="node9.html#SECTION009444000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">44</SPAN> InstallUserFont</A>
+<LI><A NAME="tex2html2076"
+  HREF="node9.html#SECTION009445000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">45</SPAN> Line</A>
+<LI><A NAME="tex2html2077"
+  HREF="node9.html#SECTION009446000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">46</SPAN> LineRel</A>
+<LI><A NAME="tex2html2078"
+  HREF="node9.html#SECTION009447000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">47</SPAN> LineTo</A>
+<LI><A NAME="tex2html2079"
+  HREF="node9.html#SECTION009448000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">48</SPAN> MoveRel</A>
+<LI><A NAME="tex2html2080"
+  HREF="node9.html#SECTION009449000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">49</SPAN> MoveTo</A>
+<LI><A NAME="tex2html2081"
+  HREF="node9.html#SECTION009450000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">50</SPAN> OutText</A>
+<LI><A NAME="tex2html2082"
+  HREF="node9.html#SECTION009451000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">51</SPAN> OutTextXY</A>
+<LI><A NAME="tex2html2083"
+  HREF="node9.html#SECTION009452000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">52</SPAN> PieSlice</A>
+<LI><A NAME="tex2html2084"
+  HREF="node9.html#SECTION009453000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">53</SPAN> PutImage</A>
+<LI><A NAME="tex2html2085"
+  HREF="node9.html#SECTION009454000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">54</SPAN> PutPixel</A>
+<LI><A NAME="tex2html2086"
+  HREF="node9.html#SECTION009455000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">55</SPAN> Rectangle</A>
+<LI><A NAME="tex2html2087"
+  HREF="node9.html#SECTION009456000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">56</SPAN> RegisterBGIDriver</A>
+<LI><A NAME="tex2html2088"
+  HREF="node9.html#SECTION009457000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">57</SPAN> RegisterBGIFont</A>
+<LI><A NAME="tex2html2089"
+  HREF="node9.html#SECTION009458000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">58</SPAN> RestoreCRTMode</A>
+<LI><A NAME="tex2html2090"
+  HREF="node9.html#SECTION009459000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">59</SPAN> Sector</A>
+<LI><A NAME="tex2html2091"
+  HREF="node9.html#SECTION009460000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">60</SPAN> SetActivePage</A>
+<LI><A NAME="tex2html2092"
+  HREF="node9.html#SECTION009461000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">61</SPAN> SetAllPallette</A>
+<LI><A NAME="tex2html2093"
+  HREF="node9.html#SECTION009462000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">62</SPAN> SetAspectRatio</A>
+<LI><A NAME="tex2html2094"
+  HREF="node9.html#SECTION009463000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">63</SPAN> SetBkColor</A>
+<LI><A NAME="tex2html2095"
+  HREF="node9.html#SECTION009464000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">64</SPAN> SetColor</A>
+<LI><A NAME="tex2html2096"
+  HREF="node9.html#SECTION009465000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">65</SPAN> SetFillPattern</A>
+<LI><A NAME="tex2html2097"
+  HREF="node9.html#SECTION009466000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">66</SPAN> SetFillStyle</A>
+<LI><A NAME="tex2html2098"
+  HREF="node9.html#SECTION009467000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">67</SPAN> SetGraphBufSize</A>
+<LI><A NAME="tex2html2099"
+  HREF="node9.html#SECTION009468000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">68</SPAN> SetGraphMode</A>
+<LI><A NAME="tex2html2100"
+  HREF="node9.html#SECTION009469000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">69</SPAN> SetLineStyle</A>
+<LI><A NAME="tex2html2101"
+  HREF="node9.html#SECTION009470000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">70</SPAN> SetPalette</A>
+<LI><A NAME="tex2html2102"
+  HREF="node9.html#SECTION009471000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">71</SPAN> SetRGBPalette</A>
+<LI><A NAME="tex2html2103"
+  HREF="node9.html#SECTION009472000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">72</SPAN> SetTextJustify</A>
+<LI><A NAME="tex2html2104"
+  HREF="node9.html#SECTION009473000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">73</SPAN> SetTextStyle</A>
+<LI><A NAME="tex2html2105"
+  HREF="node9.html#SECTION009474000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">74</SPAN> SetUserCharSize</A>
+<LI><A NAME="tex2html2106"
+  HREF="node9.html#SECTION009475000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">75</SPAN> SetViewPort</A>
+<LI><A NAME="tex2html2107"
+  HREF="node9.html#SECTION009476000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">76</SPAN> SetVisualPage</A>
+<LI><A NAME="tex2html2108"
+  HREF="node9.html#SECTION009477000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">77</SPAN> SetWriteMode</A>
+<LI><A NAME="tex2html2109"
+  HREF="node9.html#SECTION009478000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">78</SPAN> TextHeight</A>
+<LI><A NAME="tex2html2110"
+  HREF="node9.html#SECTION009479000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">79</SPAN> TextWidth</A>
+</UL>
+<LI><A NAME="tex2html2111"
+  HREF="node9.html#SECTION00950000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">5</SPAN> Target specific issues</A>
+<UL>
+<LI><A NAME="tex2html2112"
+  HREF="node9.html#SECTION00951000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">1</SPAN> <SMALL>DOS</SMALL></A>
+<LI><A NAME="tex2html2113"
+  HREF="node9.html#SECTION00952000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">2</SPAN> W<SMALL>INDOWS</SMALL></A>
+<LI><A NAME="tex2html2114"
+  HREF="node9.html#SECTION00953000000000000000"><SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">3</SPAN> <SMALL>LINUX</SMALL></A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00900000000000000000">
+<SPAN CLASS="arabic">8</SPAN>. The GRAPH unit.</A>
+</H1>
+graphex
+This document describes the <TT>GRAPH</TT> unit for Free Pascal, for all
+platforms. The unit was first written for <SMALL>DOS</SMALL>by Florian kl&#228;mpfl, but was
+later completely rewritten by Carl-Eric Codere to be completely portable.
+
+<P>
+This chapter is divided in 4 sections. 
+
+<UL>
+<LI>The first section gives an introduction to the graph unit.
+</LI>
+<LI>The second section lists the pre-defined constants, types and variables. 
+</LI>
+<LI>The second section describes the functions which appear in the
+interface part of the <SPAN  CLASS="textsf">GRAPH</SPAN> unit.
+</LI>
+<LI>The last part describes some system-specific issues.
+
+<P>
+</LI>
+</UL>
+<H1><A NAME="SECTION00910000000000000000"></A>
+<A NAME="se:Introduction"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">1</SPAN> Introduction
+</H1>
+
+<H2><A NAME="SECTION00911000000000000000">
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">1</SPAN> Requirements</A>
+</H2>
+The unit Graph exports functions and procedures for graphical output.
+It requires at least a VGA-compatible Card or a VGA-Card with software-driver
+(min. <SPAN  CLASS="textbf">512Kb</SPAN> video memory).
+
+<H2><A NAME="SECTION00912000000000000000">
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">2</SPAN> A word about mode selection</A>
+</H2>
+The graph unit was implemented for compatibility with the old graph
+unit. For this reason, the mode constants as they were defined in the
+graph unit are retained. 
+
+<P>
+However, since
+
+<OL>
+<LI>Video cards have evolved very much
+</LI>
+<LI>Free Pascal runs on multiple platforms
+</LI>
+</OL>
+it was decided to implement new mode and graphic driver constants, 
+which are more independent of the specific platform the program runs on.
+
+<P>
+In this section we give a short explanation of the new mode system. the
+following drivers were defined:
+<PRE>
+D1bit = 11;
+D2bit = 12;
+D4bit = 13;
+D6bit = 14;  { 64 colors Half-brite mode - Amiga }
+D8bit = 15;
+D12bit = 16; { 4096 color modes HAM mode - Amiga }
+D15bit = 17;
+D16bit = 18;
+D24bit = 19; { not yet supported }
+D32bit = 20; { not yet supported }
+D64bit = 21; { not yet supported }
+
+lowNewDriver = 11;
+highNewDriver = 21;
+</PRE>
+Each of these drivers specifies a desired color-depth. 
+
+<P>
+The following modes have been defined:
+<PRE>
+detectMode = 30000;
+m320x200 = 30001;  
+m320x256 = 30002; { amiga resolution (PAL) }
+m320x400 = 30003; { amiga/atari resolution }
+m512x384 = 30004; { mac resolution }
+m640x200 = 30005; { vga resolution }
+m640x256 = 30006; { amiga resolution (PAL) }
+m640x350 = 30007; { vga resolution }
+m640x400 = 30008;
+m640x480 = 30009;
+m800x600 = 30010;
+m832x624 = 30011; { mac resolution }
+m1024x768 = 30012;
+m1280x1024 = 30013;
+m1600x1200 = 30014;
+m2048x1536 = 30015;
+
+lowNewMode = 30001;
+highNewMode = 30015;
+</PRE>
+These modes start at 30000 because Borland specified that the mode number
+should be ascending with increasing X resolution, and the new constants 
+shouldn't interfere with the old ones.
+
+<P>
+The above constants can be used to set a certain color depth and resultion,
+as demonstrated in the following example:
+
+<P>
+2#2
+
+<P>
+If other modes than the ones above are supported by the graphics card,
+you will not be able to select them with this mechanism.
+
+<P>
+For this reason, there is also a 'dynamic' mode number, which is assigned at
+run-time. This number increases with increasing X resolution. It can be
+queried with the <TT>getmoderange</TT> call. This call will return the range
+of modes which are valid for a certain graphics driver. The numbers are
+guaranteed to be consecutive, and can be used to search for a certain 
+resolution, as in the following example:
+
+<P>
+3#3
+
+<P>
+Thus, the <TT>getmoderange</TT> function can be used to detect all available 
+modes and drivers, as in the following example:
+
+<P>
+4#4
+
+<P>
+
+<H1><A NAME="SECTION00920000000000000000">
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">2</SPAN> Constants, Types and Variables</A>
+</H1>
+
+<H2><A NAME="SECTION00921000000000000000">
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">1</SPAN> Types</A>
+</H2>
+<PRE>
+ArcCoordsType = record
+ X,Y,Xstart,Ystart,Xend,Yend : Integer;
+end;
+FillPatternType = Array [1..8] of Byte;
+FillSettingsType = Record
+ Pattern,Color : Word
+end;
+LineSettingsType = Record
+  LineStyle,Pattern, Width : Word;
+end;
+PaletteType = Record
+ Size : Byte;
+ Colors : array[0..MAxColor] of shortint;
+end;
+PointType = Record
+  X,Y : Integer;
+end;
+TextSettingsType = Record
+ Font,Direction, CharSize, Horiz, Vert : Word
+end;
+ViewPortType = Record
+  X1,Y1,X2,Y2 : Integer;
+  Clip : Boolean
+end;
+</PRE>
+
+<P>
+
+<H1><A NAME="SECTION00930000000000000000">
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">3</SPAN> Function list by category</A>
+</H1>
+What follows is a listing of the available functions, grouped by category.
+For each function there is a reference to the page where you can find the
+function.
+
+<H2><A NAME="SECTION00931000000000000000">
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">1</SPAN> Initialization</A>
+</H2>
+Initialization of the graphics screen.
+
+<A HREF="node9.html#pro:ClearDevice">ClearDevice</A> Empty the graphics screen]
+
+<DL COMPACT>
+<DT><A HREF="node9.html#pro:CloseGraph">CloseGraph</A> Finish drawing session, return to text mode
+<DD><DT><A HREF="node9.html#pro:DetectGraph">DetectGraph</A> Detect graphical modes
+<DD><DT><A HREF="node9.html#pro:GetAspectRatio">GetAspectRatio</A> Get aspect ratio of screen
+<DD><DT><A HREF="node9.html#pro:GetModeRange">GetModeRange</A> Get range of valid modes for current driver
+<DD><DT><A HREF="node9.html#pro:GraphDefaults">GraphDefaults</A> Set defaults
+<DD><DT><A HREF="node9.html#fu:GetDriverName">GetDriverName</A> Return name of graphical driver
+<DD><DT><A HREF="node9.html#fu:GetGraphMode">GetGraphMode</A> Return current or last used graphics mode
+<DD><DT><A HREF="node9.html#fu:GetMaxMode">GetMaxMode</A> Get maximum mode for current driver
+<DD><DT><A HREF="node9.html#fu:GetModeName">GetModeName</A> Get name of current mode
+<DD><DT><A HREF="node9.html#fu:GraphErrorMsg">GraphErrorMsg</A> String representation of graphical error
+<DD><DT><A HREF="node9.html#fu:GraphResult">GraphResult</A> Result of last drawing operation
+<DD><DT><A HREF="node9.html#pro:InitGraph">InitGraph</A> Initialize graphics drivers
+<DD><DT><A HREF="node9.html#fu:InstallUserDriver">InstallUserDriver</A> Install a new driver
+<DD><DT><A HREF="node9.html#fu:RegisterBGIDriver">RegisterBGIDriver</A> Register a new driver
+<DD><DT><A HREF="node9.html#pro:RestoreCRTMode">RestoreCRTMode</A> Go back to text mode
+<DD><DT><A HREF="node9.html#pro:SetGraphBufSize">SetGraphBufSize</A> Set buffer size for graphical operations
+<DD><DT><A HREF="node9.html#pro:SetGraphMode">SetGraphMode</A> Set graphical mode
+<DD>
+</DD>
+</DL>
+<P>
+
+<H2><A NAME="SECTION00932000000000000000">
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">2</SPAN> screen management</A>
+</H2>
+General drawing screen management functions.
+
+<A HREF="node9.html#pro:ClearViewPort">ClearViewPort</A> Clear the current viewport]
+
+<DL COMPACT>
+<DT><A HREF="node9.html#pro:GetImage">GetImage</A> Copy image from screen to memory
+<DD><DT><A HREF="node9.html#fu:GetMaxX">GetMaxX</A> Get maximum X coordinate
+<DD><DT><A HREF="node9.html#fu:GetMaxY">GetMaxY</A> Get maximum Y coordinate
+<DD><DT><A HREF="node9.html#fu:GetX">GetX</A> Get current X position
+<DD><DT><A HREF="node9.html#fu:GetY">GetY</A> Get current Y position
+<DD><DT><A HREF="node9.html#fu:ImageSize">ImageSize</A> Get size of selected image
+<DD><DT><A HREF="node9.html#pro:GetViewSettings">GetViewSettings</A> Get current viewport settings
+<DD><DT><A HREF="node9.html#pro:PutImage">PutImage</A> Copy image from memory to screen
+<DD><DT><A HREF="node9.html#pro:SetActivePage">SetActivePage</A> Set active video page
+<DD><DT><A HREF="node9.html#pro:SetAspectRatio">SetAspectRatio</A> Set aspect ratio for drawing routines
+<DD><DT><A HREF="node9.html#pro:SetViewPort">SetViewPort</A> Set current viewport
+<DD><DT><A HREF="node9.html#pro:SetVisualPage">SetVisualPage</A> Set visual page
+<DD><DT><A HREF="node9.html#pro:SetWriteMode">SetWriteMode</A> Set write mode for screen operations
+<DD>
+</DD>
+</DL>
+<P>
+
+<H2><A NAME="SECTION00933000000000000000">
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">3</SPAN> Color management</A>
+</H2>
+All functions related to color management.
+
+<A HREF="node9.html#fu:GetBkColor">GetBkColor</A> Get current background color]
+
+<DL COMPACT>
+<DT><A HREF="node9.html#fu:GetColor">GetColor</A> Get current foreground color
+<DD><DT><A HREF="node9.html#pro:GetDefaultPalette">GetDefaultPalette</A> Get default palette entries
+<DD><DT><A HREF="node9.html#fu:GetMaxColor">GetMaxColor</A> Get maximum valid color
+<DD><DT><A HREF="node9.html#fu:GetPaletteSize">GetPaletteSize</A> Get size of palette for current mode
+<DD><DT><A HREF="node9.html#fu:GetPixel">GetPixel</A> Get color of selected pixel
+<DD><DT><A HREF="node9.html#pro:GetPalette">GetPalette</A> Get palette entry
+<DD><DT><A HREF="node9.html#pro:SetAllPallette">SetAllPallette</A> Set all colors in palette
+<DD><DT><A HREF="node9.html#pro:SetBkColor">SetBkColor</A> Set background color
+<DD><DT><A HREF="node9.html#pro:SetColor">SetColor</A> Set foreground color
+<DD><DT><A HREF="node9.html#pro:SetPalette">SetPalette</A> Set palette entry
+<DD><DT><A HREF="node9.html#pro:SetRGBPalette">SetRGBPalette</A> Set palette entry with RGB values
+<DD>
+</DD>
+</DL>
+<P>
+
+<H2><A NAME="SECTION00934000000000000000">
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">4</SPAN> Drawing primitives</A>
+</H2>
+Functions for simple drawing.
+
+<A HREF="node9.html#pro:Arc">Arc</A> Draw an arc]
+
+<DL COMPACT>
+<DT><A HREF="node9.html#pro:Circle">Circle</A> Draw a complete circle
+<DD><DT><A HREF="node9.html#pro:DrawPoly">DrawPoly</A> Draw a polygone with N points
+<DD><DT><A HREF="node9.html#pro:Ellipse">Ellipse</A> Draw an ellipse
+<DD><DT><A HREF="node9.html#pro:GetArcCoords">GetArcCoords</A> Get arc coordinates
+<DD><DT><A HREF="node9.html#pro:GetLineSettings">GetLineSettings</A> Get current line drawing settings
+<DD><DT><A HREF="node9.html#pro:Line">Line</A> Draw line between 2 points
+<DD><DT><A HREF="node9.html#pro:LineRel">LineRel</A> Draw line relative to current position
+<DD><DT><A HREF="node9.html#pro:LineTo">LineTo</A> Draw line from current position to absolute position
+<DD><DT><A HREF="node9.html#pro:MoveRel">MoveRel</A> Move cursor relative to current position
+<DD><DT><A HREF="node9.html#pro:MoveTo">MoveTo</A> Move cursor to absolute position
+<DD><DT><A HREF="node9.html#pro:PieSlice">PieSlice</A> Draw a pie slice
+<DD><DT><A HREF="node9.html#pro:PutPixel">PutPixel</A> Draw 1 pixel
+<DD><DT><A HREF="node9.html#pro:Rectangle">Rectangle</A> Draw a non-filled rectangle
+<DD><DT><A HREF="node9.html#pro:Sector">Sector</A> Draw a sector
+<DD><DT><A HREF="node9.html#pro:SetLineStyle">SetLineStyle</A> Set current line drawing style
+<DD>
+</DD>
+</DL>
+<P>
+
+<H2><A NAME="SECTION00935000000000000000">
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">5</SPAN> Filled drawings</A>
+</H2>
+Functions for drawing filled regions.
+
+<A HREF="node9.html#pro:Bar3D">Bar3D</A> Draw a filled 3D-style bar]
+
+<DL COMPACT>
+<DT><A HREF="node9.html#pro:Bar">Bar</A> Draw a filled rectangle
+<DD><DT><A HREF="node9.html#pro:FloodFill">FloodFill</A> Fill starting from coordinate
+<DD><DT><A HREF="node9.html#pro:FillEllipse">FillEllipse</A> Draw a filled ellipse
+<DD><DT><A HREF="node9.html#pro:FillPoly">FillPoly</A> Draw a filled polygone
+<DD><DT><A HREF="node9.html#pro:GetFillPattern">GetFillPattern</A> Get current fill pattern
+<DD><DT><A HREF="node9.html#pro:GetFillSettings">GetFillSettings</A> Get current fill settings
+<DD><DT><A HREF="node9.html#pro:SetFillPattern">SetFillPattern</A> Set current fill pattern
+<DD><DT><A HREF="node9.html#pro:SetFillStyle">SetFillStyle</A> Set current fill settings
+<DD>
+</DD>
+</DL>
+<P>
+
+<H2><A NAME="SECTION00936000000000000000">
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">6</SPAN> Text and font handling</A>
+</H2>
+Functions to set texts on the screen.
+
+<A HREF="node9.html#pro:GetTextSettings">GetTextSettings</A> Get current text settings]
+
+<DL COMPACT>
+<DT><A HREF="node9.html#fu:InstallUserFont">InstallUserFont</A> Install a new font
+<DD><DT><A HREF="node9.html#pro:OutText">OutText</A> Write text at current cursor position
+<DD><DT><A HREF="node9.html#pro:OutTextXY">OutTextXY</A> Write text at coordinates X,Y
+<DD><DT><A HREF="node9.html#fu:RegisterBGIFont">RegisterBGIFont</A> Register a new font
+<DD><DT><A HREF="node9.html#pro:SetTextJustify">SetTextJustify</A> Set text justification
+<DD><DT><A HREF="node9.html#pro:SetTextStyle">SetTextStyle</A> Set text style
+<DD><DT><A HREF="node9.html#pro:SetUserCharSize">SetUserCharSize</A> Set text size
+<DD><DT><A HREF="node9.html#fu:TextHeight">TextHeight</A> Calculate height of text
+<DD><DT><A HREF="node9.html#fu:TextWidth">TextWidth</A> Calculate width of text
+<DD>
+</DD>
+</DL>
+<P>
+
+<H1><A NAME="SECTION00940000000000000000">
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN> Functions and procedures</A>
+</H1>
+
+<P>
+
+<H2><A NAME="SECTION00941000000000000000"></A><A NAME="8461"></A><A NAME="pro:Arc"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">1</SPAN> Arc
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure Arc (X,Y : Integer; start,stop, radius : Word);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD></TT> <TT>Arc</TT> draws part of a circle with center at <TT>(X,Y)</TT>, radius
+<TT>radius</TT>, starting from angle <TT>start</TT>, stopping at angle <TT>stop</TT>.
+These  angles are measured
+counterclockwise.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:Circle">Circle</A>,<A HREF="node9.html#pro:Ellipse">Ellipse</A> 
+<A HREF="node9.html#pro:GetArcCoords">GetArcCoords</A>,<A HREF="node9.html#pro:PieSlice">PieSlice</A>, <A HREF="node9.html#pro:Sector">Sector</A></DL>
+<P>
+
+<H2><A NAME="SECTION00942000000000000000"></A><A NAME="8472"></A><A NAME="pro:Bar"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">2</SPAN> Bar
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure Bar (X1,Y1,X2,Y2 : Integer);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD></TT>Draws a rectangle with corners at <TT>(X1,Y1)</TT> and <TT>(X2,Y2)</TT> 
+and fills it with the current color and fill-style.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:Bar3D">Bar3D</A>, 
+<A HREF="node9.html#pro:Rectangle">Rectangle</A></DL>
+<P>
+
+<H2><A NAME="SECTION00943000000000000000"></A><A NAME="8483"></A><A NAME="pro:Bar3D"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">3</SPAN> Bar3D
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure Bar3D (X1,Y1,X2,Y2 : Integer; depth : Word; Top : Boolean);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD></TT>Draws a 3-dimensional Bar  with corners at <TT>(X1,Y1)</TT> and <TT>(X2,Y2)</TT> 
+and fills it with the current color and fill-style.
+<TT>Depth</TT> specifies the number of pixels used to show the depth of the
+bar.
+If <TT>Top</TT> is true; then a 3-dimensional top is drawn.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:Bar">Bar</A>, <A HREF="node9.html#pro:Rectangle">Rectangle</A></DL>
+<P>
+
+<H2><A NAME="SECTION00944000000000000000"></A><A NAME="8494"></A><A NAME="pro:Circle"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">4</SPAN> Circle
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure Circle (X,Y : Integer; Radius : Word);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD></TT> <TT>Circle</TT> draws part of a circle with center at <TT>(X,Y)</TT>, radius
+<TT>radius</TT>.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:Ellipse">Ellipse</A>,<A HREF="node9.html#pro:Arc">Arc</A>
+<A HREF="node9.html#pro:GetArcCoords">GetArcCoords</A>,<A HREF="node9.html#pro:PieSlice">PieSlice</A>, <A HREF="node9.html#pro:Sector">Sector</A></DL>
+<P>
+
+<H2><A NAME="SECTION00945000000000000000"></A><A NAME="8505"></A><A NAME="pro:ClearDevice"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">5</SPAN> ClearDevice
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure ClearDevice ;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD></TT>Clears the graphical screen (with the current
+background color), and sets the pointer at <TT>(0,0)</TT>
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:ClearViewPort">ClearViewPort</A>, <A HREF="node9.html#pro:SetBkColor">SetBkColor</A></DL>
+<P>
+
+<H2><A NAME="SECTION00946000000000000000"></A><A NAME="8516"></A><A NAME="pro:ClearViewPort"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">6</SPAN> ClearViewPort
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure ClearViewPort ;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD></TT>Clears the current viewport. The current background color is used as filling
+color. The pointer is set at
+<TT>(0,0)</TT>
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:ClearDevice">ClearDevice</A>,<A HREF="node9.html#pro:SetViewPort">SetViewPort</A>, <A HREF="node9.html#pro:SetBkColor">SetBkColor</A></DL>
+<P>
+
+<H2><A NAME="SECTION00947000000000000000"></A><A NAME="8527"></A><A NAME="pro:CloseGraph"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">7</SPAN> CloseGraph
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure CloseGraph ;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD></TT>Closes the graphical system, and restores the
+screen modus which was active before the graphical modus was
+activated.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:InitGraph">InitGraph</A></DL>
+<P>
+
+<H2><A NAME="SECTION00948000000000000000"></A><A NAME="8538"></A><A NAME="pro:DetectGraph"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">8</SPAN> DetectGraph
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure DetectGraph (Var Driver, Modus : Integer);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD></TT> Checks the hardware in the PC and determines the driver and screen-modus to
+be used. These are returned in <TT>Driver</TT> and <TT>Modus</TT>, and can be fed
+to <TT>InitGraph</TT>. 
+See the <TT>InitGraph</TT> for a list of drivers and modi.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:InitGraph">InitGraph</A></DL>
+<P>
+
+<H2><A NAME="SECTION00949000000000000000"></A><A NAME="8549"></A><A NAME="pro:DrawPoly"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">9</SPAN> DrawPoly
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure DrawPoly (NumberOfPoints : Word; Var PolyPoints;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD></TT>
+<P>
+Draws a polygone with <TT>NumberOfPoints</TT> corner points, using the
+current color and line-style. PolyPoints is an array of type <TT>PointType</TT>.
+
+<P>
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:Bar">Bar</A>, seepBar3D, <A HREF="node9.html#pro:Rectangle">Rectangle</A></DL>
+<P>
+
+<H2><A NAME="SECTION009410000000000000000"></A><A NAME="8560"></A><A NAME="pro:Ellipse"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">10</SPAN> Ellipse
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure Ellipse (X,Y : Integer; Start,Stop,XRadius,YRadius : Word);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD></TT> <TT>Ellipse</TT> draws part of an ellipse with center at <TT>(X,Y)</TT>.
+<TT>XRadius</TT> and <TT>Yradius</TT> are the horizontal and vertical radii of the
+ellipse. <TT>Start</TT> and <TT>Stop</TT> are the starting and stopping angles of
+the part of the ellipse. 
+They are measured counterclockwise from the X-axis.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:Arc">Arc</A> <A HREF="node9.html#pro:Circle">Circle</A>, <A HREF="node9.html#pro:FillEllipse">FillEllipse</A></DL>
+<P>
+
+<H2><A NAME="SECTION009411000000000000000"></A><A NAME="8571"></A><A NAME="pro:FillEllipse"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">11</SPAN> FillEllipse
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure FillEllipse (X,Y : Integer; Xradius,YRadius: Word);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD></TT> <TT>Ellipse</TT> draws an ellipse with center at <TT>(X,Y)</TT>.
+<TT>XRadius</TT> and <TT>Yradius</TT> are the horizontal and vertical radii of the
+ellipse. The ellipse is filled with the current color and fill-style.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:Arc">Arc</A> <A HREF="node9.html#pro:Circle">Circle</A>,
+<A HREF="node9.html#pro:GetArcCoords">GetArcCoords</A>,<A HREF="node9.html#pro:PieSlice">PieSlice</A>, <A HREF="node9.html#pro:Sector">Sector</A></DL>
+<P>
+
+<H2><A NAME="SECTION009412000000000000000"></A><A NAME="8582"></A><A NAME="pro:FillPoly"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">12</SPAN> FillPoly
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure FillPoly (NumberOfPoints : Word; Var PolyPoints);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD></TT>
+<P>
+Draws a polygone with <TT>NumberOfPoints</TT> corner points and fills it
+using the current color and line-style. 
+PolyPoints is an array of type <TT>PointType</TT>.
+
+<P>
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:Bar">Bar</A>, seepBar3D, <A HREF="node9.html#pro:Rectangle">Rectangle</A></DL>
+<P>
+
+<H2><A NAME="SECTION009413000000000000000"></A><A NAME="8593"></A><A NAME="pro:FloodFill"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">13</SPAN> FloodFill
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure FloodFill (X,Y : Integer; BorderColor : Word);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD></TT>
+<P>
+Fills the area containing the point <TT>(X,Y)</TT>, bounded by the color
+<TT>BorderColor</TT>.
+<DT>
+<B>Errors</B>
+<DD>None
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:SetColor">SetColor</A>, <A HREF="node9.html#pro:SetBkColor">SetBkColor</A></DL>
+<P>
+
+<H2><A NAME="SECTION009414000000000000000"></A><A NAME="8604"></A><A NAME="pro:GetArcCoords"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">14</SPAN> GetArcCoords
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure GetArcCoords (Var ArcCoords : ArcCoordsType);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>GetArcCoords</TT> returns the coordinates of the latest <TT>Arc</TT> or
+<TT>Ellipse</TT> call.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:Arc">Arc</A>, <A HREF="node9.html#pro:Ellipse">Ellipse</A></DL>
+<P>
+
+<H2><A NAME="SECTION009415000000000000000"></A><A NAME="8615"></A><A NAME="pro:GetAspectRatio"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">15</SPAN> GetAspectRatio
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure GetAspectRatio (Var Xasp,Yasp : Word);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>GetAspectRatio</TT> determines the effective resolution of the screen. The aspect ration can
+the be calculated as <TT>Xasp/Yasp</TT>.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:InitGraph">InitGraph</A>,<A HREF="node9.html#pro:SetAspectRatio">SetAspectRatio</A></DL>
+<P>
+
+<H2><A NAME="SECTION009416000000000000000"></A><A NAME="8626"></A><A NAME="fu:GetBkColor"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">16</SPAN> GetBkColor
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Function GetBkColor  : Word;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>GetBkColor</TT> returns the current background color (the palette
+entry).
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#fu:GetColor">GetColor</A>,<A HREF="node9.html#pro:SetBkColor">SetBkColor</A></DL>
+<P>
+
+<H2><A NAME="SECTION009417000000000000000"></A><A NAME="8637"></A><A NAME="fu:GetColor"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">17</SPAN> GetColor
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Function GetColor  : Word;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>GetColor</TT> returns the current drawing color (the palette
+entry).
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#fu:GetColor">GetColor</A>,<A HREF="node9.html#pro:SetBkColor">SetBkColor</A></DL>
+<P>
+
+<H2><A NAME="SECTION009418000000000000000"></A><A NAME="8648"></A><A NAME="pro:GetDefaultPalette"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">18</SPAN> GetDefaultPalette
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure GetDefaultPalette (Var Palette : PaletteType);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD></TT>Returns the
+current palette in <TT>Palette</TT>.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#fu:GetColor">GetColor</A>, <A HREF="node9.html#fu:GetBkColor">GetBkColor</A></DL>
+<P>
+
+<H2><A NAME="SECTION009419000000000000000"></A><A NAME="8659"></A><A NAME="fu:GetDriverName"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">19</SPAN> GetDriverName
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Function GetDriverName  : String;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>GetDriverName</TT> returns a string containing the name of the
+current driver.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#fu:GetModeName">GetModeName</A>, <A HREF="node9.html#pro:InitGraph">InitGraph</A></DL>
+<P>
+
+<H2><A NAME="SECTION009420000000000000000"></A><A NAME="8670"></A><A NAME="pro:GetFillPattern"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">20</SPAN> GetFillPattern
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure GetFillPattern (Var FillPattern : FillPatternType);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>GetFillPattern</TT> returns an array with the current fill-pattern  in <TT>FillPattern</TT>
+<DT>
+<B>Errors</B>
+<DD>None
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:SetFillPattern">SetFillPattern</A></DL>
+<P>
+
+<H2><A NAME="SECTION009421000000000000000"></A><A NAME="8681"></A><A NAME="pro:GetFillSettings"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">21</SPAN> GetFillSettings
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure GetFillSettings (Var FillInfo : FillSettingsType);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>GetFillSettings</TT> returns the current fill-settings in
+<TT>FillInfo</TT>
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:SetFillPattern">SetFillPattern</A></DL>
+<P>
+
+<H2><A NAME="SECTION009422000000000000000"></A><A NAME="8692"></A><A NAME="fu:GetGraphMode"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">22</SPAN> GetGraphMode
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Function GetGraphMode  : Integer;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>GetGraphMode</TT> returns the current graphical modus
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:InitGraph">InitGraph</A></DL>
+<P>
+
+<H2><A NAME="SECTION009423000000000000000"></A><A NAME="8703"></A><A NAME="pro:GetImage"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">23</SPAN> GetImage
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure GetImage (X1,Y1,X2,Y2 : Integer, Var Bitmap;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>GetImage</TT>
+Places a copy of the screen area <TT>(X1,Y1)</TT> to <TT>X2,Y2</TT> in <TT>BitMap</TT>
+<DT>
+<B>Errors</B>
+<DD>Bitmap must have enough room to contain the image.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#fu:ImageSize">ImageSize</A>,
+<A HREF="node9.html#pro:PutImage">PutImage</A></DL>
+<P>
+
+<H2><A NAME="SECTION009424000000000000000"></A><A NAME="8714"></A><A NAME="pro:GetLineSettings"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">24</SPAN> GetLineSettings
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure GetLineSettings (Var LineInfo : LineSettingsType);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>GetLineSettings</TT> returns the current Line settings in
+<TT>LineInfo</TT>
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:SetLineStyle">SetLineStyle</A></DL>
+<P>
+
+<H2><A NAME="SECTION009425000000000000000"></A><A NAME="8725"></A><A NAME="fu:GetMaxColor"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">25</SPAN> GetMaxColor
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Function GetMaxColor  : Word;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>GetMaxColor</TT> returns the maximum color-number which can be 
+set with <TT>SetColor</TT>. Contrary to , this color isn't always 
+guaranteed to be white (for instance in 256+ color modes).
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:SetColor">SetColor</A>,
+<A HREF="node9.html#fu:GetPaletteSize">GetPaletteSize</A></DL>
+<P>
+
+<H2><A NAME="SECTION009426000000000000000"></A><A NAME="8736"></A><A NAME="fu:GetMaxMode"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">26</SPAN> GetMaxMode
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Function GetMaxMode  : Word;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>GetMaxMode</TT> returns the highest modus for
+the current driver.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:InitGraph">InitGraph</A></DL>
+<P>
+
+<H2><A NAME="SECTION009427000000000000000"></A><A NAME="8747"></A><A NAME="fu:GetMaxX"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">27</SPAN> GetMaxX
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Function GetMaxX  : Word;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>GetMaxX</TT> returns the maximum horizontal screen
+length
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#fu:GetMaxY">GetMaxY</A></DL>
+<P>
+
+<H2><A NAME="SECTION009428000000000000000"></A><A NAME="8758"></A><A NAME="fu:GetMaxY"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">28</SPAN> GetMaxY
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Function GetMaxY  : Word;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>GetMaxY</TT> returns the maximum number of screen
+lines
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#fu:GetMaxY">GetMaxY</A></DL>
+<P>
+
+<H2><A NAME="SECTION009429000000000000000"></A><A NAME="8769"></A><A NAME="fu:GetModeName"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">29</SPAN> GetModeName
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Function GetModeName (Var modus : Integer) : String;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD></TT>
+<P>
+Returns a string with the name of modus
+<TT>Modus</TT>
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#fu:GetDriverName">GetDriverName</A>, <A HREF="node9.html#pro:InitGraph">InitGraph</A></DL>
+<P>
+
+<H2><A NAME="SECTION009430000000000000000"></A><A NAME="8780"></A><A NAME="pro:GetModeRange"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">30</SPAN> GetModeRange
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure GetModeRange (Driver : Integer; 
+<BR>
+LoModus, HiModus: Integer);
+<DT>
+<B>Description</B>
+<DD>GetModeRange</TT> returns the Lowest and Highest modus of the currently
+installed driver. If no modes are supported for this driver, HiModus
+will be -1.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:InitGraph">InitGraph</A></DL>
+<P>
+
+<H2><A NAME="SECTION009431000000000000000"></A><A NAME="8791"></A><A NAME="pro:GetPalette"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">31</SPAN> GetPalette
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure GetPalette (Var Palette : PaletteType);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>GetPalette</TT> returns in <TT>Palette</TT> the current palette.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#fu:GetPaletteSize">GetPaletteSize</A>, <A HREF="node9.html#pro:SetPalette">SetPalette</A></DL>
+<P>
+
+<H2><A NAME="SECTION009432000000000000000"></A><A NAME="8802"></A><A NAME="fu:GetPaletteSize"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">32</SPAN> GetPaletteSize
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Function GetPaletteSize  : Word;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>GetPaletteSize</TT> returns the maximum
+number of entries in the current palette.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:GetPalette">GetPalette</A>,
+<A HREF="node9.html#pro:SetPalette">SetPalette</A></DL>
+<P>
+
+<H2><A NAME="SECTION009433000000000000000"></A><A NAME="8813"></A><A NAME="fu:GetPixel"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">33</SPAN> GetPixel
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Function GetPixel (X,Y : Integer) : Word;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>GetPixel</TT> returns the color
+of the point at <TT>(X,Y)</TT> 
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><P>
+</DL>
+<P>
+
+<H2><A NAME="SECTION009434000000000000000"></A><A NAME="8824"></A><A NAME="pro:GetTextSettings"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">34</SPAN> GetTextSettings
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure GetTextSettings (Var TextInfo : TextSettingsType);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>GetTextSettings</TT> returns the current text style settings : The font,
+direction, size and placement as set with <TT>SetTextStyle</TT> and
+<TT>SetTextJustify</TT>
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:SetTextStyle">SetTextStyle</A>, <A HREF="node9.html#pro:SetTextJustify">SetTextJustify</A></DL>
+<P>
+
+<H2><A NAME="SECTION009435000000000000000"></A><A NAME="8835"></A><A NAME="pro:GetViewSettings"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">35</SPAN> GetViewSettings
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure GetViewSettings (Var ViewPort : ViewPortType);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>GetViewSettings</TT> returns the current viewport and clipping settings in
+<TT>ViewPort</TT>.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:SetViewPort">SetViewPort</A></DL>
+<P>
+
+<H2><A NAME="SECTION009436000000000000000"></A><A NAME="8846"></A><A NAME="fu:GetX"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">36</SPAN> GetX
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Function GetX  : Integer;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>GetX</TT> returns the X-coordinate of the current position of
+the graphical pointer
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#fu:GetY">GetY</A></DL>
+<P>
+
+<H2><A NAME="SECTION009437000000000000000"></A><A NAME="8857"></A><A NAME="fu:GetY"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">37</SPAN> GetY
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Function GetY  : Integer;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>GetY</TT> returns the Y-coordinate of the current position of
+the graphical pointer
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#fu:GetX">GetX</A></DL>
+<P>
+
+<H2><A NAME="SECTION009438000000000000000"></A><A NAME="8868"></A><A NAME="pro:GraphDefaults"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">38</SPAN> GraphDefaults
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure GraphDefaults ;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>GraphDefaults</TT> resets all settings for viewport, palette,
+foreground and background pattern, line-style and pattern, filling style,
+filling color and pattern, font, text-placement and
+text size.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:SetViewPort">SetViewPort</A>, <A HREF="node9.html#pro:SetFillStyle">SetFillStyle</A>, <A HREF="node9.html#pro:SetColor">SetColor</A>,
+<A HREF="node9.html#pro:SetBkColor">SetBkColor</A>, <A HREF="node9.html#pro:SetLineStyle">SetLineStyle</A></DL>
+<P>
+
+<H2><A NAME="SECTION009439000000000000000"></A><A NAME="8879"></A><A NAME="fu:GraphErrorMsg"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">39</SPAN> GraphErrorMsg
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Function GraphErrorMsg (ErrorCode : Integer) : String;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>GraphErrorMsg</TT>
+returns a string describing the error <TT>Errorcode</TT>. This string can be
+used to let the user know what went wrong.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#fu:GraphResult">GraphResult</A></DL>
+<P>
+
+<H2><A NAME="SECTION009440000000000000000"></A><A NAME="8890"></A><A NAME="fu:GraphResult"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">40</SPAN> GraphResult
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Function GraphResult  : Integer;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>GraphResult</TT> returns an error-code for
+the last graphical operation. If the returned value is zero, all went well.
+A value different from zero means an error has occurred.
+besides all operations which draw something on the screen, 
+the following procedures also can produce a <TT>GraphResult</TT> different from
+zero:
+
+<P>
+
+<UL>
+<LI><A HREF="node9.html#fu:InstallUserFont">InstallUserFont</A>
+</LI>
+<LI><A HREF="node9.html#pro:SetLineStyle">SetLineStyle</A>
+</LI>
+<LI><A HREF="node9.html#pro:SetWriteMode">SetWriteMode</A>
+</LI>
+<LI><A HREF="node9.html#pro:SetFillStyle">SetFillStyle</A>
+</LI>
+<LI><A HREF="node9.html#pro:SetTextJustify">SetTextJustify</A>
+</LI>
+<LI><A HREF="node9.html#pro:SetGraphMode">SetGraphMode</A>
+</LI>
+<LI><A HREF="node9.html#pro:SetTextStyle">SetTextStyle</A>
+</LI>
+</UL>
+
+<P>
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#fu:GraphErrorMsg">GraphErrorMsg</A></DL>
+<P>
+
+<H2><A NAME="SECTION009441000000000000000"></A><A NAME="8901"></A><A NAME="fu:ImageSize"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">41</SPAN> ImageSize
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Function ImageSize (X1,Y1,X2,Y2 : Integer) : Word;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>ImageSize</TT> returns
+the number of bytes needed to store the image in the rectangle defined by
+<TT>(X1,Y1)</TT> and <TT>(X2,Y2)</TT>.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:GetImage">GetImage</A></DL>
+<P>
+
+<H2><A NAME="SECTION009442000000000000000"></A><A NAME="8912"></A><A NAME="pro:InitGraph"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">42</SPAN> InitGraph
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure InitGraph (var GraphDriver,GraphModus : integer;
+<BR>
+const PathToDriver : string);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD></TT>
+<P>
+<TT>InitGraph</TT> initializes the <TT>graph</TT> package.
+<TT>GraphDriver</TT> has two valid values: <TT>GraphDriver=0</TT> which
+performs an auto detect and initializes the highest possible mode with the most
+colors. 1024x768x64K is the highest possible resolution supported by the
+driver, if you need a higher resolution, you must edit <SPAN  CLASS="textsf">MODES.PPI</SPAN>. 
+If you need another mode, then set <TT>GraphDriver</TT> to a value different
+from zero
+and <TT>graphmode</TT> to the mode you wish (VESA modes where 640x480x256
+is <TT>101h</TT> etc.).
+<TT>PathToDriver</TT> is only needed, if you use the BGI fonts from
+Borland.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD>Introduction, (page <A HREF="node9.html#se:Introduction"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="../buttons/crossref.gif"></A>),
+<A HREF="node9.html#pro:DetectGraph">DetectGraph</A>, <A HREF="node9.html#pro:CloseGraph">CloseGraph</A>, <A HREF="node9.html#fu:GraphResult">GraphResult</A></DL>Example:
+
+<P>
+<PRE>
+var 
+   gd,gm : integer; 
+   PathToDriver : string; 
+begin 
+   gd:=detect; { highest possible resolution } 
+   gm:=0; { not needed, auto detection } 
+   PathToDriver:='C:\PP\BGI'; { path to BGI fonts, 
+                                drivers aren't needed } 
+   InitGraph(gd,gm,PathToDriver); 
+   if GraphResult&lt;&gt;grok then 
+     halt; ..... { whatever you need } 
+   CloseGraph; { restores the old graphics mode } 
+end.
+</PRE>
+
+<P>
+
+<H2><A NAME="SECTION009443000000000000000"></A><A NAME="8923"></A><A NAME="fu:InstallUserDriver"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">43</SPAN> InstallUserDriver
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Function InstallUserDriver (DriverPath : String; 
+<BR>
+AutoDetectPtr: Pointer) : Integer;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>InstallUserDriver</TT> 
+adds the device-driver <TT>DriverPath</TT> to the list of .BGI
+drivers. <TT>AutoDetectPtr</TT> is a pointer to a possible auto-detect function.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:InitGraph">InitGraph</A>, <A HREF="node9.html#fu:InstallUserFont">InstallUserFont</A></DL>
+<P>
+
+<H2><A NAME="SECTION009444000000000000000"></A><A NAME="8934"></A><A NAME="fu:InstallUserFont"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">44</SPAN> InstallUserFont
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Function InstallUserFont (FontPath : String) : Integer;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>InstallUserFont</TT> adds the font in <TT>FontPath</TT> to the list of fonts
+of the .BGI system.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:InitGraph">InitGraph</A>, <A HREF="node9.html#fu:InstallUserDriver">InstallUserDriver</A></DL>
+<P>
+
+<H2><A NAME="SECTION009445000000000000000"></A><A NAME="8945"></A><A NAME="pro:Line"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">45</SPAN> Line
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure Line (X1,Y1,X2,Y2 : Integer);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>Line</TT> draws a line starting from
+<TT>(X1,Y1</TT> to <TT>(X2,Y2)</TT>, in the current line style and color. The
+current position is put to <TT>(X2,Y2)</TT>
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:LineRel">LineRel</A>,<A HREF="node9.html#pro:LineTo">LineTo</A></DL>
+<P>
+
+<H2><A NAME="SECTION009446000000000000000"></A><A NAME="8956"></A><A NAME="pro:LineRel"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">46</SPAN> LineRel
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure LineRel (DX,DY : Integer);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>LineRel</TT> draws a line starting from
+the current pointer position to the point<TT>(DX,DY</TT>, <SPAN  CLASS="textbf">relative</SPAN> to the
+current position, in the current line style and color. The Current Position
+is set to the endpoint of the line.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:Line">Line</A>, <A HREF="node9.html#pro:LineTo">LineTo</A></DL>
+<P>
+
+<H2><A NAME="SECTION009447000000000000000"></A><A NAME="8967"></A><A NAME="pro:LineTo"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">47</SPAN> LineTo
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure LineTo (DX,DY : Integer);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>LineTo</TT> draws a line starting from
+the current pointer position to the point<TT>(DX,DY</TT>, <SPAN  CLASS="textbf">relative</SPAN> to the
+current position, in the current line style and color. The Current position
+is set to the end of the line.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:LineRel">LineRel</A>,<A HREF="node9.html#pro:Line">Line</A></DL>
+<P>
+
+<H2><A NAME="SECTION009448000000000000000"></A><A NAME="8978"></A><A NAME="pro:MoveRel"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">48</SPAN> MoveRel
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure MoveRel (DX,DY : Integer;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>MoveRel</TT> moves the pointer to the
+point <TT>(DX,DY)</TT>, relative to the current pointer
+position
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:MoveTo">MoveTo</A></DL>
+<P>
+
+<H2><A NAME="SECTION009449000000000000000"></A><A NAME="8989"></A><A NAME="pro:MoveTo"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">49</SPAN> MoveTo
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure MoveTo (X,Y : Integer;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>MoveTo</TT> moves the pointer to the
+point <TT>(X,Y)</TT>.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:MoveRel">MoveRel</A></DL>
+<P>
+
+<H2><A NAME="SECTION009450000000000000000"></A><A NAME="9000"></A><A NAME="pro:OutText"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">50</SPAN> OutText
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure OutText (Const TextString : String);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>OutText</TT> puts <TT>TextString</TT> on the screen, at the current pointer
+position, using the current font and text settings. The current position is
+moved to the end of the text.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:OutTextXY">OutTextXY</A></DL>
+<P>
+
+<H2><A NAME="SECTION009451000000000000000"></A><A NAME="9011"></A><A NAME="pro:OutTextXY"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">51</SPAN> OutTextXY
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure OutTextXY (X,Y : Integer; Const TextString : String);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>OutText</TT> puts <TT>TextString</TT> on the screen, at position <TT>(X,Y)</TT>,
+using the current font and text settings. The current position is
+moved to the end of the text.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:OutText">OutText</A></DL>
+<P>
+
+<H2><A NAME="SECTION009452000000000000000"></A><A NAME="9022"></A><A NAME="pro:PieSlice"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">52</SPAN> PieSlice
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure PieSlice (X,Y : Integer; 
+<BR>
+Start,Stop,Radius : Word);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>PieSlice</TT>
+draws and fills a sector of a circle with center <TT>(X,Y)</TT> and radius 
+<TT>Radius</TT>, starting at angle <TT>Start</TT> and ending at angle <TT>Stop</TT>.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:Arc">Arc</A>, <A HREF="node9.html#pro:Circle">Circle</A>, <A HREF="node9.html#pro:Sector">Sector</A></DL>
+<P>
+
+<H2><A NAME="SECTION009453000000000000000"></A><A NAME="9033"></A><A NAME="pro:PutImage"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">53</SPAN> PutImage
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure PutImage (X1,Y1 : Integer; Var Bitmap; How : word) ;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>PutImage</TT>
+Places the bitmap in <TT>Bitmap</TT> on the screen at <TT>(X1,Y1)</TT>. <TT>How</TT>
+determines how the bitmap will be placed on the screen. Possible values are :
+
+<P>
+
+<UL>
+<LI>CopyPut
+</LI>
+<LI>XORPut
+</LI>
+<LI>ORPut
+</LI>
+<LI>AndPut
+</LI>
+<LI>NotPut
+</LI>
+</UL>
+<DT>
+<B>Errors</B>
+<DD>None
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#fu:ImageSize">ImageSize</A>,<A HREF="node9.html#pro:GetImage">GetImage</A></DL>
+<P>
+
+<H2><A NAME="SECTION009454000000000000000"></A><A NAME="9044"></A><A NAME="pro:PutPixel"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">54</SPAN> PutPixel
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure PutPixel (X,Y : Integer; Color : Word);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD></TT>Puts a point at
+<TT>(X,Y)</TT> using color <TT>Color</TT>
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#fu:GetPixel">GetPixel</A></DL>
+<P>
+
+<H2><A NAME="SECTION009455000000000000000"></A><A NAME="9055"></A><A NAME="pro:Rectangle"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">55</SPAN> Rectangle
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure Rectangle (X1,Y1,X2,Y2 : Integer);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD></TT>Draws a rectangle with
+corners at <TT>(X1,Y1)</TT> and <TT>(X2,Y2)</TT>, using the current color and
+style.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:Bar">Bar</A>, <A HREF="node9.html#pro:Bar3D">Bar3D</A></DL>
+<P>
+
+<H2><A NAME="SECTION009456000000000000000"></A><A NAME="9066"></A><A NAME="fu:RegisterBGIDriver"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">56</SPAN> RegisterBGIDriver
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Function RegisterBGIDriver (Driver : Pointer) : Integer;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD></TT>Registers a user-defined BGI driver
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#fu:InstallUserDriver">InstallUserDriver</A>,
+<A HREF="node9.html#fu:RegisterBGIFont">RegisterBGIFont</A></DL>
+<P>
+
+<H2><A NAME="SECTION009457000000000000000"></A><A NAME="9077"></A><A NAME="fu:RegisterBGIFont"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">57</SPAN> RegisterBGIFont
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Function RegisterBGIFont (Font : Pointer) : Integer;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD></TT>Registers a user-defined BGI driver
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#fu:InstallUserFont">InstallUserFont</A>,
+<A HREF="node9.html#fu:RegisterBGIDriver">RegisterBGIDriver</A></DL>
+<P>
+
+<H2><A NAME="SECTION009458000000000000000"></A><A NAME="9088"></A><A NAME="pro:RestoreCRTMode"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">58</SPAN> RestoreCRTMode
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure RestoreCRTMode ;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD></TT>Restores the screen modus which was active before
+the graphical modus was started.
+
+<P>
+To get back to the graph mode you were last in, you can use
+<TT>SetGraphMode(GetGraphMode)</TT>
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:InitGraph">InitGraph</A></DL>
+<P>
+
+<H2><A NAME="SECTION009459000000000000000"></A><A NAME="9099"></A><A NAME="pro:Sector"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">59</SPAN> Sector
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure Sector (X,Y : Integer; 
+<BR>
+Start,Stop,XRadius,YRadius : Word);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>Sector</TT>
+draws and fills a sector of an ellipse  with center <TT>(X,Y)</TT> and radii 
+<TT>XRadius</TT> and <TT>YRadius</TT>, starting at angle <TT>Start</TT> and ending at angle <TT>Stop</TT>.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:Arc">Arc</A>, <A HREF="node9.html#pro:Circle">Circle</A>, <A HREF="node9.html#pro:PieSlice">PieSlice</A></DL>
+<P>
+
+<H2><A NAME="SECTION009460000000000000000"></A><A NAME="9110"></A><A NAME="pro:SetActivePage"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">60</SPAN> SetActivePage
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure SetActivePage (Page : Word);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD></TT>Sets <TT>Page</TT> as the active page 
+for all graphical output.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><P>
+</DL>
+<P>
+
+<H2><A NAME="SECTION009461000000000000000"></A><A NAME="9121"></A><A NAME="pro:SetAllPallette"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">61</SPAN> SetAllPallette
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure SetAllPallette (Var Palette);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD></TT>Sets the current palette to
+<TT>Palette</TT>. <TT>Palette</TT> is an untyped variable, usually pointing to a
+record of type <TT>PaletteType</TT>
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:GetPalette">GetPalette</A></DL>
+<P>
+
+<H2><A NAME="SECTION009462000000000000000"></A><A NAME="9132"></A><A NAME="pro:SetAspectRatio"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">62</SPAN> SetAspectRatio
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure SetAspectRatio (Xasp,Yasp : Word);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD></TT>Sets the aspect ratio of the
+current screen to <TT>Xasp/Yasp</TT>.
+<DT>
+<B>Errors</B>
+<DD>None
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:InitGraph">InitGraph</A>, <A HREF="node9.html#pro:GetAspectRatio">GetAspectRatio</A></DL>
+<P>
+
+<H2><A NAME="SECTION009463000000000000000"></A><A NAME="9143"></A><A NAME="pro:SetBkColor"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">63</SPAN> SetBkColor
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure SetBkColor (Color : Word);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD></TT>Sets the background color to
+<TT>Color</TT>.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#fu:GetBkColor">GetBkColor</A>, <A HREF="node9.html#pro:SetColor">SetColor</A></DL>
+<P>
+
+<H2><A NAME="SECTION009464000000000000000"></A><A NAME="9154"></A><A NAME="pro:SetColor"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">64</SPAN> SetColor
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure SetColor (Color : Word);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD></TT>Sets the foreground color to
+<TT>Color</TT>.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#fu:GetColor">GetColor</A>, <A HREF="node9.html#pro:SetBkColor">SetBkColor</A></DL>
+<P>
+
+<H2><A NAME="SECTION009465000000000000000"></A><A NAME="9165"></A><A NAME="pro:SetFillPattern"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">65</SPAN> SetFillPattern
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure SetFillPattern (FillPattern : FillPatternType,
+<BR>
+Color : Word);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>SetFillPattern</TT> sets the current fill-pattern to <TT>FillPattern</TT>, and
+the filling color to <TT>Color</TT>
+The pattern is an 8x8 raster, corresponding to the 64 bits in
+<TT>FillPattern</TT>.
+<DT>
+<B>Errors</B>
+<DD>None
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:GetFillPattern">GetFillPattern</A>, <A HREF="node9.html#pro:SetFillStyle">SetFillStyle</A></DL>
+<P>
+
+<H2><A NAME="SECTION009466000000000000000"></A><A NAME="9176"></A><A NAME="pro:SetFillStyle"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">66</SPAN> SetFillStyle
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure SetFillStyle (Pattern,Color : word);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>SetFillStyle</TT> sets the filling pattern and color to one of the
+predefined filling patterns. <TT>Pattern</TT> can be one of the following predefined
+constants :
+
+<P>
+
+<UL>
+<LI><TT>EmptyFill  </TT> Uses backgroundcolor.
+</LI>
+<LI><TT>SolidFill  </TT> Uses filling color
+</LI>
+<LI><TT>LineFill   </TT> Fills with horizontal lines.
+</LI>
+<LI><TT>ltSlashFill</TT> Fills with lines from left-under to top-right.
+</LI>
+<LI><TT>SlashFill  </TT> Idem as previous, thick lines.
+</LI>
+<LI><TT>BkSlashFill</TT> Fills with thick lines from left-Top to bottom-right.
+</LI>
+<LI><TT>LtBkSlashFill</TT> Idem as previous, normal lines.
+</LI>
+<LI><TT>HatchFill</TT>  Fills with a hatch-like pattern.
+</LI>
+<LI><TT>XHatchFill</TT> Fills with a hatch pattern, rotated 45 degrees.
+</LI>
+<LI><TT>InterLeaveFill</TT> 
+</LI>
+<LI><TT>WideDotFill</TT> Fills with dots, wide spacing.
+</LI>
+<LI><TT>CloseDotFill</TT> Fills with dots, narrow spacing.
+</LI>
+<LI><TT>UserFill</TT> Fills with a user-defined pattern.
+</LI>
+</UL>
+
+<P>
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:SetFillPattern">SetFillPattern</A></DL>
+<P>
+
+<H2><A NAME="SECTION009467000000000000000"></A><A NAME="9187"></A><A NAME="pro:SetGraphBufSize"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">67</SPAN> SetGraphBufSize
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure SetGraphBufSize (BufSize : Word);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>SetGraphBufSize</TT> is a dummy function which does not do 
+anything; it is no longer needed.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><P>
+</DL>
+<P>
+
+<H2><A NAME="SECTION009468000000000000000"></A><A NAME="9198"></A><A NAME="pro:SetGraphMode"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">68</SPAN> SetGraphMode
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure SetGraphMode (Mode : Integer);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>SetGraphMode</TT> sets the graphical mode and clears the screen.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:InitGraph">InitGraph</A></DL>
+<P>
+
+<H2><A NAME="SECTION009469000000000000000"></A><A NAME="9209"></A><A NAME="pro:SetLineStyle"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">69</SPAN> SetLineStyle
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure SetLineStyle (LineStyle,Pattern,Width :
+Word);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>SetLineStyle</TT>
+sets the drawing style for lines. You can specify a <TT>LineStyle</TT> which is
+one of the following pre-defined constants:
+
+<P>
+
+<UL>
+<LI><TT>Solidln=0;</TT> draws a solid line.
+</LI>
+<LI><TT>Dottedln=1;</TT> Draws a dotted line.
+</LI>
+<LI><TT>Centerln=2;</TT> draws a non-broken centered line.
+</LI>
+<LI><TT>Dashedln=3;</TT> draws a dashed line.
+</LI>
+<LI><TT>UserBitln=4;</TT> Draws a User-defined bit pattern.
+</LI>
+</UL>
+If <TT>UserBitln</TT> is specified then <TT>Pattern</TT> contains the bit pattern.
+In all another cases, <TT>Pattern</TT> is ignored. The parameter <TT>Width</TT> 
+indicates how thick the line should be. You can specify one of the following
+pre-defined constants:
+
+<P>
+
+<UL>
+<LI><TT>NormWidth=1</TT>
+</LI>
+<LI><TT>ThickWidth=3</TT>
+</LI>
+</UL>
+
+<P>
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:GetLineSettings">GetLineSettings</A></DL>
+<P>
+
+<H2><A NAME="SECTION009470000000000000000"></A><A NAME="9220"></A><A NAME="pro:SetPalette"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">70</SPAN> SetPalette
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure SetPalette (ColorNr : Word; NewColor : ShortInt);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>SetPalette</TT> changes the <TT>ColorNr</TT>-th entry in the palette to
+<TT>NewColor</TT>
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:SetAllPallette">SetAllPallette</A>,<A HREF="node9.html#pro:SetRGBPalette">SetRGBPalette</A></DL>
+<P>
+
+<H2><A NAME="SECTION009471000000000000000"></A><A NAME="9231"></A><A NAME="pro:SetRGBPalette"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">71</SPAN> SetRGBPalette
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure SetRGBPalette (ColorNr,Red,Green,Blue : Integer);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>SetRGBPalette</TT> sets the <TT>ColorNr</TT>-th entry in the palette to the
+color with RGB-values <TT>Red, Green Blue</TT>.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:SetAllPallette">SetAllPallette</A>,
+<A HREF="node9.html#pro:SetPalette">SetPalette</A></DL>
+<P>
+
+<H2><A NAME="SECTION009472000000000000000"></A><A NAME="9242"></A><A NAME="pro:SetTextJustify"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">72</SPAN> SetTextJustify
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure SetTextJustify (Horizontal,Vertical : Word);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>SetTextJustify</TT> controls the placement of new text, relative to the 
+(graphical) cursor position. <TT>Horizontal</TT> controls horizontal placement, and can be
+one of the following pre-defined constants:
+
+<P>
+
+<UL>
+<LI><TT>LeftText=0;</TT> Text is set left of the pointer.
+</LI>
+<LI><TT>CenterText=1;</TT> Text is set centered horizontally on the pointer.
+</LI>
+<LI><TT>RightText=2;</TT> Text is set to the right of the pointer.
+</LI>
+</UL>
+<TT>Vertical</TT> controls the vertical placement of the text, relative to the
+(graphical) cursor position. Its value can be one of the following
+pre-defined constants :
+
+<P>
+
+<UL>
+<LI><TT>BottomText=0;</TT> Text is placed under the pointer.
+</LI>
+<LI><TT>CenterText=1;</TT> Text is placed centered vertically on the pointer.
+</LI>
+<LI><TT>TopText=2;</TT>Text is placed above the pointer.
+</LI>
+</UL>
+
+<P>
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:OutText">OutText</A>, <A HREF="node9.html#pro:OutTextXY">OutTextXY</A></DL>
+<P>
+
+<H2><A NAME="SECTION009473000000000000000"></A><A NAME="9253"></A><A NAME="pro:SetTextStyle"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">73</SPAN> SetTextStyle
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure SetTextStyle (Font,Direction,Magnitude : Word);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>SetTextStyle</TT> controls the style of text to be put on the screen.
+pre-defined constants for <TT>Font</TT> are:
+
+<P>
+
+<UL>
+<LI><TT>DefaultFont=0;</TT>
+</LI>
+<LI><TT>TriplexFont=2;</TT>
+</LI>
+<LI><TT>SmallFont=2;</TT>
+</LI>
+<LI><TT>SansSerifFont=3;</TT>
+</LI>
+<LI><TT>GothicFont=4;</TT>
+</LI>
+</UL>
+Pre-defined constants for <TT>Direction</TT> are :
+
+<P>
+
+<UL>
+<LI><TT>HorizDir=0;</TT>
+</LI>
+<LI><TT>VertDir=1;</TT>
+</LI>
+</UL>
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:GetTextSettings">GetTextSettings</A> </DL>
+<P>
+
+<H2><A NAME="SECTION009474000000000000000"></A><A NAME="9264"></A><A NAME="pro:SetUserCharSize"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">74</SPAN> SetUserCharSize
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure SetUserCharSize (Xasp1,Xasp2,Yasp1,Yasp2 : Word);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD></TT>Sets the width and height of vector-fonts. The horizontal size is given
+by <TT>Xasp1/Xasp2</TT>, and the vertical size by <TT>Yasp1/Yasp2</TT>.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:SetTextStyle">SetTextStyle</A></DL>
+<P>
+
+<H2><A NAME="SECTION009475000000000000000"></A><A NAME="9275"></A><A NAME="pro:SetViewPort"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">75</SPAN> SetViewPort
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure SetViewPort (X1,Y1,X2,Y2 : Integer; Clip : Boolean);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD></TT>Sets the current graphical viewport (window) to the rectangle defined by
+the top-left corner <TT>(X1,Y1)</TT> and the bottom-right corner <TT>(X2,Y2)</TT>.
+If <TT>Clip</TT> is true, anything drawn outside the viewport (window) will be
+clipped (i.e. not drawn). Coordinates specified after this call are relative
+to the top-left corner of the viewport.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:GetViewSettings">GetViewSettings</A></DL>
+<P>
+
+<H2><A NAME="SECTION009476000000000000000"></A><A NAME="9286"></A><A NAME="pro:SetVisualPage"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">76</SPAN> SetVisualPage
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure SetVisualPage (Page : Word);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>SetVisualPage</TT> sets the video page to page number <TT>Page</TT>. 
+<DT>
+<B>Errors</B>
+<DD>None
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#pro:SetActivePage">SetActivePage</A></DL>
+<P>
+
+<H2><A NAME="SECTION009477000000000000000"></A><A NAME="9297"></A><A NAME="pro:SetWriteMode"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">77</SPAN> SetWriteMode
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Procedure SetWriteMode (Mode : Integer);
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>SetWriteMode</TT> controls the drawing of lines on the screen. It controls
+the binary operation used when drawing lines on the screen. <TT>Mode</TT> can
+be one of the following pre-defined constants:
+
+<P>
+
+<UL>
+<LI>CopyPut=0;
+</LI>
+<LI>XORPut=1;
+</LI>
+</UL>
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><P>
+</DL>
+<P>
+
+<H2><A NAME="SECTION009478000000000000000"></A><A NAME="9308"></A><A NAME="fu:TextHeight"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">78</SPAN> TextHeight
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Function TextHeight (S : String) : Word;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>TextHeight</TT> returns the height (in pixels) of the string <TT>S</TT> in
+the current font and text-size.
+
+<P>
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#fu:TextWidth">TextWidth</A></DL>
+<P>
+
+<H2><A NAME="SECTION009479000000000000000"></A><A NAME="9319"></A><A NAME="fu:TextWidth"></A>
+<BR>
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">79</SPAN> TextWidth
+</H2><DL><DT>
+<B>Declaration</B>
+<DD><TT>Function TextWidth (S : String) : Word;
+</TT>
+<P>
+<TT><DT>
+<B>Description</B>
+<DD>TextHeight</TT> returns the width (in pixels) of the string <TT>S</TT> in
+the current font and text-size.
+<DT>
+<B>Errors</B>
+<DD>None.
+<DT>
+<B>See also</B>
+<DD><A HREF="node9.html#fu:TextHeight">TextHeight</A></DL>
+<P>
+
+<H1><A NAME="SECTION00950000000000000000">
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">5</SPAN> Target specific issues</A>
+</H1>                                                                                                                                                                                                                                                               
+In what follows we describe some things that are different on the various
+platforms:
+
+<P>
+
+<H2><A NAME="SECTION00951000000000000000">
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">1</SPAN> <SMALL>DOS</SMALL></A>
+</H2>
+
+<H2><A NAME="SECTION00952000000000000000">
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">2</SPAN> W<SMALL>INDOWS</SMALL></A>
+</H2>
+
+<H2><A NAME="SECTION00953000000000000000">
+<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">3</SPAN> <SMALL>LINUX</SMALL></A>
+</H2>
+
+<BR> <HR>
+<ADDRESS>
+<I>root <BR>
+2000-09-24</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,6 +1,412 @@
-Инициализация графики вызывается InitGraph(переводит видеокарту в
-графический режим)
+ВНИМАНИЕ! В LINUX USES ptcgraph;
 
-PROCEDURE InitGraph(var graphdriver: integer; var graphmode: integer;
+Инициализация графики вызывается InitGraph(переводит видеокарту в графический 
+режим)
+
+PROCEDURE InitGraph(var graphdriver: integer; var graphmode: integer; 
                     pathtodriver: string);
+
+
+                            [Mode selection]
+
+    Юнит graph был реализован для совместивости со старым юнитом graph. По
+    этой причине, константы режима, как они были, такими и остались.
+
+    Однако, поскольку
+     1. Видеокарты сильно изменились
+     2. Free Pascal работает на множестве платформ
+    было решено реализовать новый режим и константы графического драйвера,
+    которые более независимы от специфичных платформ, на которых запускают
+    программы.
+
+    Определены следующие драйверы:
+    Каждый из этих драйверов указывает желаемую глубину цвета.
+
+D1bit = 11;
+D2bit = 12;
+D4bit = 13;
+D6bit = 14;  { 64 colors Half-brite mode - Amiga }
+D8bit = 15;
+D12bit = 16; { 4096 color modes HAM mode - Amiga }
+D15bit = 17;
+D16bit = 18;
+
+lowNewDriver = 11;
+highNewDriber = 21;
+
+    Определены следующие режимы:
+
+detectMode = 30000;
+m320x200 = 30001;
+m320x256 = 30002; { разрешение Amiga }
+m320x400 = 30003; { разрешение Amiga/Atari }
+m512x384 = 30004; { разрешение mac }
+m640x200 = 30005; { vga resolution }
+m640x256 = 30006; { amiga resolution (PAL) }
+m640x350 = 30007; { vga resolution }
+m640x400 = 30008;
+m640x480 = 30009;
+m800x600 = 30010;
+m832x624 = 30011; { mac resolution }
+m1024x768 = 30012;
+m1280x1024 = 30013;
+m1600x1200 = 30014;
+m2048x1536 = 30015;
+
+lowNewMode = 30001;
+highNewMode = 30015;
+
+    Эти режимы начинаются с трёх тысяч, потому что Borland указал, что номер
+    режима должен возрастать, увеличивая разрешение X, и новые константы не
+    должны мешать старым.
+
+    Вышеуказанные константы могут быть использованы для установки определённых
+    глубины цвета и разрешения. Если другие режимы, не из вышеуказанного
+    списка, поддерживаются другой видеокартой, вы не сможете выбрать их с
+    помощью этого механизма.
+
+    По этой причине, есть ещё номер 'dynamic' режима, назначаемый во время
+    выполнения. Это число увеличивается с возрастающим разрешением X. Его
+    можно запросить с вызовом getmoderange. Данный вызов вернёт диапазон
+    режимов, которые действительны для некоторых графичейских драйверов.
+    Числа будут гарантировано последовательным и могут быть использоваы для
+    поиска определённых разрешений.
+
+    Таким образом, функция getmoderange могут быть использованы для
+    обнаружения всех доступных режимов и драйверов.
+
+                    
+                    [Constants, Types and Variables]
+[Types]
+
+ArcCoordsType = record 
+    X, Y, Xstart, Ystart, Xend, Yend : integer;
+end;
+
+FillPatternType = array [1..8] of byte;
+
+FillSettingsType = record
+    LineStyle, Pattern, Width : word;
+end;
+
+PaletteType = record
+    Size: byte;
+    Colors: array[0..MaxColor] of shortint;
+end;
+
+PointType = record
+    X, Y: integer;
+end;
+
+TextSettingsType = record
+    Font, Direction, CharSize, Horiz, Vert: word;
+end;
+
+ViewPortType = record
+    X1, Y1, X2, Y2: integer;
+    Clip: boolean;
+end;
+
+
+                        [Function list by category]
+
+[Initialization]
+
+    Инициализация графического экрана. ClearDevice очищает его.
+
+CloseGraph - заканчивает сессию рисования, переводит в текстовый режим
+DetectGraph - обнаруживает графические режимы
+GetAspectRatio - получаем соотношение сторон экрана
+GetModeRange - получаем диапазон допустимых режимов текущего драйвера
+GraphDefaults - настройки по умолчанию
+GetDriverName - возвращает имя графического драйвера
+GetGraphMode - возвращает текущий или последний использовавшийся графический
+               режим
+GetMaxMode - получаем максимальный режим текущего режима
+GetModeName - получаем имя текущего режима
+GraphErrorMsg - строковое представление графической ошибки
+GraphResult - результат последней операции рисования
+InitGraph - инициализирование графических драйверов
+InstallUserDriver - установка нового драйвера
+RegisterBGIDriver - запись нового драйвера
+RestoreCRTMode - вернуться в текстовый режим
+SetGraphBufSize - настройка размера буффера для графических операций
+SetGraphMode - настройка графического режима
+
+    Общие функции управления рисунком экрана. 
+
+ClearViewPort очищает сцену.
+
+GetImage - копирует картинку с экрана в память
+GetMaxX - получаем максимальную X координату
+GetMaxY - получаем максимальную Y координату
+GetX - получаем текущую X позицию
+GetY - получаем текущую Y позицию
+ImageSize - получаем размер выбранной картинки
+GetViewSettings - получаем текущие настройки сцены
+PutImage - копирует картинку из памяти в экран
+SetActivePage - установит активную видео страницу
+SetAspectRatio - установит соотношение сторон для рисования
+SetWriteMode - установка режима записи для операции экрана
+
+    Функции управления цветом. 
+
+GetBkColor даёт текущий цвет заднего фона
+
+GetColor - даёт текущий цвет переднего фона
+GetDefaultPalette - даёт текущие записи палитры
+GetMaxColor - даёт максимально доступный цвет
+GetPaletteSize - даёт размер палитры текущего режима
+GetPixel - даёт цвет выбранного пикселя
+GetPalette - даёт запись палитры
+SetAllPallette - установка все цвета в палитре
+SetBkColor - установка цвета заднего фона
+SetColor - установка цвета переднего фона
+SetPalette - установка запись палитры
+SetRGBPalette - установка запись палитры со значениями RGB
+
+    Функции рисования примитивов.
+
+Circle - круг
+DrawPoly - полигон с N точками
+Ellipse - эллипс
+GetArcCoords - получаем координаты дуги
+GetLineSettings - получаем текущие настройки рисования линии
+Line - провести линию между двумя точками
+LineRel - провести линию относительно текущей позиции
+LineTo - провести линию от текущей позиции к абсолютной
+MoveRel - перенести курсор относительно текущей позицией
+MoveTo - перенести курсор к абсолютной позицией
+{PieSlice - нарисовать ????}
+PutPixel - нарисовать 1 пиксель
+Rectangle - рисует полый прямоугольник
+Sector - рисует сектор
+SetLineStyle - установка текущего стиля рисования линии
+
+    Функции для рисования областей с заливкой
+
+Bar3D - рисует заполненный {3D бар???}
+
+Bar - рисует заполненный прямоугольник
+FloodFill - заливка, начиная с координаты
+FillEllipse - нарисовать заполненный эллипс
+FillPoly - нарисовать заполненный полигон
+GetFillPattern - получаем текущий образец заливки
+GetFillSettings - получаем ткущие настройки заливки
+SetFillStyle - настройка стиля заливки
+
+
+    Функции для установки текстов на экран
+
+GetTextSettings - получаем текущие настройки текста
+
+InstallUserFont - установка нового шрифта
+OutText - записать текст на текущее положение курсора
+OutTextXY - записать текст с координатами X, Y
+RegisterBGIFont - записать новый шрифт
+SetTextJustify - установка выравнивания текста
+SetTextStyle - установка стиля текста
+SetUserCharSize - установка размера текста
+TextHeight - рассчитать высоту текста
+TextWidth - рассчитать ширину текста
+
+
+
+                        [Functions and Procedures]
+
+
+[Arc]
+    {Объявление}
+    Procedure Arc (X, Y: integer; start, stop, radius: word);
+
+    {Описание}
+    Arc рисует часть окружности с центром в (X, Y) радиусом radius, начиная
+    с угла start, заканчивая углом stop. Эти углы измеряются против часовой
+    стрелки.
+
+
+[Bar]
+    {Объявление}
+    Procedure Bar (X1, Y1, X2, Y2: integer);
+
+    {Описание}
+    Рисует прямоугольник с углами в (X1,Y1) и (X2,Y2) и заполняет его текущим
+    цветом и стилем.
+
+
+[Bar3D]
+    {Объявление}
+    Procedure Bar3D (X1, Y1, X2, Y2: integer; depth: word; top: boolean);
+
+    {Описание}
+    Рисует трёхмерную полосу с углами в (X1,Y1) и (X2,Y2) и заполняет его
+    текущим цветом и стилем. depth указывет количество пикселей, используемых
+    для отображения глубины полосы.
+
+
+[Circle]
+    {Объявление}
+    Procedure Circle (X, Y: integer; radius: word);
+
+    {Описание}
+    Рисует окружность с центром в (X,Y) с радиусом radius
+
+
+[ClearDevice]
+    {Объявление}
+    Procedure ClearDevice;
+
+    {Объявление}
+    Очищает экран с текущим цветом заднего экран и устанавливает указатель на
+    (0, 0) {может быть, курсор вместо указателя?}
+
+
+[ClearViewPort]
+    {Объявление}
+    Procedure ClearViewPort;
+
+    {Описание}
+    Очищает текущую сцену. Устанавливает цвет заднего фона
+
+
+[CloseGraph]
+    {Объявление}
+    Procedure CloseGraph;
+
+    {Описание}
+    Закрывает систему графиуи и восстанавливает тот режим экрана, который был
+    активный перед этим
+
+
+[DetectGraph]
+    {Объявление}
+    Procedure DetectGraph(var Driver, Modus: integer);
+
+    {Описание}
+    Проверяет оборудоваение в компьютере и определяет драйвер и экранный режим
+    к использованию. Они возвращаются в Driver и Modus, может быть скормлен
+    InitGraph. См. InitGraph для списка драцверов и режимов.
+
+
+[DrawPoly]
+    {Объявление}
+    Procedure DrawPoly(NumberOfPoints: word; var PolyPoints);
+
+    {Описание}
+    Рисует полигон с количеством вершин NumberOfPoints, использующий текущий
+    цвет и стиль линии. PolyPoints - массив типа PointType.
+
+
+[Ellipse]
+    {Объявление}
+    Procedure Ellipse(X, Y: integer; Start, Stop, XRadius, YRadius: word);
+
+    {Описание}
+    Рисует эллипс, центром в (X, Y). XRadius и YRadius - это горизонтальный и
+    вертикальный радиус эллипса соответственно. Start и Stop - углы начала и
+    конца части эллипса. Они измеряются против часовой стрелки от оси X.
+
+
+[FillEllipse]
+    {Объявление}
+    Procedure FillEllipse(X, Y: integer; Xradius, YRadius: word);
+
+    {Описание}
+    Рисует такой же эллипс, только закрашенный текущим цветом.
+
+
+[FillPoly]
+    {Объявление}
+    Procedure FillPoly(NumberOfPoints: word; var PolyPoints);
+
+    {Описание}
+    Рисует такой же полигон, тольько закращенный текущим цветом.
+
+
+[FloodFill]
+    {Объявление}
+    Procedure FloodFill(X, Y: integer; BorderColor: word);
+
+    {Описание}
+    Заполняет область в точке(X,Y), ограниченную цветом BorderColor.
+
+
+[GetArcCoords]
+    {Объявление}
+    Procedure GetArcCoords(var ArcCoords: ArcCoordsType);
+
+    {Описание}
+    Процедура возвращает коортинаты последнего вызова Arc или Ellipse
+
+
+[GetAspectRatio]
+    {Объявление}
+    Procedure GetAspectRatio(var Xasp, Yasp: word);
+
+    {Описание}
+    Определяет эффективное разрешение экрана. Соотношение сторон может быть
+    посчитано как Xasp/Yasp.
+
+
+[GetBkColor]
+    {Объявление}
+    Function GetBkColor: word;
+
+    {Описание}
+    Возвращает текущий цвет заднего фона(с записи паитры).
+
+
+[GetColor]
+    {Объявление}
+    Function GetColor: word;
+
+    {Описание}
+    Возвращает текущий цвет для рисования.
+
+
+[GetDefaultPalette]
+    {Объявление}
+    Procedure GetDefaultPalette(var Palette: PaletteType);
+
+    {Описание}
+    Возвращает текущую палитру в Palette.
+
+
+[GetDriverName]
+    {Объявление}
+    Function GetDriverName: string;
+
+    {Описание}
+    Возвращает строку, содержащий имя текущего драйвера.
+
+
+[GetFillPattern]
+    {Объявление}
+    Procedure GetFillPattern(var FillPattern: FillPatternType);
+
+    {Описание}
+    Возвращает массив с текущим шаблоном заливки в FillPattern.
+
+
+[GetFillSettings]
+    {Объявление}
+    Procedure GetFillSettings(var FillInfo: FillSettingsType);
+
+    {Описание}
+    Возвращает текущие настройки заливки в FillInfo.
+
+
+[GetGraphMode]
+    {Объявление}
+    Function GetGraphMode: integer;
+
+    {Описание}
+    Возвращает текущий режим графики.
+
+
+[GetImage]
+    {Объявление}
+    Procedure GetImage(X1, Y1, X2, Y2: integer; Var Bitmap);
+
+    {Описание}
 

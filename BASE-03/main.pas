@@ -1,7 +1,8 @@
-PROGRAM Testing_graphics;
+PROGRAM Testing_Program;
 
-USES graph, crt;
+USES ptcgraph, crt;
+
+VAR drname: string;
 
 BEGIN
-
 END.
