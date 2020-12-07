@@ -409,4 +409,155 @@ TextWidth - рассчитать ширину текста
     Procedure GetImage(X1, Y1, X2, Y2: integer; Var Bitmap);
 
     {Описание}
+    Помещает копию область экрана (X1,Y1) на (X2,Y2) в BitMap
+
+
+[GetLineSettings]
+    {Объявление}
+    Procedure GetLineSettings (var LineInfo: LineSettingsType);
+
+    {Описание}
+    Возвращает текующие настройки Line в LineInfo
+
+
+[GetMaxColor]
+    {Объявление}
+    Function GetMaxColor: word;
+
+    {Описание}
+    Возвращает максимум цветогого номера, который может быть использован с
+    SetColor. Напротив, этот цвет не всегда гарантировано будет белым. Например,
+    в режиме 256+ цветов.
+
+
+[GetMaxMode]
+    {Объявление}
+    Function GetMaxMode: word;
+
+    {Описание}
+    Возвращает наивысший режим для текущего драйвера.
+
+
+[GetMaxX]
+    {Объявление}
+    Function GetMaxX: word;
+    
+    {Описание}
+    Возвращает максимальную длину экрана.
+
+
+[GetMaxY]
+    {Объявление}
+    Function GetMaxY: word;
+    
+    {Описание}
+    Возвращает максимальную ширину экрана.
+
+
+[GetModeName]
+    {Объявление}
+    Function GetModeName(var modus: integer): string;
+    
+    {Описание}
+    Возвращает строку с именем режима.
+
+
+[GetModeRange]
+    {Объявление}
+    Procedure GetModeRange(Driver: integer; var LoModus, HiModus: integer);
+    
+    {Описание}
+    Возвращает наименьший и наибольший режим текущего установленного драйвера.
+    Если никакие режимы не поддерживают этот драйвер, HiModus вернёт -1.
+
+
+[GetPalette]
+    {Объявление}
+    Procedure GetPalette(var Palette: PaletteType);
+    
+    {Описание}
+    Возвращает в Palette текущую палитру.
+
+
+[GetPaletteSize]
+    {Объявление}
+    Function GetPaletteSize: word;
+    
+    {Описание}
+    Возвращает наибольшее количество записей в текущей палитре.
+
+
+[GetPixel]
+    {Объявление}
+    Function GetPixel(X, Y: integer): word;
+    
+    {Описание}
+    Возвращает цвет точки в (X,Y).
+
+
+[GetTextSettings]
+    {Объявление}
+    Procedure GetTextSettings(var TextInfo: TextSettingsType);
+    
+    {Описание}
+    Возвращает текущий стиль настройки текста:
+    Шрифт, направление, размер и положение с SetTextStyle и SetTextJustify.
+
+
+[GetViewSettings]
+    {Объявление}
+    Procedure GetViewSettings(var ViewPort: ViewPortType);
+    
+    {Описание}
+    Возвращает текущую сцену и настройки обрезки в ViewPort.
+
+
+[GetX]
+    {Объявление}
+    Function GetX: integer;
+    
+    {Описание}
+    Возвращает X-координату текущей позицией графичекого курсора.
+
+
+[GetY]
+    {Объявление}
+    Function GetY: integer;
+    
+    {Описание}
+    Возвращает Y-коодинату текущей позицией графического курсора.
+
+
+[GraphDefaults]
+    {Объявление}
+    Procedure GraphDefaults;
+    
+    {Описание}
+    Сбрасывает все настройки для сцены, палитры, переднего заднего планов, стиль
+    линии, стиль и цвет заполнения, шрифт, размещение и размер текста.
+
+
+[GraphErrorMsg]
+    {Объявление}
+    Function GraphErrorMsg(ErrorCode: integer): string;    
+
+    {Описание}
+    Возвращает строку с поясняющей ошибкой ErrorCode. Эта строка может быть
+    использована, чтобы дать пользователю понять, что что-то пошло не так.
+
+
+[GraphResult]
+    {Объявление}
+    Function GraphResult: integer;
+
+    {Описание}
+    Возвращает 
+
+
+[]
+    {Объявление}
+
+    {Описание}
+
+
 
