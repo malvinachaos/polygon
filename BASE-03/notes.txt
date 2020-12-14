@@ -1,10 +1,21 @@
+{примечания переводчицы - [SetGraphBufSize]
+    {Объявление}
+    Procedure SetGraphBufSize(BufSize: word);
+
+    {Описание}
+    
+
+
+пд}
 ВНИМАНИЕ! В LINUX USES ptcgraph;
-
-Инициализация графики вызывается InitGraph(переводит видеокарту в графический 
-режим)
-
-PROCEDURE InitGraph(var graphdriver: integer; var graphmode: integer; 
-                    pathtodriver: string);
+{
+    To Do:
+    [ ] BGI
+    [ ] SetGraphBufSize
+    [ ] ClearDevice
+    [ ] InstallUserDriver
+    [ ] SetFillStyle
+}
 
 
                             [Mode selection]
@@ -130,7 +141,9 @@ InitGraph - инициализирование графических драйв
 InstallUserDriver - установка нового драйвера
 RegisterBGIDriver - запись нового драйвера
 RestoreCRTMode - вернуться в текстовый режим
-SetGraphBufSize - настройка размера буффера для графических операций
+SetGraphBufSize - настройка размера буффера для графических операций{
+пд: нигде не используется. Проверить
+}
 SetGraphMode - настройка графического режима
 
     Общие функции управления рисунком экрана. 
@@ -177,7 +190,7 @@ LineRel - провести линию относительно текущей п
 LineTo - провести линию от текущей позиции к абсолютной
 MoveRel - перенести курсор относительно текущей позицией
 MoveTo - перенести курсор к абсолютной позицией
-{PieSlice - нарисовать ????}
+PieSlice - рисует сектор круга
 PutPixel - нарисовать 1 пиксель
 Rectangle - рисует полый прямоугольник
 Sector - рисует сектор
@@ -551,11 +564,347 @@ TextWidth - рассчитать ширину текста
     Function GraphResult: integer;
 
     {Описание}
-    Возвращает 
+    Возвращает код ошибки последней графической операции. Если возвращаемое 
+    значение 0 - всё прошло удачно. Значение, отличное от нуля, означает, что
+    произошла ошибка. Кроме того, все операции, которые что-то рисуют на экране,
+    следующие процедуры также могут дать GraphResult значение, отличное от нуля:
+
+        * InstallUserFont
+        * SetLineStyle
+        * SetWriteMode
+        * SetFillStyle
+        * SetGraphMode
+        * SetTextStyle
+
+
+[ImageSize]
+    {Объявление}
+    Function ImageSize(X1, Y1, X2, Y2: integer): word;
+
+    {Описание}
+    Возвращает значение количества байтов, нужных для хранения картинки в
+    прямоугольнике, определённом на (X1, Y1) и (X2, Y2).
+
+
+[InitGraph]
+    {Объявление}
+    Procedure InitGraph(var GraphDriver, GraphModus: integer; 
+                        const PathToDriver: string);
+
+    {Описание}
+    Инициализирует графику. GraphDriver имеет два допустимых значения:
+    GraphDriver=0, что значит автоматическое опреление и инициализирует максимально
+    возможный редим с наибольшим количеством цветов. 
+    {пд:
+        В той статье было сказано, что максимально поддерживаемый режим драйвером
+        1024x786x64K, чтобы добиться более выского разрешения, надо отредактировать
+        MODES.PPI. Сейчас это уже не актуально: современный fpc, как минимум,
+        вытягивает 1920x1080. 
+    }
+    Если нужен другой режим, тогда установите значение для GraphDriver отличное от
+    нуля и GraphModus на желаемый вам режим(VESA-режимы, где 640x480x256 это 101h
+    и т.д.). PathToDriver нужен, если вы используете BGI-шрифты из Borland.
+    fpc не имеет таких шрифтов, их надо приобретать отдельно.
+
+    {Пример:}
+.-------------------------------------------------------------------------.
+|USES ptcgraph;                                                           |
+|                                                                         |
+|VAR gd, gm: integer;                                                     |
+|    pathtodriver: string;                                                |
+|                                                                         |
+|BEGIN                                                                    |
+|    gd:= detect; {наибольшее возможное разрешение}                       |
+|    gm:= 0; {необязательно, определяется автоматически}                  |
+|    pathtodriver:= 'C:\PP\BGI'; {путь до BGI-шрифтов, драйверы не нужны} |
+|                                                                         |
+|    InitGraph(gd, gm, PathToDriver);                                     |
+|                                                                         |
+|    if GraphResult <> grok then halt;                                    |
+|                                                                         |
+|    {... графические операции}                                           |
+|                                                                         |
+|    CloseGraph; {восстанавливает предыдущий графический режим}           |
+|END.                                                                     |
+*-------------------------------------------------------------------------*
+
+
+[InstallUserDriver]
+    {Объявление}
+    Function InstallUserDriver(DriverPath: string; AutoDetectPtr:pointer): integer;
+
+    {Описание}
+    Добавляет устройство-драйвер DriVerPAth в список .BGI драйверов. AutoDetectPtr
+    - это указатель на возможную функцию автоопределения.
+    {пд: как???}
+
+
+[Line]
+    {Объявление}
+    Procedure Line(X1, Y1, X2, Y2: integer);
+
+    {Описание}
+    Рисует линию от (X1,Y1) к (X2,Y2), с текущим стилем и цветом. Текущая позиция
+    граф курсора устанавливается на (X2,Y2).
+
+
+[LineRel]
+    {Объявление}
+    Procedure LineRel(DX, DY: integer);
+
+    {Описание}
+    Рисует линию, начиная от текущей позиции курсора к точке (DX, DY) относительно
+    начальной точки, с текущим цветом и стилем. Позиция курсора устанавливается на
+    (DX, DY).
+
+
+[LineTo]
+    {Объявление}
+    Procedure LineTo(X, Y: integer);
+
+    {Описание}
+    Рисует линию, начиная от текущей позиуии курсора к точке (X, Y) относительно 
+    начальной точки, с текущим цветом и стилем. Позиция курсора устанавливается на
+    (X, Y).
+
+
+[MoveRel]
+    {Объявление}
+    Procedure MoveRel(DX, DY: integer);
+
+    {Описание}
+    Перемещает курсор к точке (DX, DY), относительно текущей позиции курсора.
+
+
+[MoveTo]
+    {Объявление}
+    Procedure MoveTo(X, Y: integer);
+
+    {Описание}
+    Двигает курсор к точке (X, Y).
+
+
+[OutTextXY]
+    {Объявление}
+    Procedure OutTextXY(X, Y: integer; const TextString: string);
+
+    {Описание}
+    Выводит TextString на экран в точке (X, Y), используя текущие натройки шрифта.
+    Курсор перемезается в конец текста.
+
+
+[PieSlice]
+    {Объявление}
+    Procedure PieSlice(X, Y: integer; Start, Stop, Radius: word);
+
+    {Описание}
+    Рисует и заливает сектор круга с центром (X, Y) и радиусом Radius, угол
+    которого начинается в Start и заканчивается в Stop.
+
+
+[PutImage]
+    {Объявление}
+    Procedure PutImage(X1, Y1: integer; var BitMap; How: word);
+
+    {Описание}
+    Помещает битовую карту экрана в (X1, Y1) в BitMat. How определет как битовая
+    карта будет помещаться на экране. Возможные значения:
+
+        * CopyPut
+        * XORPut
+        * ORPut
+        * AndPut
+        * NotPut
+
+
+[PutPixel]
+    {Объявление}
+    Procedure PutPixel(X, Y: integer; Color: word);
+
+    {Описание}
+    Рисует пиксель в точке (X, Y), используя цвет Color.
+
+
+[Rectangle]
+    {Объявление}
+    Procedure (X1, Y1, X2, Y2: integer);
+
+    {Описание}
+    Рисует прямоугольник с углами в (X1, Y1) и (X2, Y2), используя текущий цвет и
+    стиль.
+
+
+
+[RegisterBGIFont]
+    {Объявление}
+    Function RegisterBGIFont(Font: pointer): integer;
+
+    {Описание}
+    Регистрирует пользовательский BGI драйвер/
+
+
+[RestoreCRTMode]
+    {Объявление}
+    Procedure RestoreCRTMode;
+
+    {Описание}
+    Восстанавливает режим экрана, который был активен перед тем, как запустился
+    графический режим. Для того, чтобы вернуться в последний графический режим,
+    вы можете воспользоваться SetGraphMode(GetGraphMode).
+
+
+[Sector]
+    {Объявление}
+    Procedure Sector(X, Y: integer; Start, Stop, XRadius, YRadius: word);
+
+    {Описание}
+    Рисует и заливает сектор эллипса с центром (X, Y), радиусами XRadius и YRadius,
+    начиная с угла Start и заканчивая углом Stop.    
+
+
+[SetActivePage]
+    {Объявление}
+    Procedure SetActivePage(page: word);
+
+    {Описание}
+    Устанавливает page за активную страницу для всего графического вывода.
+
+
+[SetAllPallette]
+    {Объявление}
+    Procedure SetAllPallette(var Palette);
+
+    {Описание}
+    Устанавливает текущую палитру в Palette - неопределённая переменная, обычно
+    указывает на запись типа PaletteType.
+
+
+[SetAspectRatio]
+    {Объявление}
+    Procedure SetAspectRatio(Xasp, Yasp: word);
+
+    {Описание}
+    Устанавливает соотношение сторон текущего экрана в Xasp/Yasp.
+    {пд: как я понимаю, типа 16:9, 16:10}
+
+
+[SetBkColor]
+    {Объявление}
+    Procedure SetBkColor(Color: word);
+
+    {Описание}
+    Устанавливает цвет заднего фона Color.
+
+    
+[SetColor]
+    {Объявление}
+    Procedure SetColor(Color: word);
+
+    {Описание}
+    Устанавливает цвет Color.
+
+    
+[SetFillPattern]
+    {Объявление}
+    Procedure SetFillPattern(FillPattern: FillPatternType; Color: word);
+
+    {Описание}
+    Устанавливает текущий шаблон заливки в FillPattern и цвет заливки Color.
+    Шаблон представляет собой растр 8х8, соответствующий 64 битам в FillPattern.
+
+
+[SetFillStyle]
+    {Объявление}
+    Procedure SetFillStyle(Pattern, Color: word);
+
+    {Описание}
+    Устанавливает шаблон и цвет заливки. Шаблоны:
+
+        * 'EmpyFill' - использует цвет заднего фона.
+        * 'SolidFill' - цвет заливки.
+        * 'LineFill' - заливка горизонтальными линиями.
+        * 'LtSlashFill' - заполняет линиями. {пд: диагональню? штрих? 'left-under'}
+        * 'SlashFill' - предыдущее, линии потолще.
+        * 'BkSlashFill' - обратный {штрих} толстыми линиями.
+        * 'LtBkslashFill' - обратный {штрих.}
+        * 'HatchFill' - штриховка.
+        * 'XHatchFill' - штриховка, повёрнутая на 45 градусов.
+        * 'InterLeaveFill' - {пд: !!!}
+        * 'WideDotFill' - заливка точками, широкое пространство между ними.
+        * 'CloseDotFill' - заливка точками, узкое пространоство между ними.
+        * 'UserFill' - заливает пользовательским шаблоном.
+
+
+[SetGraphMode]
+    {Объявление}
+    Procedure SetGraphMode(Mode: integer);
+
+    {Описание}
+    Настраивает графический режим и очищает экран.
+
+
+ [SetLineStyle]
+    {Объявление}
+    Procedure SetLineStyle(LineStyle, Pattern, Width: word);
+
+    {Описание}
+    Настраивает стиль рисования линий. Список LineStyle:
+
+        * 'Solid=0' - 
 
 
 []
     {Объявление}
+
+
+    {Описание}
+        * 'DefaultFont=0';
+        * 'TriplexFont=2';
+        * 'SmallFont=2';
+        * 'SansSerifFont=3';
+        * 'GothicFont=4';
+
+        * 'HorizDir=0';
+        * 'VertDir=1';
+
+[]
+    {Объявление}
+
+
+    {Описание}
+
+
+[]
+    {Объявление}
+
+
+    {Описание}
+
+
+[]
+    {Объявление}
+
+
+    {Описание}
+
+
+[]
+    {Объявление}
+
+
+    {Описание}
+
+
+[]
+    {Объявление}
+
+
+    {Описание}
+
+
+[]
+    {Объявление}
+
 
     {Описание}
 
