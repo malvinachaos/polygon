@@ -1,4 +1,0 @@
-https://coderlessons.com/tutorials/kompiuternoe-programmirovanie/vyuchit-fortran/fortran-kratkoe-rukovodstvohttps://coderlessons.com/tutorials/kompiuternoe-programmirovanie/vyuchit-fortran/fortran-kratkoe-rukovodstvo
-
-https://github.com/vmagnin/gtk-fortran/wiki
-
