@@ -6,6 +6,18 @@ pytrash (by MalvinaLazyDragon)
  * Last not necessary oprion -- PyInstaller
  * ATTENTION: this program cannot working with files with same 
    name, but in various dirs
+
+[ ] Добавить конфиг файл: 
+     * цвета (вкл/выкл) 
+     * путь по мусорки (по умолчанию ~/.local/share/Trash/ или 
+       кастомный)
+     * время, после которого он автоматически удаляет файл
+
+---------[Как работает мусорка]------------------------------------
+1) Записывает в файл ~/.local/share/Trash/info/имя_файла.trashinfo
+   полный путь до файла и дату его премещения
+2) Перемещает файл в ~/.local/share/Trash/files/
+
 -------------------------------------------------------------------
 1) Фишки diy_rm:
 [ ] цикл по аргументам строки

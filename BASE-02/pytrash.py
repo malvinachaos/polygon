@@ -1,3 +1,4 @@
+#! /usr/bin/python3
 import argparse
 from os import mkdir, getlogin, replace, listdir, path, getcwd, remove, system
 
@@ -10,6 +11,7 @@ FILE = PATH + "/.pytrashdata"
 if not path.exists(PATH):
     mkdir(PATH)
     print(f"Created directory '{PATH}'")
+
 if not path.exists(FILE):
     system(f"touch {FILE}")
     print(f"Created data file")
@@ -54,7 +56,7 @@ def files_exist(files, Path=""):
     for i in files:
         if not path.exists(Path+i):
             non.append(i)
-            print("GOTCHA!")
+            print("\e[5;31mGOTCHA!\e[0m")
     return non
 
 def load():
