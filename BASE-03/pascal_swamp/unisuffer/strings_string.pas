@@ -16,6 +16,9 @@ BEGIN
     { Строки можно рассматривать как последовательность символов и как массивы }
     { символов.                                                                }
     st[8]:= '|';
-    WriteLn(st);
+    WriteLn(st, NewLine, 'Введите строку: ');
 
+    Read(st);
+
+    WriteLn(NewLine,st, NewLine);
 END.

@@ -1,0 +1,7 @@
+PROGRAM Pompa;
+
+VAR ;
+
+BEGIN
+
+END.
