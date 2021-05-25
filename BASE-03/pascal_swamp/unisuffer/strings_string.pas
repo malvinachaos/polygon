@@ -17,9 +17,9 @@ BEGIN
     { Строки можно рассматривать как последовательность символов и как массивы }
     { символов.                                                                }
     st[8]:= '|';
-    WriteLn(st, NewLine, 'Введите строку: ');
+    WriteLn(st, NewLine);
 
-    st:= ReadLnString('>>');
+    st:= ReadLnString('Введите строку [STR]<<');
 
     WriteLn(st, NewLine);
 
@@ -35,9 +35,29 @@ BEGIN
     Length(st).PrintLn;
 
     st.Count.PrintLn;   {Подсчёт количества символов                           }
-    WriteLn('Введите новый размер строки');
-    var len:= ReadLnInteger('>>');
-    SetLength(st, len);
+    { Установка нового размера не работает на строках, где изначально был      }
+    { задан её размер (var st: string[27];)                                    }
+    {                                                                          }
+    SetLength(st, 10);
+    st:= 'Строка, ограниченная ' + st.Length + ' символами';
+    WriteLn(st, NewLine);
+    st:= 'Строка, ограниченная ' + st.Length + ' символами';
+    WriteLn(st, NewLine);
 
-    WriteLn('Размер новой строки: ', st.Length);
+
+    { Пробуем                                                                  }
+    var n_str:= ReadLnString('Введите строку [STR]<<');
+    WriteLn('[Длинна данной строки]>> ', n_str.Length);
+    SetLength(n_str, ReadLnInteger('Введите новый размер строки [INT]<<'));
+    n_str:= ReadLnString('Введите строку [STR]<<');
+    WriteLn('[Длина строки]>> ', n_str.Length, NewLine,
+            '[Сама строка ]>> ', n_str);
+    { ??? Как-то странно смысла в setlength для строк нет, кроме как обрезка   }
+    { строк                                                                    }
+
+
+    { Строки можно складывать и умножать на число. Btw, если строку сложить с  }
+    { числом, то последнее будет преобразовано в строку                        }
+    WriteLn('AOAO' + ' PEW' * 3);
+
 END.
